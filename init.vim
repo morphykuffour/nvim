@@ -59,7 +59,7 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 " Functionality
 Plug 'rstacruz/vim-closer' 
 Plug 'jiangmiao/auto-pairs' 
-Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-utils/vim-man'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'kevinhwang91/nvim-bqf'
@@ -82,7 +82,8 @@ let mapleader=" "
 command! W w
 
 set background=dark
-colorscheme spacegray
+" colorscheme spacegray
+colorscheme gruvbox
 
 " disable python 2
 let g:loaded_python_provider = 0
@@ -97,16 +98,3 @@ autocmd! VimEnter * silent! source $MYVIMRC
 let g:closer_flags='{;'
 let g:AutoPairs={"(":")","'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''"}
 
-call wilder#set_option('pipeline', [
-      \   wilder#branch(
-      \     wilder#cmdline_pipeline({
-      \       'language': 'python',
-      \       'fuzzy': 1,
-      \     }),
-      \     wilder#python_search_pipeline({
-      \       'pattern': wilder#python_fuzzy_pattern(),
-      \       'sorter': wilder#python_difflib_sorter(),
-      \       'engine': 're',
-      \     }),
-      \   ),
-      \ ])

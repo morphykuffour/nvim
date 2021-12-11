@@ -13,9 +13,8 @@ require'lspconfig'.clangd.setup {
     root_dir = function() return vim.loop.cwd() end
 }
 
-require'lspconfig'.pyls.setup{ on_attach=on_attach }
-
 require'lspconfig'.yamlls.setup{}
+require'lspconfig'.vimls.setup{}
 
 require'lspconfig'.gopls.setup{
     on_attach=on_attach,

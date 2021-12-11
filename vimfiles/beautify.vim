@@ -49,7 +49,7 @@ set statusline+=%#CursorLine#   " colour
 set statusline+=\ %Y\                   " file type
 set statusline+=%#CursorIM#     " colour
 set statusline+=\ %3l:%-2c\         " line + column
-set statusline+=%#Cursor#       " colour
+" set statusline+=%#Cursor#       " colour
 set statusline+=\ %3p%%\                " percentage
 
 
@@ -69,7 +69,6 @@ let g:floaterm_autoclose=1
 
 " Better grep
 if executable("rg")
-    set grepprg=rg\ --vimgrep\ --no-heading
-    set grepformat=%f:%l:%c:%m,%f:%l:%m
+    let g:rg_derive_root='true'
 endif
 
