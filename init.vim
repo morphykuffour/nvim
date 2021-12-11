@@ -23,7 +23,7 @@ if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autolo
                 \| endif
 endif
 
-"Plug-ins
+" PLUGINS {{{
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'euclidianAce/BetterLua.vim' 
@@ -71,6 +71,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 call plug#end()
+"}}}
 
 lua << EOF
 -- Personal settings
