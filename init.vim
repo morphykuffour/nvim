@@ -91,7 +91,7 @@ let g:loaded_python_provider = 0
 autocmd! BufWritePost $MYVIMRC source $MYVIMRC | echom "Reloaded $MYVIMRC"
 
 " Source init.vim on startup
-autocmd! VimEnter * silent! source $MYVIMRC
+" autocmd! VimEnter * silent! source $MYVIMRC
 
 " autoclose pairs
 let g:closer_flags='{;'
