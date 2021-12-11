@@ -1,0 +1,39 @@
+" --- For vim-startify --------------------------------------------------"
+
+" sessions
+" :SLoad       load a session
+" :SSave[!]    save a session
+" :SDelete[!]  delete a session
+" :SClose      close a session
+"
+let g:startify_session_dir = '$HOME/.config/nvim/session'
+"
+let g:startify_lists = [
+          \ { 'type': 'files',     'header': ['   MRU Files']            },
+          \ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
+          \ { 'type': 'sessions',  'header': ['   Sessions']       },
+          \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+          \ { 'type': 'commands', 'header': ['   Commands']      },
+          \ ]
+let g:startify_bookmarks = [ { 'd': '~/dotfiles' }, {'v': '$MYVIMRC'}, {'z': '~/dotfiles/zsh/.config/zsh/zshrc'} ]
+
+let g:startify_commands = [
+      \ {'o': ['oldfiles', 'Telescope oldfiles']},
+      \ {'f': ['file browser', 'Telescope file_browser']},
+      \ {'r': ['ranger', 'Ranger']},
+      \ ]
+" Let Startify take care of buffers
+let g:startify_session_delete_buffers = 1
+
+" Similar to Vim-rooter
+let g:startify_change_to_vcs_root = 1
+
+" If you want Unicode
+let g:startify_fortune_use_unicode = 1
+
+" Automatically Update Sessions
+let g:startify_session_persistence = 1
+
+" Get rid of empy buffer and quit
+let g:startify_enable_special = 0
+
