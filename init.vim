@@ -82,7 +82,7 @@ let mapleader=" "
 command! W w
 
 set background=dark
-colorscheme gruvbox
+colorscheme ayu
 
 " disable python 2
 let g:loaded_python_provider = 0
