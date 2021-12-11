@@ -59,7 +59,8 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 " Functionality
 Plug 'rstacruz/vim-closer' 
 Plug 'jiangmiao/auto-pairs' 
-" Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-utils/vim-man'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'kevinhwang91/nvim-bqf'
@@ -74,6 +75,7 @@ call plug#end()
 lua << EOF
 -- Personal settings
 require('morpheus')
+require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 EOF
 
 " Goodies
