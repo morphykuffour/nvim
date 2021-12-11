@@ -71,8 +71,9 @@ lua << EOF
 -- Personal settings
 require('morpheus')
 require('morpheus.statusline.CRAG666-statusline')
-require('morpheus.telescope')
-require('morpheus.telescope.mappings')
+require("plugins")
+require("options")
+require("mappings")
 EOF
 
 let mapleader=" "
