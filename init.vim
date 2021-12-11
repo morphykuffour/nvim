@@ -64,7 +64,7 @@ Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' } " Better command men
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
-Plug 'ptzz/lf.vim'
+" Plug 'ptzz/lf.vim'
 call plug#end()
 
 lua << EOF
