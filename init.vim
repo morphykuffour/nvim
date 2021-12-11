@@ -25,70 +25,67 @@ endif
 
 "Plug-ins
 call plug#begin('~/.config/nvim/plugged')
-Plug 'euclidianAce/BetterLua.vim' " Better Syntax highlighting for lua
+
+Plug 'euclidianAce/BetterLua.vim' 
+" Plebvim lsp Plugins
 Plug 'neovim/nvim-lspconfig'
-Plug 'kabouzeid/nvim-lspinstall'
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'tami5/sql.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-    Plug 'nvim-telescope/telescope-fzy-native.nvim', { 'do': 'make' }
-    Plug 'nvim-telescope/telescope-media-files.nvim'
-    Plug 'nvim-telescope/telescope-arecibo.nvim'
-    Plug 'nvim-telescope/telescope-frecency.nvim'
-    Plug 'nvim-telescope/telescope-cheat.nvim'
-    Plug 'nvim-telescope/telescope-hop.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'hrsh7th/nvim-compe'
+
+" C++
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
+
+" tpope
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
+
+" groovy
 Plug 'morhetz/gruvbox'
-Plug 'marko-cerovac/material.nvim'
-Plug 'nvim-lua/lsp-status.nvim'
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
+
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'rbgrouleff/bclose.vim'
+Plug 'junegunn/goyo.vim'
 Plug 'mhinz/vim-startify'
+
+" UI
+Plug 'rbgrouleff/bclose.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'rhysd/accelerated-jk'
 Plug 'voldikss/vim-floaterm'
-Plug 'liuchengxu/vim-which-key'
-Plug 'rstacruz/vim-closer' " Autoclose pairs brackets when press enter
-Plug 'jiangmiao/auto-pairs' " Autoclose pairs 
-Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' } " Better command menu
-Plug 'junegunn/goyo.vim'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+
+" Functionality
+Plug 'rstacruz/vim-closer' 
+Plug 'jiangmiao/auto-pairs' 
+Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'vim-utils/vim-man'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
-" Plug 'ptzz/lf.vim'
+Plug 'kevinhwang91/nvim-bqf'
+
+" telescope requirements...
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 call plug#end()
 
 lua << EOF
 -- Personal settings
 require('morpheus')
-require('morpheus.statusline.CRAG666-statusline')
-require("plugins")
-require("options")
-require("mappings")
 EOF
 
+" Goodies
 let mapleader=" "
 
 command! W w
 
-" Main Settings
-" Change colorscheme depending on time of the day
-" if strftime("%H") < 19
-"     set background=light
-"     colorscheme gruvbox
-" else
-    set background=dark
-    colorscheme gruvbox
-" endif
+set background=dark
+colorscheme gruvbox
+
+" disable python 2
+let g:loaded_python_provider = 0
 
 " Automatically source vimrc on save silently.
 autocmd! BufWritePost $MYVIMRC source $MYVIMRC | echom "Reloaded $MYVIMRC"
@@ -96,28 +93,7 @@ autocmd! BufWritePost $MYVIMRC source $MYVIMRC | echom "Reloaded $MYVIMRC"
 " Source init.vim on startup
 autocmd! VimEnter * silent! source $MYVIMRC
 
-" lf wrapper
-let g:lf_map_keys = 0
-let g:lf_replace_netrw = 1 " Open lf when vim opens a directory
-let g:lf_command_override = 'lf -command "set hidden"'
-
 " autoclose pairs
 let g:closer_flags='{;'
 let g:AutoPairs={"(":")","'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''"}
 
-" Wilder Menu for better completion
-call wilder#enable_cmdline_enter()
-set wildcharm=<Tab>
-cmap <expr> <Tab> wilder#in_context() ? wilder#next() : "\<Tab>"
-cmap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
-
-call wilder#set_option('modes', ['/', '?', ':'])
-call wilder#set_option('renderer', wilder#wildmenu_renderer({
-      \ 'highlighter': wilder#basic_highlighter(),
-      \ }))
-
-" TODO
-" Install nvim-bqf
-
-" disable python 2
-let g:loaded_python_provider = 0
