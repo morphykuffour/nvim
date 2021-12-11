@@ -1,7 +1,6 @@
-require("morpheus.telescope")
+-- require("morpheus.telescope")
 require("morpheus.globals")
 require("morpheus.lsp")
-require("morpheus.statusline")
 
 P = function(v)
   print(vim.inspect(v))
