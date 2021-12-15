@@ -1,5 +1,6 @@
 " nnoremap <leader>n :Ranger<CR>
 nnoremap <leader>n :Explore<CR>
+nnoremap <leader>n :Telescope file_browser<CR>
 " nnoremap <leader>n :Lf<CR>
 nnoremap <F2> :colorscheme ayu<CR>
 
