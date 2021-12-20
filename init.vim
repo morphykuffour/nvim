@@ -9,7 +9,7 @@
 
 " Source custom vimfiles
 for vf in split(glob('$HOME/.config/nvim/vimfiles/*.vim'), '\n')
-    execute 'source' vf 
+    execute 'source' vf
 endfor
 
 " Vim-Plug {{{
@@ -23,6 +23,7 @@ if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autolo
                 \| endif
 endif
 "}}}
+
 nnoremap <silent><leader>pi :PlugInstall<CR>
 nnoremap <silent><leader>pc :PlugClean!<CR>:q<CR>
 nnoremap <silent><leader>pu :PlugUpdate<CR>
@@ -31,27 +32,28 @@ nnoremap <silent><leader>pu :PlugUpdate<CR>
 call plug#begin('~/.config/nvim/plugged')
 
 " Lsp
-Plug 'euclidianAce/BetterLua.vim' 
+Plug 'euclidianAce/BetterLua.vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 Plug 'onsails/lspkind-nvim'
 Plug 'nvim-lua/lsp_extensions.nvim'
 
 " C++
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'scrooloose/syntastic'
-Plug 'tpope/vim-fugitive'
 
 " tpope
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-eunuch'
+
 
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'junegunn/goyo.vim'
@@ -66,15 +68,12 @@ Plug 'voldikss/vim-floaterm'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 " Functionality
-Plug 'rstacruz/vim-closer' 
-Plug 'jiangmiao/auto-pairs' 
+Plug 'rstacruz/vim-closer'
+Plug 'jiangmiao/auto-pairs'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
-<<<<<<< HEAD
 Plug 'vim-utils/vim-man'
 Plug 'wellle/context.vim'
-=======
->>>>>>> 016ba45bc04195f144cac6ea9a8f32afcf30771a
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'kevinhwang91/nvim-bqf'
 
@@ -83,20 +82,15 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
-<<<<<<< HEAD
 
 " Documet editing
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'}
 Plug 'lervag/vimtex'
 Plug 'chiel92/vim-autoformat'
-
-=======
 Plug 'puremourning/vimspector'
 
 " prettier
 Plug 'sbdchd/neoformat'
->>>>>>> 016ba45bc04195f144cac6ea9a8f32afcf30771a
 call plug#end()
 "}}}
 
@@ -122,11 +116,9 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap J mzJ`z
 
-<<<<<<< HEAD
 set background=dark
 colorscheme spacegray
-" colorscheme gruvbox
-=======
+
 " greatest remap ever
 xnoremap <leader>p "_dP
 
@@ -137,7 +129,6 @@ nnoremap <leader>Y gg"+yG
 
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
->>>>>>> 016ba45bc04195f144cac6ea9a8f32afcf30771a
 
 " disable python 2
 let g:loaded_python_provider = 0
