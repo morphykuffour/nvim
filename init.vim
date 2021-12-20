@@ -14,9 +14,9 @@ for vim_file in split(glob('$HOME/.config/nvim/vimfiles/*.vim'), '\n')
 endfor
 
 if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
-	echo "Downloading junegunn/vim-plug to manage plugins..."
-	silent !mkdir -p ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/
-	silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim
+    echo "Downloading junegunn/vim-plug to manage plugins..."
+    silent !mkdir -p ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/
+    silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim
     " Run PlugInstall if there are missing plugins
     autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
                 \| PlugInstall --sync | source $MYVIMRC
@@ -62,6 +62,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-utils/vim-man'
+Plug 'wellle/context.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'kevinhwang91/nvim-bqf'
 
@@ -70,6 +71,13 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+
+" Documet editing
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
+Plug 'lervag/vimtex'
+Plug 'chiel92/vim-autoformat'
+
 call plug#end()
 "}}}
 
@@ -85,8 +93,8 @@ let mapleader=" "
 command! W w
 
 set background=dark
-" colorscheme spacegray
-colorscheme gruvbox
+colorscheme spacegray
+" colorscheme gruvbox
 
 " disable python 2
 let g:loaded_python_provider = 0
