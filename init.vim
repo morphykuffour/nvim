@@ -1,4 +1,4 @@
-"         _
+
 "  _   __(_)___ ___  __________
 " | | / / / __ `__ \/ ___/ ___/
 " | |/ / / / / / / / /  / /__
@@ -66,11 +66,15 @@ Plug 'rhysd/accelerated-jk'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'voldikss/vim-floaterm'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'gruvbox-community/gruvbox'
 
 " Functionality
 Plug 'rstacruz/vim-closer'
 Plug 'jiangmiao/auto-pairs'
+
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
+
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-utils/vim-man'
 Plug 'wellle/context.vim'
@@ -99,13 +103,34 @@ call plug#end()
 lua << EOF
 require('morpheus')
 require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
+
+require "nvim-treesitter.configs".setup {
+  playground = {
+    enable = true,
+    disable = {},
+    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    persist_queries = false, -- Whether the query persists across vim sessions
+    keybindings = {
+      toggle_query_editor = 'o',
+      toggle_hl_groups = 'i',
+      toggle_injected_languages = 't',
+      toggle_anonymous_nodes = 'a',
+      toggle_language_display = 'I',
+      focus_language = 'f',
+      unfocus_language = 'F',
+      update = 'R',
+      goto_node = '<cr>',
+      show_help = '?',
+    },
+  }
+}
 EOF
 
 let mapleader=" "
 
-set background=dark
-colorscheme spacegray
-" colorscheme gruvbox
+" set background=dark
+colorscheme gruvbox
+" colorscheme spacegray
 
 " Goodies
 command! W w
