@@ -1,4 +1,4 @@
--- require("morpheus.telescope")
+require("morpheus.telescope")
 require("morpheus.globals")
 require("morpheus.lsp")
 

@@ -9,10 +9,10 @@ local sumneko_binary = ""
 if vim.fn.has("mac") == 1 then
     -- FIXME on macos
     sumneko_root_path = "/Users/" .. USER .. "/.config/nvim/lua-language-server"
-    sumneko_binary = "/Users/" .. USER .. "/.config/nvim/lua-language-server/bin/macOS/lua-language-server"
+    sumneko_binary = "/Users/" .. USER .. "/.config/nvim/lua-language-server/bin/lua-language-server"
 elseif vim.fn.has("unix") == 1 then
     sumneko_root_path = "/home/" .. USER .. "/.config/nvim/lua-language-server"
-    sumneko_binary = "/home/" .. USER .. "/.config/nvim/lua-language-server/bin/Linux/lua-language-server"
+    sumneko_binary = "/home/" .. USER .. "/.config/nvim/lua-language-server/bin/lua-language-server"
 else
     print("Unsupported system for sumneko")
 end
@@ -41,8 +41,6 @@ require'lspconfig'.sumneko_lua.setup {
         },
     },
 }
-
-
 
 local nvim_lsp = require('lspconfig')
 
@@ -79,8 +77,6 @@ local on_attach = function(client, bufnr)
 
 end
 
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
 local servers = { 'bashls', 'vimls', 'yamlls', 'gopls', 'pyright', 'rust_analyzer', 'tsserver', 'sumneko_lua' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
@@ -97,13 +93,6 @@ require'lspconfig'.clangd.setup {
 }
 
 local opts = {
-    -- whether to highlight the currently hovered symbol
-    -- disable if your cpu usage is higher than you want it
-    -- or you just hate the highlight
-    -- default: true
     highlight_hovered_item = true,
-
-    -- whether to show outline guides
-    -- default: true
     show_guides = true,
 }
