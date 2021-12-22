@@ -105,6 +105,8 @@ call plug#end()
 " -- Personal settings
 lua << EOF
 require('morpheus')
+require('morpheus.cmp')
+require('morpheus.lsp')
 require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 require('telescope').load_extension('media_files')
 require "nvim-treesitter.configs".setup {
