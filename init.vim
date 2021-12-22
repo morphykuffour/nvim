@@ -18,6 +18,12 @@ require('telescope').load_extension('media_files')
 EOF
 
 let mapleader=" "
+
+let g:solarized_termcolors=16 
+set t_Co=256 
+set background=dark
+" colorscheme solarized
+
 colorscheme gruvbox
 " set background=dark
 " colorscheme spacegray
