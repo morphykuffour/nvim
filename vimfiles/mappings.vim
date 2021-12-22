@@ -1,32 +1,31 @@
-" nnoremap <leader>n :Ranger<CR>
-nnoremap <leader>n :Explore<CR>
-nnoremap <leader>n :Telescope file_browser<CR>
-" nnoremap <leader>n :Lf<CR>
-nnoremap <F2> :colorscheme ayu<CR>
-
-nnoremap Q <nop>
-
-" Move between vim panes
-nnoremap <leader>h <C-W>h
-nnoremap <leader>j <C-W>j
-nnoremap <leader>k <C-W>k
-nnoremap <leader>l <C-W>l
-
-" Switch between last two buffers
-nnoremap <leader><leader> <C-^>
-
 " Better save
 nnoremap <leader>w :w!<cr>
-" nnoremap :w :update
+
+" Goodies
+command! W w
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+nnoremap Y yg$
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
+set background=dark
+colorscheme spacegray
+
+" greatest remap ever
+xnoremap <leader>p "_dP
+
+" next greatest remap ever : asbjornHaland
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>Y gg"+yG
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
 
 " Better quit
 nnoremap <leader>q :qa!<CR>
-
-"Edit configs
-nnoremap <F10> :edit $MYVIMRC<CR>
-nnoremap <leader><F10> :vsplit $MYVIMRC<CR>
-nnoremap <F11> :edit ~/.tmux.conf<CR>
-nnoremap <F12> :edit /home/morp/dotfiles/zsh/.config/zsh/zshrc<CR>
 
 " Open new buffers
 nmap <leader>s<left>   :leftabove  vnew<cr>
