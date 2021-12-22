@@ -17,7 +17,6 @@ if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autolo
     echo "Downloading junegunn/vim-plug to manage plugins..."
     silent !mkdir -p ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/
     silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim
-    " Run PlugInstall if there are missing plugins
     autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
                 \| PlugInstall --sync | source $MYVIMRC
                 \| endif
@@ -30,17 +29,22 @@ nnoremap <silent><leader>pu :PlugUpdate<CR>
 
 " Plugins {{{
 call plug#begin('~/.config/nvim/plugged')
+" Plug 'hrsh7th/nvim-compe'
 
-" Lsp
-Plug 'euclidianAce/BetterLua.vim'
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-compe'
-Plug 'neovim/nvim-lspconfig'
+" cmp plugins
+Plug 'hrsh7th/nvim-cmp' 
+Plug 'hrsh7th/cmp-buffer' 
+Plug 'hrsh7th/cmp-path' 
+Plug 'hrsh7th/cmp-cmdline' 
+Plug 'saadparwaiz1/cmp_luasnip' 
 Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'onsails/lspkind-nvim'
-Plug 'nvim-lua/lsp_extensions.nvim'
+Plug 'hrsh7th/cmp-nvim-lua'
+
+" lsp
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
+" Plug 'onsails/lspkind-nvim'
+" Plug 'nvim-lua/lsp_extensions.nvim'
 
 " C++
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -53,7 +57,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
-
 
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'junegunn/goyo.vim'
@@ -78,7 +81,6 @@ Plug 'nvim-treesitter/playground'
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-utils/vim-man'
 Plug 'wellle/context.vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'kevinhwang91/nvim-bqf'
 
 " telescope requirements...
@@ -167,5 +169,4 @@ autocmd! VimEnter * silent! source $MYVIMRC
 " autoclose pairs
 let g:closer_flags='{;'
 let g:AutoPairs={"(":")","'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''"}
-
 
