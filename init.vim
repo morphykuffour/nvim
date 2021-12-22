@@ -1,4 +1,4 @@
-"         _
+
 "  _   __(_)___ ___  __________
 " | | / / / __ `__ \/ ___/ ___/
 " | |/ / / / / / / / /  / /__
@@ -9,20 +9,21 @@
 
 " Source custom vimfiles
 for vf in split(glob('$HOME/.config/nvim/vimfiles/*.vim'), '\n')
-    execute 'source' vf 
+    execute 'source' vf
 endfor
 
 " Vim-Plug {{{
 if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
-	echo "Downloading junegunn/vim-plug to manage plugins..."
-	silent !mkdir -p ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/
-	silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim
+    echo "Downloading junegunn/vim-plug to manage plugins..."
+    silent !mkdir -p ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/
+    silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim
     " Run PlugInstall if there are missing plugins
     autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
                 \| PlugInstall --sync | source $MYVIMRC
                 \| endif
 endif
 "}}}
+
 nnoremap <silent><leader>pi :PlugInstall<CR>
 nnoremap <silent><leader>pc :PlugClean!<CR>:q<CR>
 nnoremap <silent><leader>pu :PlugUpdate<CR>
@@ -31,7 +32,7 @@ nnoremap <silent><leader>pu :PlugUpdate<CR>
 call plug#begin('~/.config/nvim/plugged')
 
 " Lsp
-Plug 'euclidianAce/BetterLua.vim' 
+Plug 'euclidianAce/BetterLua.vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 Plug 'neovim/nvim-lspconfig'
@@ -44,13 +45,15 @@ Plug 'nvim-lua/lsp_extensions.nvim'
 " C++
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'scrooloose/syntastic'
-Plug 'tpope/vim-fugitive'
 
 " tpope
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-eunuch'
+
 
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'junegunn/goyo.vim'
@@ -63,12 +66,18 @@ Plug 'rhysd/accelerated-jk'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'voldikss/vim-floaterm'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'gruvbox-community/gruvbox'
 
 " Functionality
-Plug 'rstacruz/vim-closer' 
-Plug 'jiangmiao/auto-pairs' 
+Plug 'rstacruz/vim-closer'
+Plug 'jiangmiao/auto-pairs'
+
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
+
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'vim-utils/vim-man'
+Plug 'wellle/context.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'kevinhwang91/nvim-bqf'
 
@@ -77,6 +86,11 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+
+" Documet editing
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'}
+Plug 'lervag/vimtex'
+Plug 'chiel92/vim-autoformat'
 Plug 'puremourning/vimspector'
 
 " prettier
@@ -89,13 +103,34 @@ call plug#end()
 lua << EOF
 require('morpheus')
 require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
+
+require "nvim-treesitter.configs".setup {
+  playground = {
+    enable = true,
+    disable = {},
+    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    persist_queries = false, -- Whether the query persists across vim sessions
+    keybindings = {
+      toggle_query_editor = 'o',
+      toggle_hl_groups = 'i',
+      toggle_injected_languages = 't',
+      toggle_anonymous_nodes = 'a',
+      toggle_language_display = 'I',
+      focus_language = 'f',
+      unfocus_language = 'F',
+      update = 'R',
+      goto_node = '<cr>',
+      show_help = '?',
+    },
+  }
+}
 EOF
 
 let mapleader=" "
 
-set background=dark
-colorscheme spacegray
-" colorscheme gruvbox
+" set background=dark
+colorscheme gruvbox
+" colorscheme spacegray
 
 " Goodies
 command! W w
@@ -105,6 +140,9 @@ nnoremap Y yg$
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap J mzJ`z
+
+set background=dark
+colorscheme spacegray
 
 " greatest remap ever
 xnoremap <leader>p "_dP
