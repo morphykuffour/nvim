@@ -19,13 +19,8 @@ EOF
 
 let mapleader=" "
 
-let g:solarized_termcolors=16 
-set t_Co=256 
-set background=dark
-" colorscheme solarized
-
 colorscheme gruvbox
-" set background=dark
+set background=dark
 " colorscheme spacegray
 
 let g:loaded_python_provider = 0
@@ -39,3 +34,12 @@ let g:AutoPairs={"(":")","'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "''
 for vf in split(glob('$HOME/.config/nvim/vimfiles/*.vim'), '\n')
     execute 'source' vf
 endfor
+
+let g:leetcode_browser = 'brave'
+let g:leetcode_solution_filetype = 'cpp'
+let g:leetcode_hide_paid_only = 1
+
+nnoremap <leader>ll :LeetCodeList<cr>
+nnoremap <leader>lt :LeetCodeTest<cr>
+nnoremap <leader>ls :LeetCodeSubmit<cr>
+nnoremap <leader>li :LeetCodeSignIn<cr>

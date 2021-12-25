@@ -119,11 +119,6 @@ _G.packer_plugins = {
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/comfortable-motion.vim",
     url = "https://github.com/yuttie/comfortable-motion.vim"
   },
-  ["context.vim"] = {
-    loaded = true,
-    path = "/home/morp/.local/share/nvim/site/pack/packer/start/context.vim",
-    url = "https://github.com/wellle/context.vim"
-  },
   ["goyo.vim"] = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/goyo.vim",
@@ -133,6 +128,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/gruvbox",
     url = "https://github.com/gruvbox-community/gruvbox"
+  },
+  ["leetcode.vim"] = {
+    loaded = true,
+    path = "/home/morp/.local/share/nvim/site/pack/packer/start/leetcode.vim",
+    url = "https://github.com/ianding1/leetcode.vim"
   },
   ["lf.vim"] = {
     loaded = true,

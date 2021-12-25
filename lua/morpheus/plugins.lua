@@ -73,7 +73,7 @@ return packer.startup(function(use)
     use "jiangmiao/auto-pairs"
     use "ptzz/lf.vim"
     use "nvim-treesitter/playground"
-    use "wellle/context.vim"
+    -- use "wellle/context.vim"
     use "kevinhwang91/nvim-bqf"
     use "nvim-lua/popup.nvim"
     use "nvim-lua/plenary.nvim"
@@ -100,6 +100,9 @@ return packer.startup(function(use)
         "iamcco/markdown-preview.nvim",
         run = "cd app & yarn install",
     }
+    -- leetcode
+    use "ianding1/leetcode.vim"
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then

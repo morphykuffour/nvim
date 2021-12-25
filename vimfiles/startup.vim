@@ -19,9 +19,10 @@ let g:startify_bookmarks = [ { 'd': '~/dotfiles' }, {'v': '$MYVIMRC'}, {'z': '~/
 
 let g:startify_commands = [
       \ {'o': ['oldfiles', 'Telescope oldfiles']},
-      \ {'r': ['ranger', 'Ranger']},
       \ {'t': ['terminal', 'FloatermNew']},
+      \ {'f': ['lf', 'Lf']},
       \ ]
+
 " Let Startify take care of buffers
 let g:startify_session_delete_buffers = 1
 
