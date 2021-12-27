@@ -10,9 +10,6 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap J mzJ`z
 
-set background=dark
-colorscheme spacegray
-
 " greatest remap ever
 xnoremap <leader>p "_dP
 
