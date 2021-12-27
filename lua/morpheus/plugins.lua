@@ -43,44 +43,54 @@ return packer.startup(function(use)
     -- My plugins here
     use "wbthomason/packer.nvim" -- Have packer manage itself
 
+    use "nvim-lua/popup.nvim"
+    use "nvim-lua/plenary.nvim"
+    use "windwp/nvim-autopairs"
+
+    -- cmp plugins
     use "hrsh7th/nvim-cmp"
     use "hrsh7th/cmp-buffer"
     use "hrsh7th/cmp-path"
     use "hrsh7th/cmp-cmdline"
     use "saadparwaiz1/cmp_luasnip"
     use "hrsh7th/cmp-nvim-lsp"
+
     use "hrsh7th/cmp-nvim-lua"
     use "neovim/nvim-lspconfig"
     use "williamboman/nvim-lsp-installer"
-    use "octol/vim-cpp-enhanced-highlight"
-    use "scrooloose/syntastic"
+
+    -- tpope
     use "tpope/vim-sensible"
     use "tpope/vim-surround"
     use "tpope/vim-commentary"
     use "tpope/vim-repeat"
     use "tpope/vim-fugitive"
     use "tpope/vim-eunuch"
+
+    -- ui enhancements
     use "kyazdani42/nvim-web-devicons"
-    use "junegunn/goyo.vim"
+    use "kevinhwang91/nvim-bqf"
+    use "ptzz/lf.vim"
     use "mhinz/vim-startify"
-    use "rbgrouleff/bclose.vim"
+    use "voldikss/vim-floaterm"
+    use "gruvbox-community/gruvbox"
+
+    -- coding enhanceents
     use "easymotion/vim-easymotion"
     use "rhysd/accelerated-jk"
     use "yuttie/comfortable-motion.vim"
-    use "voldikss/vim-floaterm"
-    use "gruvbox-community/gruvbox"
     use "rstacruz/vim-closer"
     use "jiangmiao/auto-pairs"
-    use "ptzz/lf.vim"
-    use "nvim-treesitter/playground"
-    -- use "wellle/context.vim"
-    use "kevinhwang91/nvim-bqf"
-    use "nvim-lua/popup.nvim"
-    use "nvim-lua/plenary.nvim"
+    use "lervag/vimtex"
+    -- snippets
+    use "L3MON4D3/LuaSnip"
+    use "rafamadriz/friendly-snippets"
+
+    -- telescope
     use "nvim-telescope/telescope.nvim"
     use "nvim-telescope/telescope-fzy-native.nvim"
     use "nvim-telescope/telescope-media-files.nvim"
-    use "lervag/vimtex"
+
     use "chiel92/vim-autoformat"
     use "puremourning/vimspector"
     use "sbdchd/neoformat"
@@ -90,6 +100,7 @@ return packer.startup(function(use)
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",
     }
+    use "nvim-treesitter/playground"
 
     use {
         "gelguy/wilder.nvim",
@@ -104,7 +115,6 @@ return packer.startup(function(use)
     use "ianding1/leetcode.vim"
 
     -- Automatically set up your configuration after cloning packer.nvim
-    -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then
         require("packer").sync()
     end

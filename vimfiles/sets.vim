@@ -1,4 +1,4 @@
-"General Settings
+" General Settings
 set completeopt=menuone,noselect " better autocomplete options
 set mouse-=a " if I accidentally use the mouse
 set splitright " splits to the right
@@ -27,9 +27,9 @@ filetype plugin indent on " enable detection, plugins and indents
 let g:netrw_banner=0 " disable banner in netrw
 let g:netrw_liststyle=3 " tree view in netrw
 
-set t_Co=256
-set termguicolors
-set shm+=I
+" set t_Co=256
+" set termguicolors
+" set shm+=I
 
 " best Wrap
 command! -nargs=* Wrap set wrap linebreak nolist

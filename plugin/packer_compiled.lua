@@ -69,6 +69,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  LuaSnip = {
+    loaded = true,
+    path = "/home/morp/.local/share/nvim/site/pack/packer/start/LuaSnip",
+    url = "https://github.com/L3MON4D3/LuaSnip"
+  },
   ["accelerated-jk"] = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/accelerated-jk",
@@ -78,11 +83,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/auto-pairs",
     url = "https://github.com/jiangmiao/auto-pairs"
-  },
-  ["bclose.vim"] = {
-    loaded = true,
-    path = "/home/morp/.local/share/nvim/site/pack/packer/start/bclose.vim",
-    url = "https://github.com/rbgrouleff/bclose.vim"
   },
   ["cmp-buffer"] = {
     loaded = true,
@@ -119,10 +119,10 @@ _G.packer_plugins = {
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/comfortable-motion.vim",
     url = "https://github.com/yuttie/comfortable-motion.vim"
   },
-  ["goyo.vim"] = {
+  ["friendly-snippets"] = {
     loaded = true,
-    path = "/home/morp/.local/share/nvim/site/pack/packer/start/goyo.vim",
-    url = "https://github.com/junegunn/goyo.vim"
+    path = "/home/morp/.local/share/nvim/site/pack/packer/start/friendly-snippets",
+    url = "https://github.com/rafamadriz/friendly-snippets"
   },
   gruvbox = {
     loaded = true,
@@ -148,6 +148,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/neoformat",
     url = "https://github.com/sbdchd/neoformat"
+  },
+  ["nvim-autopairs"] = {
+    loaded = true,
+    path = "/home/morp/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
+    url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-bqf"] = {
     loaded = true,
@@ -199,11 +204,6 @@ _G.packer_plugins = {
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
   },
-  syntastic = {
-    loaded = true,
-    path = "/home/morp/.local/share/nvim/site/pack/packer/start/syntastic",
-    url = "https://github.com/scrooloose/syntastic"
-  },
   ["telescope-fzy-native.nvim"] = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/telescope-fzy-native.nvim",
@@ -233,11 +233,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/vim-commentary",
     url = "https://github.com/tpope/vim-commentary"
-  },
-  ["vim-cpp-enhanced-highlight"] = {
-    loaded = true,
-    path = "/home/morp/.local/share/nvim/site/pack/packer/start/vim-cpp-enhanced-highlight",
-    url = "https://github.com/octol/vim-cpp-enhanced-highlight"
   },
   ["vim-easymotion"] = {
     loaded = true,
