@@ -31,3 +31,4 @@ autocmd! BufWritePost $MYVIMRC source $MYVIMRC | echom "Reloaded $MYVIMRC"
 " wilder completion
 call wilder#setup({'modes': [':', '/', '?']})
 
+
