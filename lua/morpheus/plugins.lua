@@ -39,6 +39,10 @@ return packer.startup(function(use)
   use "nvim-lua/plenary.nvim"
   use "windwp/nvim-autopairs"
 
+  -- md writing
+ use  "mzlogin/vim-markdown-toc"
+ use  "SidOfc/mkdx"
+
   -- ui enchancements
   use "kyazdani42/nvim-web-devicons"
   use "akinsho/bufferline.nvim"
@@ -75,6 +79,8 @@ return packer.startup(function(use)
   use "L3MON4D3/LuaSnip"
   use "rafamadriz/friendly-snippets"
 
+  -- code
+  use 'mhartington/formatter.nvim'
   -- LSP
   use "neovim/nvim-lspconfig"
   use "williamboman/nvim-lsp-installer"
@@ -83,6 +89,8 @@ return packer.startup(function(use)
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
+  use "nvim-telescope/telescope-fzy-native.nvim"
+  use "nvim-telescope/telescope-media-files.nvim"
 
   use {
       "gelguy/wilder.nvim",
@@ -94,6 +102,8 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
   }
+  use "nvim-treesitter/playground"
+  use 'bryall/contextprint.nvim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   if PACKER_BOOTSTRAP then
