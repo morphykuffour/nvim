@@ -1,23 +1,25 @@
-" nvimrc
+"  nvimrc
 " Author: Morphy Kuffour
 " Alias:  JediGrandMaster
 
 " -- Personal settings
+let mapleader= " "
+
 lua << EOF
 require "morpheus.options"
-require "morpheus.keymaps"
+-- require "morpheus.keymaps"
 require "morpheus.plugins"
 require "morpheus.cmp"
 require "morpheus.lsp"
 require "morpheus.telescope"
 require "morpheus.treesitter"
 require "morpheus.autopairs"
-require "morpheus.bufferline"
-require "morpheus.toggleterm"
+require "morpheus.tsplayground"
 EOF
 
 set background=dark
 colorscheme gruvbox
+" colorscheme darkplus
 
 " custom vimfiles
 for vimfile in split(glob('$HOME/.config/nvim/vimfiles/*.vim'), '\n')
@@ -30,5 +32,4 @@ autocmd! BufWritePost $MYVIMRC source $MYVIMRC | echom "Reloaded $MYVIMRC"
 
 " wilder completion
 call wilder#setup({'modes': [':', '/', '?']})
-
 
