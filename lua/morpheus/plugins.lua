@@ -97,20 +97,12 @@ return packer.startup(function(use)
       run = ":UpdateRemotePlugins",
   }
 
-  -- Treesitter
-<<<<<<< HEAD
-  -- use {
-  --   "nvim-treesitter/nvim-treesitter",
-  --   run = ":TSUpdate",
-  -- }
-=======
-  use {
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-  }
-  use "nvim-treesitter/playground"
-  use 'bryall/contextprint.nvim'
->>>>>>> refs/remotes/origin/main
+ -- use {
+ --   "nvim-treesitter/nvim-treesitter",
+ --   run = ":TSUpdate",
+ -- }
+ -- use "nvim-treesitter/playground"
+ -- use 'bryall/contextprint.nvim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   if PACKER_BOOTSTRAP then
