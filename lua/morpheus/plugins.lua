@@ -11,8 +11,8 @@ end
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
 vim.cmd [[
   augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  autocmd!
+  autocmd BufWritePost plugins.lua source <afile> | PackerSync
   augroup end
 ]]
 
@@ -40,8 +40,8 @@ return packer.startup(function(use)
   use "windwp/nvim-autopairs"
 
   -- md writing
- use  "mzlogin/vim-markdown-toc"
- use  "SidOfc/mkdx"
+  use  "mzlogin/vim-markdown-toc"
+  use  "SidOfc/mkdx"
 
   -- ui enchancements
   use "kyazdani42/nvim-web-devicons"
@@ -55,7 +55,7 @@ return packer.startup(function(use)
   use "mhinz/vim-startify"
   use "voldikss/vim-floaterm"
 
-   -- tpope
+  -- tpope
   use "tpope/vim-sensible"
   use "tpope/vim-surround"
   use "tpope/vim-commentary"
@@ -93,17 +93,21 @@ return packer.startup(function(use)
   use "nvim-telescope/telescope-media-files.nvim"
 
   use {
-      "gelguy/wilder.nvim",
-      run = ":UpdateRemotePlugins",
+    "gelguy/wilder.nvim",
+    run = ":UpdateRemotePlugins",
   }
+
   use 'Olical/aniseed'
   use 'Olical/conjure'
- use {
-   "nvim-treesitter/nvim-treesitter",
-   run = ":TSUpdate",
- }
- use "nvim-treesitter/playground"
- use 'bryall/contextprint.nvim'
+
+  use {
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+  }
+
+  use "nvim-treesitter/playground"
+  use 'bryall/contextprint.nvim'
+  use 'junegunn/goyo.vim' 
 
   -- Automatically set up your configuration after cloning packer.nvim
   if PACKER_BOOTSTRAP then
