@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  aniseed = {
+    loaded = true,
+    path = "/home/morp/.local/share/nvim/site/pack/packer/start/aniseed",
+    url = "https://github.com/Olical/aniseed"
+  },
   ["bufferline.nvim"] = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/bufferline.nvim",

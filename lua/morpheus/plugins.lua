@@ -96,13 +96,14 @@ return packer.startup(function(use)
       "gelguy/wilder.nvim",
       run = ":UpdateRemotePlugins",
   }
-
- -- use {
- --   "nvim-treesitter/nvim-treesitter",
- --   run = ":TSUpdate",
- -- }
- -- use "nvim-treesitter/playground"
- -- use 'bryall/contextprint.nvim'
+  use 'Olical/aniseed'
+  use 'Olical/conjure'
+ use {
+   "nvim-treesitter/nvim-treesitter",
+   run = ":TSUpdate",
+ }
+ use "nvim-treesitter/playground"
+ use 'bryall/contextprint.nvim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   if PACKER_BOOTSTRAP then

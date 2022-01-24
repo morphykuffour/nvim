@@ -34,3 +34,5 @@ autocmd! BufWritePost $MYVIMRC source $MYVIMRC | echom "Reloaded $MYVIMRC"
 call wilder#setup({'modes': [':', '/', '?']})
 
 " hi Normal guibg=NONE ctermbg=NONE
+let g:aniseed#env = v:true
+
