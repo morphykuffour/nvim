@@ -3,14 +3,12 @@ autocmd filetype cpp    nnoremap <F5> :w <bar> !rm -rf %:r && g++ -ggdb -O2 -uli
 autocmd filetype c      nnoremap <F5> :w <bar>   !rm -rf %:r && gcc -ggdb -Wall -Werror -std=c99 -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined % -o %:r && ./%:r <CR>
 autocmd filetype python nnoremap <F5> :w <bar> !python % <CR>
 autocmd filetype perl   nnoremap <F5> :w <bar> !perl % <CR>
-autocmd filetype go     nnoremap <F5> :w <bar> !go build % && ./%:r <CR>
 
 " Run file in Floaterm
 autocmd filetype c      nnoremap <F6> :FloatermNew --autoclose=0 ./%< <CR>
 autocmd filetype lua    nnoremap <F6> :FloatermNew --autoclose=0 lua % <CR>
 autocmd filetype python nnoremap <F5> :FloatermNew --autoclose=0 python % <CR>
 autocmd filetype perl   nnoremap <F5> :FloatermNew --autoclose=0 perl % <CR>
-autocmd filetype go     nnoremap <F5> :FloatermNew --autoclose=0 go build % && ./%:r <CR>
 
 " c++ syntax highlighting
 let g:cpp_class_scope_highlight = 1
