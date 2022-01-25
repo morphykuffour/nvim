@@ -1,6 +1,6 @@
 " --- For vim-startify --------------------------------------------------"
 
-" sessions
+" Sessions
 " :SLoad       load a session
 " :SSave[!]    save a session
 " :SDelete[!]  delete a session
@@ -15,7 +15,7 @@ let g:startify_lists = [
           \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
           \ { 'type': 'commands', 'header': ['   Commands']      },
           \ ]
-let g:startify_bookmarks = [ { 'd': '~/dotfiles' }, {'p': '~/.config/nvim/lua/morpheus/plugins.lua'}, {'v': '$MYVIMRC'}, {'z': '~/dotfiles/zsh/.zshrc'} ]
+let g:startify_bookmarks = [ { 'd': '~/dotfiles' }, {'p': '~/.config/nvim/lua/morpheus/plugins.lua'}, {'v': '$MYVIMRC'}, {'z': '~/dotfiles/zsh/.zshrc'}, {'e': '~/dotfiles/emacs/.emacs.d/init.el'}]
 
 let g:startify_commands = [
       \ {'o': ['oldfiles', 'Telescope oldfiles']},
