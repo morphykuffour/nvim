@@ -100,14 +100,15 @@ return packer.startup(function(use)
   use 'Olical/aniseed'
   use 'Olical/conjure'
 
-  use {
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-  }
-
-  use "nvim-treesitter/playground"
-  use 'bryall/contextprint.nvim'
+--   use {
+--     "nvim-treesitter/nvim-treesitter",
+--     run = ":TSUpdate",
+--   }
+-- 
+--   use "nvim-treesitter/playground"
+--   use 'bryall/contextprint.nvim'
   use 'junegunn/goyo.vim' 
+  use 'tjdevries/cyclist.vim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   if PACKER_BOOTSTRAP then

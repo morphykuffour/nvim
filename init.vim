@@ -7,7 +7,7 @@ let mapleader= " "
 
 lua << EOF
 require "morpheus.options"
--- require "morpheus.keymaps"
+require "morpheus.keymaps"
 require "morpheus.plugins"
 require "morpheus.cmp"
 require "morpheus.lsp"
@@ -17,9 +17,7 @@ require "morpheus.autopairs"
 require "morpheus.tsplayground"
 EOF
 
-set background=dark
-colorscheme gruvbox
-" colorscheme darkplus
+colorscheme darkplus
 
 " custom vimfiles
 for vimfile in split(glob('$HOME/.config/nvim/vimfiles/*.vim'), '\n')
@@ -33,6 +31,5 @@ autocmd! BufWritePost $MYVIMRC source $MYVIMRC | echom "Reloaded $MYVIMRC"
 " wilder completion
 call wilder#setup({'modes': [':', '/', '?']})
 
-" hi Normal guibg=NONE ctermbg=NONE
+" try aniseed
 let g:aniseed#env = v:true
-
