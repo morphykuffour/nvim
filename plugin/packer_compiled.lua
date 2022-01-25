@@ -114,10 +114,20 @@ _G.packer_plugins = {
     path = "/Users/morphykuffour/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["colorbuddy.nvim"] = {
+    loaded = true,
+    path = "/Users/morphykuffour/.local/share/nvim/site/pack/packer/start/colorbuddy.nvim",
+    url = "https://github.com/tjdevries/colorbuddy.nvim"
+  },
   conjure = {
     loaded = true,
     path = "/Users/morphykuffour/.local/share/nvim/site/pack/packer/start/conjure",
     url = "https://github.com/Olical/conjure"
+  },
+  ["contextprint.nvim"] = {
+    loaded = true,
+    path = "/Users/morphykuffour/.local/share/nvim/site/pack/packer/start/contextprint.nvim",
+    url = "https://github.com/bryall/contextprint.nvim"
   },
   ["cyclist.vim"] = {
     loaded = true,
@@ -128,6 +138,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/morphykuffour/.local/share/nvim/site/pack/packer/start/darkplus.nvim",
     url = "https://github.com/lunarvim/darkplus.nvim"
+  },
+  ["express_line.nvim"] = {
+    loaded = true,
+    path = "/Users/morphykuffour/.local/share/nvim/site/pack/packer/start/express_line.nvim",
+    url = "https://github.com/tjdevries/express_line.nvim"
   },
   ["formatter.nvim"] = {
     loaded = true,
@@ -148,6 +163,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/morphykuffour/.local/share/nvim/site/pack/packer/start/gruvbox",
     url = "https://github.com/gruvbox-community/gruvbox"
+  },
+  ["gruvbuddy.nvim"] = {
+    loaded = true,
+    path = "/Users/morphykuffour/.local/share/nvim/site/pack/packer/start/gruvbuddy.nvim",
+    url = "https://github.com/tjdevries/gruvbuddy.nvim"
   },
   ["lf.vim"] = {
     loaded = true,

@@ -15,9 +15,14 @@ require "morpheus.telescope"
 require "morpheus.treesitter"
 require "morpheus.autopairs"
 require "morpheus.tsplayground"
+-- require "morpheus.el"
+require('el').setup { generator = generator }
+require('colorbuddy').setup()
+require('colorbuddy').colorscheme('gruvbuddy')
 EOF
 
-colorscheme darkplus
+" colorscheme colorbuddy
+colorscheme gruvbuddy
 
 " custom vimfiles
 for vimfile in split(glob('$HOME/.config/nvim/vimfiles/*.vim'), '\n')
@@ -31,5 +36,3 @@ autocmd! BufWritePost $MYVIMRC source $MYVIMRC | echom "Reloaded $MYVIMRC"
 " wilder completion
 call wilder#setup({'modes': [':', '/', '?']})
 
-" try aniseed
-let g:aniseed#env = v:true

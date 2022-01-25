@@ -97,18 +97,22 @@ return packer.startup(function(use)
     run = ":UpdateRemotePlugins",
   }
 
-  use 'Olical/aniseed'
-  use 'Olical/conjure'
+  if jit.os ~= "OSX" then
+   use {
+     "nvim-treesitter/nvim-treesitter",
+     run = ":TSUpdate",
+   }
+   use "nvim-treesitter/playground"
+ end
 
---   use {
---     "nvim-treesitter/nvim-treesitter",
---     run = ":TSUpdate",
---   }
--- 
---   use "nvim-treesitter/playground"
---   use 'bryall/contextprint.nvim'
+   use 'bryall/contextprint.nvim'
+
   use 'junegunn/goyo.vim' 
+  -- TJ
   use 'tjdevries/cyclist.vim'
+  use "tjdevries/express_line.nvim"
+  use "tjdevries/colorbuddy.nvim" 
+  use "tjdevries/gruvbuddy.nvim" 
 
   -- Automatically set up your configuration after cloning packer.nvim
   if PACKER_BOOTSTRAP then
