@@ -114,11 +114,6 @@ _G.packer_plugins = {
     path = "/Users/morphykuffour/.local/share/nvim/site/pack/packer/start/colorbuddy.nvim",
     url = "https://github.com/tjdevries/colorbuddy.nvim"
   },
-  ["contextprint.nvim"] = {
-    loaded = true,
-    path = "/Users/morphykuffour/.local/share/nvim/site/pack/packer/start/contextprint.nvim",
-    url = "https://github.com/bryall/contextprint.nvim"
-  },
   ["cyclist.vim"] = {
     loaded = true,
     path = "/Users/morphykuffour/.local/share/nvim/site/pack/packer/start/cyclist.vim",
@@ -133,6 +128,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/morphykuffour/.local/share/nvim/site/pack/packer/start/express_line.nvim",
     url = "https://github.com/tjdevries/express_line.nvim"
+  },
+  firenvim = {
+    loaded = true,
+    path = "/Users/morphykuffour/.local/share/nvim/site/pack/packer/start/firenvim",
+    url = "https://github.com/glacambre/firenvim"
   },
   ["formatter.nvim"] = {
     loaded = true,
@@ -293,6 +293,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/morphykuffour/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
+  },
+  ["vim-unimpaired"] = {
+    loaded = true,
+    path = "/Users/morphykuffour/.local/share/nvim/site/pack/packer/start/vim-unimpaired",
+    url = "https://github.com/tpope/vim-unimpaired"
   },
   ["wilder.nvim"] = {
     loaded = true,

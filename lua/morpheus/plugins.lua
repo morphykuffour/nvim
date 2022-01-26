@@ -10,10 +10,10 @@ end
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
 vim.cmd [[
-  augroup packer_user_config
-  autocmd!
-  autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
+augroup packer_user_config
+autocmd!
+autocmd BufWritePost plugins.lua source <afile> | PackerSync
+augroup end
 ]]
 
 -- Use a protected call so we don't error out on first use
@@ -49,7 +49,6 @@ return packer.startup(function(use)
   use "moll/vim-bbye"
   use "akinsho/toggleterm.nvim"
   use "antoinemadec/FixCursorHold.nvim"
-
   use "kevinhwang91/nvim-bqf"
   use "ptzz/lf.vim"
   use "mhinz/vim-startify"
@@ -62,6 +61,7 @@ return packer.startup(function(use)
   use "tpope/vim-repeat"
   use "tpope/vim-fugitive"
   use "tpope/vim-eunuch"
+  use "tpope/vim-unimpaired"
 
   -- Colorschemes
   use "gruvbox-community/gruvbox"
@@ -97,23 +97,29 @@ return packer.startup(function(use)
     run = ":UpdateRemotePlugins",
   }
 
+  -- TODO figure out why nvim-treesitter does not work on OSX
   if jit.os ~= "OSX" then
-   use {
-     "nvim-treesitter/nvim-treesitter",
-     run = ":TSUpdate",
-   }
-   use "nvim-treesitter/playground"
- end
+    use {
+      "nvim-treesitter/nvim-treesitter",
+      run = ":TSUpdate",
+    }
+    use "nvim-treesitter/playground"
+    use 'bryall/contextprint.nvim'
+  end
 
-   use 'bryall/contextprint.nvim'
+  use 'junegunn/goyo.vim'
 
-  use 'junegunn/goyo.vim' 
   -- TJ
   use 'tjdevries/cyclist.vim'
   use "tjdevries/express_line.nvim"
-  use "tjdevries/colorbuddy.nvim" 
-  use "tjdevries/gruvbuddy.nvim" 
+  use "tjdevries/colorbuddy.nvim"
+  use "tjdevries/gruvbuddy.nvim"
 
+  -- TODO get it to work in brave
+  use {
+    'glacambre/firenvim',
+    run = function() vim.fn['firenvim#install'](0) end 
+  }
   -- Automatically set up your configuration after cloning packer.nvim
   if PACKER_BOOTSTRAP then
     require("packer").sync()
