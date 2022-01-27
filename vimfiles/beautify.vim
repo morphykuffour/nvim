@@ -19,9 +19,9 @@ augroup END
 
 
 " Syntastic recommmended settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
 " Help Buffer
 command! -nargs=1 -complete=help H :enew | :set buftype=help | :keepalt h <args>
