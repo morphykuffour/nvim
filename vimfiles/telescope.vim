@@ -1,3 +1,4 @@
+" Telescope mappings
 nnoremap <leader>pb :lua require('telescope.builtin').buffers()<CR>
 nnoremap <leader>po :lua require('telescope.builtin').oldfiles()<CR>
 nnoremap <leader>ps  :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
