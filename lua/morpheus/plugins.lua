@@ -113,6 +113,7 @@ return packer.startup(function(use)
   use "tjdevries/express_line.nvim"
   use "tjdevries/colorbuddy.nvim"
   use "tjdevries/gruvbuddy.nvim"
+  use 'ThePrimeagen/harpoon'
 
   -- TODO get it to work in brave
   use {

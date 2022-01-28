@@ -164,6 +164,11 @@ _G.packer_plugins = {
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/gruvbuddy.nvim",
     url = "https://github.com/tjdevries/gruvbuddy.nvim"
   },
+  harpoon = {
+    loaded = true,
+    path = "/home/morp/.local/share/nvim/site/pack/packer/start/harpoon",
+    url = "https://github.com/ThePrimeagen/harpoon"
+  },
   ["lf.vim"] = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/lf.vim",

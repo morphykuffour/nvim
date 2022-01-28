@@ -10,3 +10,6 @@ nnoremap <leader>nvi <cmd>lua require'telescope.builtin'.find_files{ cwd = "~/.c
 nnoremap <C-p> :lua require'telescope.builtin'.find_files{}<CR>
 nnoremap <leader>vrc :lua require('morpheus.telescope').search_dotfiles()<CR>
 nnoremap <leader>wal :lua require('morpheus.telescope').wallpaper_selector()<CR>
+
+" Harpoon mappings
+
