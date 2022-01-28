@@ -22,7 +22,7 @@ require('colorbuddy').colorscheme('gruvbuddy')
 EOF
 
 " colorscheme colorbuddy
-colorscheme gruvbuddy
+" colorscheme gruvbuddy
 
 " custom vimfiles
 for vimfile in split(glob('$HOME/.config/nvim/vimfiles/*.vim'), '\n')
@@ -48,3 +48,8 @@ function! StartifyEntryFormat() abort
   return 'v:lua.webDevIcons(absolute_path) . " " . entry_path'
 endfunction
 
+autocmd FileType markdown nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
+" there are some defaults for image directory and image name, you can change them
+let g:mdip_imgdir = 'imgs'
+" let g:mdip_imgname = 'image'
+syntax on

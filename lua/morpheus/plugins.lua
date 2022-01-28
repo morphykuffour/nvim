@@ -114,11 +114,16 @@ return packer.startup(function(use)
   use "tjdevries/colorbuddy.nvim"
   use "tjdevries/gruvbuddy.nvim"
 
+  -- FIXME not working on MAC OSX
+  -- Test on linux
+  use "ferrine/md-img-paste.vim"
+
   -- TODO get it to work in brave
   use {
     'glacambre/firenvim',
     run = function() vim.fn['firenvim#install'](0) end 
   }
+
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end
