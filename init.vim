@@ -17,12 +17,12 @@ require "morpheus.autopairs"
 require "morpheus.tsplayground"
 -- require "morpheus.el"
 require('el').setup { generator = generator }
-require('colorbuddy').setup()
-require('colorbuddy').colorscheme('gruvbuddy')
+-- require('colorbuddy').setup()
+-- require('colorbuddy').colorscheme('gruvbuddy')
 EOF
 
-" colorscheme colorbuddy
 " colorscheme gruvbuddy
+colorscheme gruvbox
 
 " custom vimfiles
 for vimfile in split(glob('$HOME/.config/nvim/vimfiles/*.vim'), '\n')

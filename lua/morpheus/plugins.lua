@@ -113,6 +113,7 @@ return packer.startup(function(use)
   use "tjdevries/express_line.nvim"
   use "tjdevries/colorbuddy.nvim"
   use "tjdevries/gruvbuddy.nvim"
+  use 'ThePrimeagen/harpoon'
 
   -- FIXME not working on MAC OSX
   -- Test on linux
