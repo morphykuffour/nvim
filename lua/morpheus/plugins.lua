@@ -8,7 +8,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd [[packadd packer.nvim]]
 end
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
 vim.cmd [[
 augroup packer_user_config
 autocmd!
@@ -31,7 +30,7 @@ packer.init {
   },
 }
 
--- Install your plugins here
+-- Plugins
 return packer.startup(function(use)
   -- utils
   use "wbthomason/packer.nvim"
@@ -120,7 +119,6 @@ return packer.startup(function(use)
     'glacambre/firenvim',
     run = function() vim.fn['firenvim#install'](0) end 
   }
-  -- Automatically set up your configuration after cloning packer.nvim
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end
