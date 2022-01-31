@@ -22,7 +22,8 @@ require('el').setup { generator = generator }
 EOF
 
 " colorscheme gruvbuddy
-colorscheme gruvbox
+" colorscheme gruvbox
+colorscheme darkplus
 
 " custom vimfiles
 for vimfile in split(glob('$HOME/.config/nvim/vimfiles/*.vim'), '\n')

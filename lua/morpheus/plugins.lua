@@ -46,7 +46,6 @@ return packer.startup(function(use)
   use "kyazdani42/nvim-web-devicons"
   use "akinsho/bufferline.nvim"
   use "moll/vim-bbye"
-  use "akinsho/toggleterm.nvim"
   use "antoinemadec/FixCursorHold.nvim"
   use "kevinhwang91/nvim-bqf"
   use "ptzz/lf.vim"
