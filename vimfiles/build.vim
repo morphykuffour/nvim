@@ -1,13 +1,13 @@
 " compile and run
 autocmd filetype cpp    nnoremap <F5> :w <bar> !rm -rf %:r && g++ -ggdb -O2 -ulimit -Wall -Wno-unused-result -std=c++11 % -o %:r && ./%:r <CR>
 autocmd filetype c      nnoremap <F5> :w <bar>   !rm -rf %:r && gcc -ggdb -Wall -Werror -std=c99 -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined % -o %:r && ./%:r <CR>
-autocmd filetype python nnoremap <F5> :w <bar> !python % <CR>
+autocmd filetype python nnoremap <F5> :w <bar> !python3 % <CR>
 autocmd filetype perl   nnoremap <F5> :w <bar> !perl % <CR>
 
 " Run file in Floaterm
 autocmd filetype c      nnoremap <F6> :FloatermNew --autoclose=0 ./%< <CR>
 autocmd filetype lua    nnoremap <F6> :FloatermNew --autoclose=0 lua % <CR>
-autocmd filetype python nnoremap <F5> :FloatermNew --autoclose=0 python % <CR>
+autocmd filetype python nnoremap <F5> :FloatermNew --autoclose=0 python3 % <CR>
 autocmd filetype perl   nnoremap <F5> :FloatermNew --autoclose=0 perl % <CR>
 
 " c++ syntax highlighting

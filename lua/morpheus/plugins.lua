@@ -41,7 +41,10 @@ return packer.startup(function(use)
   -- md writing
   use  "mzlogin/vim-markdown-toc"
   use  "SidOfc/mkdx"
-
+  use  "vim-pandoc/vim-rmarkdown"
+  use  "vim-pandoc/vim-pandoc"
+  use "vim-pandoc/vim-pandoc-syntax"
+  
   -- ui enchancements
   use "kyazdani42/nvim-web-devicons"
   use "akinsho/bufferline.nvim"
@@ -119,10 +122,10 @@ return packer.startup(function(use)
   use "ferrine/md-img-paste.vim"
 
   -- TODO get it to work in brave
-  use {
-    'glacambre/firenvim',
-    run = function() vim.fn['firenvim#install'](0) end 
-  }
+  -- use {
+  --   'glacambre/firenvim',
+  --   run = function() vim.fn['firenvim#install'](0) end 
+  -- }
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()
