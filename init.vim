@@ -44,16 +44,3 @@ call wilder#setup({'modes': [':', '/', '?']})
 function! StartifyEntryFormat() abort
   return 'v:lua.webDevIcons(absolute_path) . " " . entry_path'
 endfunction
-<<<<<<< HEAD
-
-" there are some defaults for image directory and image name, you can change them
-let g:mdip_imgdir = 'imgs'
-" let g:mdip_imgname = 'image'
-syntax on
-
-autocmd filetype markdown syn region match start=/\\$\\$/ end=/\\$\\$/
-autocmd filetype markdown syn match math '\\$[^$].\{-}\$'
-
-let g:hy_enable_conceal = 1
-=======
->>>>>>> 3d9d80900b8e3b69aaccc3d99585ca928fd8818d
