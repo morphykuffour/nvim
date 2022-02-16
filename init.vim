@@ -25,9 +25,17 @@ function _G.webDevIcons(path)
   local extension = vim.fn.fnamemodify(path, ':e')
   return require'nvim-web-devicons'.get_icon(filename, extension, { default = true })
 end
-local neogit = require('neogit')
-neogit.setup {}
+require('neogit').setup {
+  disable_commit_confirmation = true,
+  integratiosn = {
+    diffview = true
+    }
+  }
 EOF
+
+nnoremap <leader>gg :Neogit<cr>
+nnoremap <leader>gd :DiffviewOpen<cr>
+nnoremap <leader>gd :Neogit push<cr>
 
 " colorscheme gruvbuddy
 colorscheme darkplus

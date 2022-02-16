@@ -129,6 +129,11 @@ _G.packer_plugins = {
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/darkplus.nvim",
     url = "https://github.com/lunarvim/darkplus.nvim"
   },
+  ["diffview.nvim"] = {
+    loaded = true,
+    path = "/home/morp/.local/share/nvim/site/pack/packer/start/diffview.nvim",
+    url = "https://github.com/sindrets/diffview.nvim"
+  },
   ["express_line.nvim"] = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/express_line.nvim",
@@ -347,5 +352,6 @@ if should_profile then save_profiles() end
 end)
 
 if not no_errors then
+  error_msg = error_msg:gsub('"', '\\"')
   vim.api.nvim_command('echohl ErrorMsg | echom "Error in packer_compiled: '..error_msg..'" | echom "Please check your config for correctness" | echohl None')
 end
