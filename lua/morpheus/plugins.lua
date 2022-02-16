@@ -117,9 +117,11 @@ return packer.startup(function(use)
   use "tjdevries/gruvbuddy.nvim"
   use 'ThePrimeagen/harpoon'
 
+  use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+
   -- FIXME not working on MAC OSX
   -- Test on linux
-  use "ferrine/md-img-paste.vim"
+  -- use "ferrine/md-img-paste.vim"
 
   -- lisp for python wtf
   use 'hylang/vim-hy'
