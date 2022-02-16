@@ -27,7 +27,7 @@ function _G.webDevIcons(path)
 end
 require('neogit').setup {
   disable_commit_confirmation = true,
-  integratiosn = {
+  integrations = {
     diffview = true
     }
   }
@@ -35,7 +35,7 @@ EOF
 
 nnoremap <leader>gg :Neogit<cr>
 nnoremap <leader>gd :DiffviewOpen<cr>
-nnoremap <leader>gd :Neogit push<cr>
+nnoremap <leader>gp :Neogit push<cr>
 
 " colorscheme gruvbuddy
 colorscheme darkplus
