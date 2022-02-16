@@ -86,10 +86,19 @@ require("telescope").load_extension("fzy_native")
 local M = {}
 M.search_dotfiles = function()
     require("telescope.builtin").find_files({
-        prompt_title = "< VimRC >",
+        prompt_title = "< dotfiles >",
         cwd = vim.env.DOTFILES,
         hidden = true,
     })
+end
+
+M.search_vimrc = function()
+    require("telescope.builtin").find_files({
+        prompt_title = "< vimrc >",
+        cwd = "~/.config/nvim/",
+        hidden = true,
+    })
+
 end
 
 local function set_background(content)

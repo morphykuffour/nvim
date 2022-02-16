@@ -139,3 +139,10 @@ inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 nnoremap <leader><F1> :Startify<CR>
+
+" Tab mappings TODO move to mappings.vim
+nnoremap vs : vs<CR>
+nnoremap sp :sp<CR>
+nnoremap <leader>tn :tabnew<CR>
+nnoremap <leader>tk :tabnext<CR>
+nnoremap <leader>tj :tabprev<CR>

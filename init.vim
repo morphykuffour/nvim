@@ -56,3 +56,5 @@ syntax on
 
 autocmd filetype markdown syn region match start=/\\$\\$/ end=/\\$\\$/
 autocmd filetype markdown syn match math '\\$[^$].\{-}\$'
+
+let g:hy_enable_conceal = 1
