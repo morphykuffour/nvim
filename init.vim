@@ -29,7 +29,8 @@ local neogit = require('neogit')
 neogit.setup {}
 EOF
 
-colorscheme gruvbuddy
+" colorscheme gruvbuddy
+colorscheme darkplus
 
 " custom vimfiles
 for vimfile in split(glob('$HOME/.config/nvim/vimfiles/*.vim'), '\n')
