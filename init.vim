@@ -55,3 +55,5 @@ call wilder#setup({'modes': [':', '/', '?']})
 function! StartifyEntryFormat() abort
   return 'v:lua.webDevIcons(absolute_path) . " " . entry_path'
 endfunction
+
+let g:slime_target = "tmux"

@@ -324,6 +324,11 @@ _G.packer_plugins = {
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/vim-sensible",
     url = "https://github.com/tpope/vim-sensible"
   },
+  ["vim-slime"] = {
+    loaded = true,
+    path = "/home/morp/.local/share/nvim/site/pack/packer/start/vim-slime",
+    url = "https://github.com/jpalardy/vim-slime"
+  },
   ["vim-startify"] = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/vim-startify",

@@ -119,6 +119,7 @@ return packer.startup(function(use)
 
   use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
   use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+  use "jpalardy/vim-slime"
 
   -- FIXME not working on MAC OSX
   -- Test on linux
