@@ -63,6 +63,7 @@ return packer.startup(function(use)
   use "tpope/vim-fugitive"
   use "tpope/vim-eunuch"
   use "tpope/vim-unimpaired"
+  use "tpope/vim-obsession"
 
   -- Colorschemes
   use "gruvbox-community/gruvbox"
