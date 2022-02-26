@@ -38,7 +38,7 @@ nnoremap <leader>gd :DiffviewOpen<cr>
 nnoremap <leader>gp :Neogit push<cr>
 
 " colorscheme gruvbuddy
-colorscheme darkplus
+colorscheme gruvbox
 
 " custom vimfiles
 for vimfile in split(glob('$HOME/.config/nvim/vimfiles/*.vim'), '\n')
