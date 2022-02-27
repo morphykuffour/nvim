@@ -41,7 +41,7 @@ nnoremap <leader>gp :Neogit push<cr>
 " colorscheme gruvbuddy
 " colorscheme gruvbox
 colorscheme onehalf-lush
-
+set foldcolumn=0
 " custom vimfiles
 for vimfile in split(glob('$HOME/.config/nvim/vimfiles/*.vim'), '\n')
     execute 'source' vimfile
