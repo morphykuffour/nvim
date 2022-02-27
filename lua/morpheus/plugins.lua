@@ -122,6 +122,10 @@ return packer.startup(function(use)
   use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
   use "jpalardy/vim-slime"
 
+  -- Colorschemes
+  use "rktjmp/lush.nvim"
+  use "CodeGradox/onehalf-lush"
+
   -- FIXME not working on MAC OSX
   -- Test on linux
   -- use "ferrine/md-img-paste.vim"

@@ -15,6 +15,7 @@ require "morpheus.telescope"
 require "morpheus.treesitter"
 require "morpheus.autopairs"
 require "morpheus.tsplayground"
+require "morpheus.cucumbertables"
 -- require "morpheus.el"
 require('el').setup { generator = generator }
 require('colorbuddy').setup()
@@ -38,7 +39,8 @@ nnoremap <leader>gd :DiffviewOpen<cr>
 nnoremap <leader>gp :Neogit push<cr>
 
 " colorscheme gruvbuddy
-colorscheme gruvbox
+" colorscheme gruvbox
+colorscheme onehalf-lush
 
 " custom vimfiles
 for vimfile in split(glob('$HOME/.config/nvim/vimfiles/*.vim'), '\n')
