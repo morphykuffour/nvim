@@ -32,6 +32,7 @@ require('neogit').setup {
     diffview = true
     }
   }
+require('hologram').gen_images(buf, ft)
 EOF
 
 nnoremap <leader>gg :Neogit<cr>
@@ -39,9 +40,15 @@ nnoremap <leader>gd :DiffviewOpen<cr>
 nnoremap <leader>gp :Neogit push<cr>
 
 " colorscheme gruvbuddy
+<<<<<<< Updated upstream
 " colorscheme gruvbox
 colorscheme onehalf-lush
 set foldcolumn=0
+=======
+" colorscheme darkplus
+colorscheme gruvbox
+
+>>>>>>> Stashed changes
 " custom vimfiles
 for vimfile in split(glob('$HOME/.config/nvim/vimfiles/*.vim'), '\n')
     execute 'source' vimfile

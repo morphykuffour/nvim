@@ -114,6 +114,7 @@ _G.packer_plugins = {
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/colorbuddy.nvim",
     url = "https://github.com/tjdevries/colorbuddy.nvim"
   },
+<<<<<<< Updated upstream
   ["contextprint.nvim"] = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/contextprint.nvim",
@@ -124,6 +125,8 @@ _G.packer_plugins = {
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/cyclist.vim",
     url = "https://github.com/tjdevries/cyclist.vim"
   },
+=======
+>>>>>>> Stashed changes
   ["darkplus.nvim"] = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/darkplus.nvim",
@@ -168,6 +171,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/ThePrimeagen/harpoon"
+  },
+  ["hologram.nvim"] = {
+    loaded = true,
+    path = "/Users/morp/.local/share/nvim/site/pack/packer/start/hologram.nvim",
+    url = "https://github.com/edluffy/hologram.nvim"
   },
   ["lf.vim"] = {
     loaded = true,

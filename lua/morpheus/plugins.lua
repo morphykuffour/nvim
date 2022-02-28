@@ -112,7 +112,7 @@ return packer.startup(function(use)
   use 'junegunn/goyo.vim'
 
   -- TJ
-  use 'tjdevries/cyclist.vim'
+  -- use 'tjdevries/cyclist.vim'
   use "tjdevries/express_line.nvim"
   use "tjdevries/colorbuddy.nvim"
   use "tjdevries/gruvbuddy.nvim"
@@ -132,6 +132,7 @@ return packer.startup(function(use)
 
   -- lisp for python wtf
   use 'hylang/vim-hy'
+  use {'edluffy/hologram.nvim'}
 
   -- TODO get it to work in brave
   -- use {
