@@ -39,10 +39,10 @@ nnoremap <leader>gg :Neogit<cr>
 nnoremap <leader>gd :DiffviewOpen<cr>
 nnoremap <leader>gp :Neogit push<cr>
 
-" colorscheme gruvbuddy
+colorscheme gruvbuddy
 " colorscheme gruvbox
 " colorscheme darkplus
-colorscheme onehalf-lush
+" colorscheme onehalf-lush
 set foldcolumn=0
 
 " custom vimfiles
