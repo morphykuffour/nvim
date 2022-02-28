@@ -40,15 +40,11 @@ nnoremap <leader>gd :DiffviewOpen<cr>
 nnoremap <leader>gp :Neogit push<cr>
 
 " colorscheme gruvbuddy
-<<<<<<< Updated upstream
 " colorscheme gruvbox
+" colorscheme darkplus
 colorscheme onehalf-lush
 set foldcolumn=0
-=======
-" colorscheme darkplus
-colorscheme gruvbox
 
->>>>>>> Stashed changes
 " custom vimfiles
 for vimfile in split(glob('$HOME/.config/nvim/vimfiles/*.vim'), '\n')
     execute 'source' vimfile
