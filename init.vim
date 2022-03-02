@@ -39,8 +39,8 @@ nnoremap <leader>gg :Neogit<cr>
 nnoremap <leader>gd :DiffviewOpen<cr>
 nnoremap <leader>gp :Neogit push<cr>
 
-colorscheme gruvbuddy
-" colorscheme gruvbox
+" colorscheme gruvbuddy
+colorscheme gruvbox
 " colorscheme darkplus
 " colorscheme onehalf-lush
 set foldcolumn=0
@@ -62,3 +62,5 @@ function! StartifyEntryFormat() abort
 endfunction
 
 let g:slime_target = "tmux"
+" spell fix
+imap ^L <Esc>[s1z=`]a
