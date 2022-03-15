@@ -44,7 +44,7 @@ return packer.startup(function(use)
   use  "vim-pandoc/vim-rmarkdown"
   use  "vim-pandoc/vim-pandoc"
   use "vim-pandoc/vim-pandoc-syntax"
-  
+
   -- ui enchancements
   use "kyazdani42/nvim-web-devicons"
   use "akinsho/bufferline.nvim"
@@ -132,14 +132,25 @@ return packer.startup(function(use)
 
   -- lisp for python wtf
   use 'hylang/vim-hy'
-  use {'edluffy/hologram.nvim'}
+  -- use {'edluffy/hologram.nvim'}
 
   -- TODO get it to work in brave
   -- use {
   --   'glacambre/firenvim',
   --   run = function() vim.fn['firenvim#install'](0) end 
   -- }
-
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
+  use {'vim-syntastic/syntastic'}
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end

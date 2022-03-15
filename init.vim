@@ -32,7 +32,7 @@ require('neogit').setup {
     diffview = true
     }
   }
-require('hologram').gen_images(buf, ft)
+-- require('hologram').gen_images(buf, ft)
 EOF
 
 nnoremap <leader>gg :Neogit<cr>
@@ -64,3 +64,4 @@ endfunction
 let g:slime_target = "tmux"
 " spell fix
 imap ^L <Esc>[s1z=`]a
+set nonu
