@@ -64,8 +64,5 @@ endfunction
 let g:slime_target = "tmux"
 " spell fix
 imap ^L <Esc>[s1z=`]a
-<<<<<<< Updated upstream
 set nonu
-=======
 set mouse=a
->>>>>>> Stashed changes
