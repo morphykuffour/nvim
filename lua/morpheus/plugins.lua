@@ -130,9 +130,6 @@ return packer.startup(function(use)
   -- Test on linux
   -- use "ferrine/md-img-paste.vim"
 
-  -- lisp for python wtf
-  use 'hylang/vim-hy'
-  -- use {'edluffy/hologram.nvim'}
 
   -- TODO get it to work in brave
   -- use {
