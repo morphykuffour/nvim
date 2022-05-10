@@ -45,9 +45,12 @@ return packer.startup(function(use)
   use  "vim-pandoc/vim-pandoc"
   use "vim-pandoc/vim-pandoc-syntax"
 
+  use {'nvim-treesitter/nvim-treesitter'}
+  use {'nvim-orgmode/orgmode', config = function() require('orgmode').setup{} end }
+
+
   -- ui enchancements
   use "kyazdani42/nvim-web-devicons"
-  use "akinsho/bufferline.nvim"
   use "moll/vim-bbye"
   use "antoinemadec/FixCursorHold.nvim"
   use "kevinhwang91/nvim-bqf"
@@ -94,10 +97,6 @@ return packer.startup(function(use)
   use "nvim-telescope/telescope-fzy-native.nvim"
   use "nvim-telescope/telescope-media-files.nvim"
 
-  use {
-    "gelguy/wilder.nvim",
-    run = ":UpdateRemotePlugins",
-  }
 
   -- TODO figure out why nvim-treesitter does not work on OSX
   if jit.os ~= "OSX" then
@@ -108,6 +107,7 @@ return packer.startup(function(use)
     use "nvim-treesitter/playground"
     use 'bryall/contextprint.nvim'
   end
+  use "projekt0n/github-nvim-theme"
 
   use 'junegunn/goyo.vim'
 
@@ -118,24 +118,13 @@ return packer.startup(function(use)
   use "tjdevries/gruvbuddy.nvim"
   use 'ThePrimeagen/harpoon'
 
-  use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
   use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
   use "jpalardy/vim-slime"
 
   -- Colorschemes
   use "rktjmp/lush.nvim"
   use "CodeGradox/onehalf-lush"
-
-  -- FIXME not working on MAC OSX
-  -- Test on linux
-  -- use "ferrine/md-img-paste.vim"
-
-
-  -- TODO get it to work in brave
-  -- use {
-  --   'glacambre/firenvim',
-  --   run = function() vim.fn['firenvim#install'](0) end 
-  -- }
+  use "p00f/godbolt.nvim"
   use {
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
