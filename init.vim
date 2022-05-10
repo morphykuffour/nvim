@@ -17,6 +17,22 @@ require "morpheus.cucumbertables"
 require "morpheus.godbolt"
 vim.cmd("colorscheme darkplus")
 
+-- orgmode
+-- require('orgmode').setup_ts_grammar()
+-- 
+-- require'nvim-treesitter.configs'.setup {
+--   highlight = {
+--     enable = true,
+--     disable = {'org'},
+--     additional_vim_regex_highlighting = {'org'},
+--   },
+--   ensure_installed = {'org'}, -- Or run :TSUpdate org
+-- }
+-- 
+-- require('orgmode').setup({
+--   org_agenda_files = {'~/Dropbox/Zettelkasten/org/*'},
+--   org_default_notes_file = '~/Dropbox/org/refile.org',
+-- })
 
 
 -- custom vimfiles TODO: write in lua
