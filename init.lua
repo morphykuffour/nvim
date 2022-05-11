@@ -10,14 +10,13 @@ require "morpheus.plugins"
 require "morpheus.cmp"
 require "morpheus.telescope"
 require "morpheus.tsplayground"
--- require "morpheus.lsp"
+require "morpheus.lsp"
 require "morpheus.cucumbertables"
 require "morpheus.godbolt"
 -- TODO fix keymaps
 -- require "morpheus.keymaps"
 -- TODO fix on Mac OS 
 -- require "morpheus.treesitter"
-
 
 -- colorscheme
 vim.cmd("colorscheme darkplus")
