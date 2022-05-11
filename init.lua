@@ -15,7 +15,7 @@ require "morpheus.cucumbertables"
 require "morpheus.godbolt"
 -- TODO fix keymaps
 -- require "morpheus.keymaps"
--- TODO fix on Mac OS 
+-- TODO fix on Mac OS
 -- require "morpheus.treesitter"
 
 -- colorscheme
