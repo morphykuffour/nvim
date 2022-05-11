@@ -3,4 +3,4 @@ session/
 node_modules/
 package-lock.json
 package.json
-
+plugin/packer_compiled.lua
