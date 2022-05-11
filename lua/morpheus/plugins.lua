@@ -45,8 +45,8 @@ return packer.startup(function(use)
   use  "vim-pandoc/vim-pandoc"
   use "vim-pandoc/vim-pandoc-syntax"
 
-  use {'nvim-treesitter/nvim-treesitter'}
-  use {'nvim-orgmode/orgmode', config = function() require('orgmode').setup{} end }
+
+  -- use {'nvim-orgmode/orgmode', config = function() require('orgmode').setup{} end }
 
 
   -- ui enchancements
@@ -57,6 +57,7 @@ return packer.startup(function(use)
   use "ptzz/lf.vim"
   use "mhinz/vim-startify"
   use "voldikss/vim-floaterm"
+  use "vim-scripts/YankRing.vim"
 
   -- tpope
   use "tpope/vim-sensible"
@@ -132,7 +133,6 @@ return packer.startup(function(use)
       require("trouble").setup {
         -- your configuration comes here
         -- or leave it empty to use the default settings
-        -- refer to the configuration section below
       }
     end
   }
