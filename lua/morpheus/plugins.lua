@@ -32,22 +32,20 @@ packer.init {
 
 -- Plugins
 return packer.startup(function(use)
+
   -- utils
   use "wbthomason/packer.nvim"
   use "nvim-lua/popup.nvim"
   use "nvim-lua/plenary.nvim"
   use "windwp/nvim-autopairs"
 
-  -- md writing
+  -- writing
   use  "mzlogin/vim-markdown-toc"
   use  "SidOfc/mkdx"
   use  "vim-pandoc/vim-rmarkdown"
   use  "vim-pandoc/vim-pandoc"
   use "vim-pandoc/vim-pandoc-syntax"
-
-
   -- use {'nvim-orgmode/orgmode', config = function() require('orgmode').setup{} end }
-
 
   -- ui enchancements
   use "kyazdani42/nvim-web-devicons"
@@ -58,6 +56,7 @@ return packer.startup(function(use)
   use "mhinz/vim-startify"
   use "voldikss/vim-floaterm"
   use "vim-scripts/YankRing.vim"
+  use 'junegunn/goyo.vim'
 
   -- tpope
   use "tpope/vim-sensible"
@@ -71,6 +70,7 @@ return packer.startup(function(use)
   -- git
   use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
   use "tpope/vim-fugitive"
+  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
   -- Colorschemes
   use "gruvbox-community/gruvbox"
@@ -90,6 +90,9 @@ return packer.startup(function(use)
 
   -- code
   use 'mhartington/formatter.nvim'
+  use {'vim-syntastic/syntastic'}
+  use 'milisims/nvim-luaref'
+
   -- LSP
   use "neovim/nvim-lspconfig"
   use "williamboman/nvim-lsp-installer"
@@ -112,29 +115,15 @@ return packer.startup(function(use)
     use 'bryall/contextprint.nvim'
   end
 
-  use 'junegunn/goyo.vim'
 
   -- TJ & ThePrimeagen
   use "tjdevries/express_line.nvim"
   use 'ThePrimeagen/harpoon'
 
-  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
-  -- use 'vim-scripts/lookup.vim'
-  use 'milisims/nvim-luaref'
-
   -- low level stuff
   use "p00f/godbolt.nvim"
-  use {
-    "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
-    config = function()
-      require("trouble").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-      }
-    end
-  }
-  use {'vim-syntastic/syntastic'}
+  use "sakhnik/nvim-gdb"
+
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end

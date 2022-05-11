@@ -6,14 +6,20 @@
 vim.cmd("let mapleader= ' '")
 
 require "morpheus.options"
--- require "morpheus.keymaps"
 require "morpheus.plugins"
 require "morpheus.cmp"
 require "morpheus.telescope"
--- require "morpheus.treesitter"
 require "morpheus.tsplayground"
+-- require "morpheus.lsp"
 require "morpheus.cucumbertables"
 require "morpheus.godbolt"
+-- TODO fix keymaps
+-- require "morpheus.keymaps"
+-- TODO fix on Mac OS 
+-- require "morpheus.treesitter"
+
+
+-- colorscheme
 vim.cmd("colorscheme darkplus")
 
 -- disable python2
