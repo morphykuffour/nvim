@@ -112,19 +112,15 @@ return packer.startup(function(use)
 
   use 'junegunn/goyo.vim'
 
-  -- TJ
-  -- use 'tjdevries/cyclist.vim'
+  -- TJ & ThePrimeagen
   use "tjdevries/express_line.nvim"
-  use "tjdevries/colorbuddy.nvim"
-  use "tjdevries/gruvbuddy.nvim"
   use 'ThePrimeagen/harpoon'
 
   use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
-  use "jpalardy/vim-slime"
+  -- use 'vim-scripts/lookup.vim'
+  use 'milisims/nvim-luaref'
 
-  -- Colorschemes
-  use "rktjmp/lush.nvim"
-  use "CodeGradox/onehalf-lush"
+  -- low level stuff
   use "p00f/godbolt.nvim"
   use {
     "folke/trouble.nvim",

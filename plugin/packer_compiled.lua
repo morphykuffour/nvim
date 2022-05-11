@@ -109,11 +109,6 @@ _G.packer_plugins = {
     path = "/Users/morp/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
-  ["colorbuddy.nvim"] = {
-    loaded = true,
-    path = "/Users/morp/.local/share/nvim/site/pack/packer/start/colorbuddy.nvim",
-    url = "https://github.com/tjdevries/colorbuddy.nvim"
-  },
   ["darkplus.nvim"] = {
     loaded = true,
     path = "/Users/morp/.local/share/nvim/site/pack/packer/start/darkplus.nvim",
@@ -159,11 +154,6 @@ _G.packer_plugins = {
     path = "/Users/morp/.local/share/nvim/site/pack/packer/start/gruvbox",
     url = "https://github.com/gruvbox-community/gruvbox"
   },
-  ["gruvbuddy.nvim"] = {
-    loaded = true,
-    path = "/Users/morp/.local/share/nvim/site/pack/packer/start/gruvbuddy.nvim",
-    url = "https://github.com/tjdevries/gruvbuddy.nvim"
-  },
   harpoon = {
     loaded = true,
     path = "/Users/morp/.local/share/nvim/site/pack/packer/start/harpoon",
@@ -173,11 +163,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/morp/.local/share/nvim/site/pack/packer/start/lf.vim",
     url = "https://github.com/ptzz/lf.vim"
-  },
-  ["lush.nvim"] = {
-    loaded = true,
-    path = "/Users/morp/.local/share/nvim/site/pack/packer/start/lush.nvim",
-    url = "https://github.com/rktjmp/lush.nvim"
   },
   mkdx = {
     loaded = true,
@@ -219,15 +204,15 @@ _G.packer_plugins = {
     path = "/Users/morp/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-luaref"] = {
+    loaded = true,
+    path = "/Users/morp/.local/share/nvim/site/pack/packer/start/nvim-luaref",
+    url = "https://github.com/milisims/nvim-luaref"
+  },
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/Users/morp/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
-  },
-  ["onehalf-lush"] = {
-    loaded = true,
-    path = "/Users/morp/.local/share/nvim/site/pack/packer/start/onehalf-lush",
-    url = "https://github.com/CodeGradox/onehalf-lush"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -329,11 +314,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/morp/.local/share/nvim/site/pack/packer/start/vim-sensible",
     url = "https://github.com/tpope/vim-sensible"
-  },
-  ["vim-slime"] = {
-    loaded = true,
-    path = "/Users/morp/.local/share/nvim/site/pack/packer/start/vim-slime",
-    url = "https://github.com/jpalardy/vim-slime"
   },
   ["vim-startify"] = {
     loaded = true,
