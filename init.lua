@@ -1,4 +1,4 @@
---  nvimrc
+-- nvimrc
 -- Author: Morphy Kuffour
 -- Alias:  JediGrandMaster
 
@@ -19,7 +19,7 @@ vim.cmd("colorscheme darkplus")
 -- disable python2
 vim.cmd("let g:loaded_python_provider = 0")
 
--- reload vimrc
+-- reload vimrc on save
 vim.cmd("autocmd! BufWritePost $MYVIMRC source $MYVIMRC | echom 'Reloaded $MYVIMRC'")
 
 for i, vf in pairs(vim.split(vim.fn.glob('$HOME/.config/nvim/vimfiles/*.vim'), '\n')) do

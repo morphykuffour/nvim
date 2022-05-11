@@ -134,11 +134,6 @@ _G.packer_plugins = {
     path = "/Users/morp/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
-  ["github-nvim-theme"] = {
-    loaded = true,
-    path = "/Users/morp/.local/share/nvim/site/pack/packer/start/github-nvim-theme",
-    url = "https://github.com/projekt0n/github-nvim-theme"
-  },
   ["godbolt.nvim"] = {
     loaded = true,
     path = "/Users/morp/.local/share/nvim/site/pack/packer/start/godbolt.nvim",
@@ -168,6 +163,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/morp/.local/share/nvim/site/pack/packer/start/mkdx",
     url = "https://github.com/SidOfc/mkdx"
+  },
+  neogit = {
+    loaded = true,
+    path = "/Users/morp/.local/share/nvim/site/pack/packer/start/neogit",
+    url = "https://github.com/TimUntersberger/neogit"
   },
   ["nlsp-settings.nvim"] = {
     loaded = true,

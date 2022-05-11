@@ -64,10 +64,13 @@ return packer.startup(function(use)
   use "tpope/vim-surround"
   use "tpope/vim-commentary"
   use "tpope/vim-repeat"
-  use "tpope/vim-fugitive"
   use "tpope/vim-eunuch"
   use "tpope/vim-unimpaired"
   use "tpope/vim-obsession"
+
+  -- git
+  use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+  use "tpope/vim-fugitive"
 
   -- Colorschemes
   use "gruvbox-community/gruvbox"
@@ -108,7 +111,6 @@ return packer.startup(function(use)
     use "nvim-treesitter/playground"
     use 'bryall/contextprint.nvim'
   end
-  use "projekt0n/github-nvim-theme"
 
   use 'junegunn/goyo.vim'
 
