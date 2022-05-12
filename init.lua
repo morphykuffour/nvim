@@ -1,4 +1,4 @@
--- nvimrc
+-- vimrc
 -- Author: Morphy Kuffour
 -- Alias:  JediGrandMaster
 
@@ -13,13 +13,16 @@ require "morpheus.tsplayground"
 require "morpheus.lsp"
 require "morpheus.cucumbertables"
 require "morpheus.godbolt"
+require "morpheus.lualine"
+
 -- TODO fix keymaps
 -- require "morpheus.keymaps"
 -- TODO fix on Mac OS
 -- require "morpheus.treesitter"
 
 -- colorscheme
-vim.cmd("colorscheme darkplus")
+-- vim.cmd("colorscheme darkplus")
+vim.cmd("colorscheme gruvbox")
 
 -- disable python2
 vim.cmd("let g:loaded_python_provider = 0")

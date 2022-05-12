@@ -119,11 +119,6 @@ _G.packer_plugins = {
     path = "/Users/morp/.local/share/nvim/site/pack/packer/start/diffview.nvim",
     url = "https://github.com/sindrets/diffview.nvim"
   },
-  ["express_line.nvim"] = {
-    loaded = true,
-    path = "/Users/morp/.local/share/nvim/site/pack/packer/start/express_line.nvim",
-    url = "https://github.com/tjdevries/express_line.nvim"
-  },
   ["formatter.nvim"] = {
     loaded = true,
     path = "/Users/morp/.local/share/nvim/site/pack/packer/start/formatter.nvim",
@@ -158,6 +153,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/morp/.local/share/nvim/site/pack/packer/start/lf.vim",
     url = "https://github.com/ptzz/lf.vim"
+  },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/Users/morp/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   mkdx = {
     loaded = true,

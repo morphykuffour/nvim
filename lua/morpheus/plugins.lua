@@ -57,6 +57,10 @@ return packer.startup(function(use)
   use "voldikss/vim-floaterm"
   use "vim-scripts/YankRing.vim"
   use 'junegunn/goyo.vim'
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
 
   -- tpope
   use "tpope/vim-sensible"
@@ -117,7 +121,6 @@ return packer.startup(function(use)
 
 
   -- TJ & ThePrimeagen
-  use "tjdevries/express_line.nvim"
   use 'ThePrimeagen/harpoon'
 
   -- low level stuff
