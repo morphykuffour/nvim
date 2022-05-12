@@ -65,7 +65,6 @@ return packer.startup(function(use)
   -- tpope
   use "tpope/vim-sensible"
   use "tpope/vim-surround"
-  use "tpope/vim-commentary"
   use "tpope/vim-repeat"
   use "tpope/vim-eunuch"
   use "tpope/vim-unimpaired"
@@ -96,7 +95,12 @@ return packer.startup(function(use)
   use 'mhartington/formatter.nvim'
   use {'vim-syntastic/syntastic'}
   use 'milisims/nvim-luaref'
-
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
+  }
   -- LSP
   use "neovim/nvim-lspconfig"
   use "williamboman/nvim-lsp-installer"
@@ -126,6 +130,14 @@ return packer.startup(function(use)
   -- low level stuff
   use "p00f/godbolt.nvim"
   use "sakhnik/nvim-gdb"
+
+  -- plug dev
+  use 'tjdevries/nlua.nvim'
+  use 'nvim-lua/completion-nvim'
+  use 'euclidianAce/BetterLua.vim'
+  -- use 'tjdevries/manillua.nvim'
+  use 'bfredl/nvim-luadev'
+
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()
