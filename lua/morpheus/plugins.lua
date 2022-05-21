@@ -52,10 +52,16 @@ return packer.startup(function(use)
   use "moll/vim-bbye"
   use "antoinemadec/FixCursorHold.nvim"
   use "kevinhwang91/nvim-bqf"
-  use "ptzz/lf.vim"
+  -- use "ptzz/lf.vim"
+  use {
+    'fhill2/xplr.nvim',
+    run = function() require'xplr'.install({hide=true}) end,
+    requires = {{'nvim-lua/plenary.nvim'}, {'MunifTanjim/nui.nvim'}}
+  }
+
+
   use "mhinz/vim-startify"
   use "voldikss/vim-floaterm"
-  use "vim-scripts/YankRing.vim"
   use 'junegunn/goyo.vim'
   use {
     'nvim-lualine/lualine.nvim',
