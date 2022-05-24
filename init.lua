@@ -12,7 +12,7 @@ require "morpheus.telescope"
 require "morpheus.tsplayground"
 require "morpheus.xplr"
 -- require "morpheus.lsp"
--- require "morpheus.cucumbertables"
+require "morpheus.cucumbertables"
 require "morpheus.godbolt"
 require "morpheus.lualine"
 
@@ -21,11 +21,8 @@ require "morpheus.utils"
 Jcall(require, "morpheus/plugins")
 Jcall(require, "morpheus/keymaps")
 
--- TODO fix on Mac OS
--- require "morpheus.treesitter"
-
-vim.cmd("colorscheme darkplus")
--- vim.cmd("colorscheme gruvbox")
+-- vim.cmd("colorscheme darkplus")
+vim.cmd("colorscheme gruvbox")
 -- TODO winbar in lua
 -- vim.cmd("set winbar=%=%m\ %f")
 
