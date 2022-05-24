@@ -21,9 +21,25 @@ require "morpheus.lualine"
 -- TODO fix on Mac OS
 -- require "morpheus.treesitter"
 
+require("nvim-treesitter.configs").setup {
+  highlight = {
+      -- ...
+  },
+  -- ...
+  rainbow = {
+    enable = true,
+    -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+    max_file_lines = nil, -- Do not enable for files with more than n lines, int
+    -- colors = {}, -- table of hex strings
+    -- termcolors = {} -- table of colour name strings
+  }
+}
+
 -- colorscheme
--- vim.cmd("colorscheme darkplus")
-vim.cmd("colorscheme gruvbox")
+vim.cmd("colorscheme darkplus")
+-- vim.cmd("colorscheme gruvbox")
+-- vim.cmd("set winbar=%=%m\ %f")
 
 -- disable python2
 vim.cmd("let g:loaded_python_provider = 0")
