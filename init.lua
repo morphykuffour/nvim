@@ -16,25 +16,15 @@ require "morpheus.xplr"
 require "morpheus.godbolt"
 require "morpheus.lualine"
 
+
+require "morpheus.utils"
+Jcall(require, "morpheus/plugins")
+
 -- TODO fix keymaps
 -- require "morpheus.keymaps"
 -- TODO fix on Mac OS
 -- require "morpheus.treesitter"
 
-require("nvim-treesitter.configs").setup {
-  highlight = {
-      -- ...
-  },
-  -- ...
-  rainbow = {
-    enable = true,
-    -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-    max_file_lines = nil, -- Do not enable for files with more than n lines, int
-    -- colors = {}, -- table of hex strings
-    -- termcolors = {} -- table of colour name strings
-  }
-}
 
 -- colorscheme
 vim.cmd("colorscheme darkplus")

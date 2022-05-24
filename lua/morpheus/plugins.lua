@@ -1,4 +1,7 @@
+require("morpheus/utils")
+
 local fn = vim.fn
+local PLUGIN_CONF_PATH = fn.stdpath("config") .. "/lua/morpheus/plugin_conf/"
 
 -- Automatically install packer
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
@@ -33,6 +36,30 @@ packer.init {
 -- Plugins
 return packer.startup(function(use)
 
+  -- use_help function 
+  local use_help = function(params, create_config)
+    local plugin = params[1]
+    local requires = params.requires
+    local config = params.config
+    use({ plugin, requires = requires, config = config, disable = params.disable })
+    if create_config then
+      local split = SplitString(plugin, "/")
+      local plugin_name = split[GetLastIndex(split)]
+      plugin_name = plugin_name:gsub("%.", "-")
+      local plugin_dir = PLUGIN_CONF_PATH .. plugin_name .. "/"
+      local dir_exists = FileExists(plugin_dir)
+      if not dir_exists then
+        os.execute("mkdir -p " .. plugin_dir)
+      end
+      local init_file = plugin_dir .. "init.lua"
+      local init_exist = FileExists(init_file)
+      if not init_exist then
+        os.execute("touch " .. init_file)
+      end
+      Jcall(require, "morpheus/plugin_conf/" .. plugin_name)
+    end
+  end
+
   -- utils
   use "wbthomason/packer.nvim"
   use "nvim-lua/popup.nvim"
@@ -46,6 +73,10 @@ return packer.startup(function(use)
   use  "vim-pandoc/vim-pandoc"
   use "vim-pandoc/vim-pandoc-syntax"
   -- use {'nvim-orgmode/orgmode', config = function() require('orgmode').setup{} end }
+
+  use_help({
+    "nvim-orgmode/orgmode",
+  }, true)
 
   -- ui enchancements
   use "kyazdani42/nvim-web-devicons"
@@ -99,6 +130,8 @@ return packer.startup(function(use)
 
   -- code
   use 'mhartington/formatter.nvim'
+  -- use_help({ "mhartington/formatter.nvim" }, true)
+
   use {'vim-syntastic/syntastic'}
   use 'milisims/nvim-luaref'
   use {
@@ -118,16 +151,18 @@ return packer.startup(function(use)
   use "nvim-telescope/telescope-fzy-native.nvim"
   use "nvim-telescope/telescope-media-files.nvim"
 
+  use_help({ "nvim-treesitter/nvim-treesitter" }, true)
+
 
   -- TODO figure out why nvim-treesitter does not work on OSX
-  if jit.os ~= "OSX" then
-    use {
-      "nvim-treesitter/nvim-treesitter",
-      run = ":TSUpdate",
-    }
-    use "nvim-treesitter/playground"
-    use 'bryall/contextprint.nvim'
-  end
+  -- if jit.os ~= "OSX" then
+  --   use {
+  --     "nvim-treesitter/nvim-treesitter",
+  --     run = ":TSUpdate",
+  --   }
+  --   use "nvim-treesitter/playground"
+  --   use 'bryall/contextprint.nvim'
+  -- end
 
 
   -- TJ & ThePrimeagen
