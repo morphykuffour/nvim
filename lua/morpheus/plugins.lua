@@ -116,21 +116,25 @@ return packer.startup(function(use)
   use "gruvbox-community/gruvbox"
   use "lunarvim/darkplus.nvim"
 
-  -- cmp plugins
-  use "hrsh7th/nvim-cmp"
-  use "hrsh7th/cmp-buffer"
-  use "hrsh7th/cmp-path"
-  use "hrsh7th/cmp-cmdline"
-  use "saadparwaiz1/cmp_luasnip"
-  use "hrsh7th/cmp-nvim-lsp"
+  -- use "hrsh7th/nvim-cmp"
+  -- use "hrsh7th/cmp-buffer"
+  -- use "hrsh7th/cmp-path"
+  -- use "hrsh7th/cmp-cmdline"
+  -- use "saadparwaiz1/cmp_luasnip"
+  -- use "hrsh7th/cmp-nvim-lsp"
 
   -- snippets
   use "L3MON4D3/LuaSnip"
   use "rafamadriz/friendly-snippets"
 
+  -- LSP
+	use_help({
+		"neovim/nvim-lspconfig",
+		requires = { "folke/lua-dev.nvim" },
+	}, true)
+
   -- code
-  use 'mhartington/formatter.nvim'
-  -- use_help({ "mhartington/formatter.nvim" }, true)
+  use_help({ "mhartington/formatter.nvim" }, true)
 
   use {'vim-syntastic/syntastic'}
   use 'milisims/nvim-luaref'
@@ -141,29 +145,33 @@ return packer.startup(function(use)
     end
   }
   -- LSP
-  use "neovim/nvim-lspconfig"
   use "williamboman/nvim-lsp-installer"
-  -- use "tamago324/nlsp-settings.nvim"
-  -- use "jose-elias-alvarez/null-ls.nvim"
+
+  -- cmp plugins
+  	use({
+		"hrsh7th/nvim-cmp",
+		requires = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-cmdline",
+			"neovim/nvim-lspconfig",
+			"dcampos/nvim-snippy",
+			"dcampos/cmp-snippy",
+		},
+	})
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
   use "nvim-telescope/telescope-fzy-native.nvim"
   use "nvim-telescope/telescope-media-files.nvim"
 
-  use_help({ "nvim-treesitter/nvim-treesitter" }, true)
-
-
   -- TODO figure out why nvim-treesitter does not work on OSX
-  -- if jit.os ~= "OSX" then
-  --   use {
-  --     "nvim-treesitter/nvim-treesitter",
-  --     run = ":TSUpdate",
-  --   }
-  --   use "nvim-treesitter/playground"
-  --   use 'bryall/contextprint.nvim'
-  -- end
-
+  if jit.os ~= "OSX" then
+  use_help({ "nvim-treesitter/nvim-treesitter" }, true)
+    use "nvim-treesitter/playground"
+    use 'bryall/contextprint.nvim'
+  end
 
   -- TJ & ThePrimeagen
   use 'ThePrimeagen/harpoon'
@@ -177,8 +185,6 @@ return packer.startup(function(use)
   use 'nvim-lua/completion-nvim'
   use 'euclidianAce/BetterLua.vim'
   -- use 'tjdevries/manillua.nvim'
-  use 'bfredl/nvim-luadev'
-
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()

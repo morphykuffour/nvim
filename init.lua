@@ -19,16 +19,14 @@ require "morpheus.lualine"
 
 require "morpheus.utils"
 Jcall(require, "morpheus/plugins")
+Jcall(require, "morpheus/keymaps")
 
--- TODO fix keymaps
--- require "morpheus.keymaps"
 -- TODO fix on Mac OS
 -- require "morpheus.treesitter"
 
-
--- colorscheme
 vim.cmd("colorscheme darkplus")
 -- vim.cmd("colorscheme gruvbox")
+-- TODO winbar in lua
 -- vim.cmd("set winbar=%=%m\ %f")
 
 -- disable python2

@@ -38,10 +38,10 @@ nnoremap <leader>d "d_
 vnoremap <leader>d "d_
 
 "Navigate buffers
-nnoremap <leader>bn :bnext<CR>
-nnoremap <leader>bp :bprevious<CR>
-nnoremap <leader>bf :bfirst<CR>
-nnoremap <leader>bl :blast<CR>
+" nnoremap <leader>bn :bnext<CR>
+" nnoremap <leader>bp :bprevious<CR>
+" nnoremap <leader>bf :bfirst<CR>
+" nnoremap <leader>bl :blast<CR>
 
 "Navigate quickfix list
 nnoremap <silent> <C-k> :cnext<CR>zz
@@ -143,6 +143,7 @@ nnoremap <leader><F1> :Startify<CR>
 " Tab mappings TODO move to mappings.vim
 nnoremap vs : vs<CR>
 nnoremap sp :sp<CR>
-nnoremap <leader>tn :tabnew<CR>
-nnoremap <leader>tk :tabnext<CR>
-nnoremap <leader>tj :tabprev<CR>
+
+" nnoremap <leader>tn :tabnew<CR>
+" nnoremap <leader>tk :tabnext<CR>
+" nnoremap <leader>tj :tabprev<CR>

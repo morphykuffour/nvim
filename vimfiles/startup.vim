@@ -21,6 +21,7 @@ let g:startify_commands = [
       \ {'o': ['oldfiles', 'Telescope oldfiles']},
       \ {'t': ['terminal', 'FloatermNew']},
       \ {'f': ['lf', 'Lf']},
+      \ {'g': ['Git', 'Neogit']},
       \ ]
 
 " Let Startify take care of buffers
