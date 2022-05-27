@@ -11,7 +11,7 @@ require "morpheus.cmp"
 require "morpheus.telescope"
 require "morpheus.tsplayground"
 require "morpheus.xplr"
--- require "morpheus.lsp"
+require "morpheus.lsp"
 require "morpheus.cucumbertables"
 require "morpheus.godbolt"
 require "morpheus.lualine"
@@ -30,7 +30,15 @@ vim.cmd("colorscheme gruvbox")
 vim.cmd("let g:loaded_python_provider = 0")
 
 -- reload vimrc on save
-vim.cmd("autocmd! BufWritePost $MYVIMRC source $MYVIMRC | echom 'Reloaded $MYVIMRC'")
+-- vim.cmd("autocmd! BufWritePost $MYVIMRC source $MYVIMRC | echom 'Reloaded $MYVIMRC'")
+vim.api.nvim_create_autocmd("BufWritePost $MYVIMRC", {
+    callback = function()
+      local vrc = vim.env.MYVIMRC
+       if(dofile(vrc)) then
+         print("Reloaded " .. vrc )
+       end
+     end
+ })
 
 for i, vf in pairs(vim.split(vim.fn.glob('$HOME/.config/nvim/vimfiles/*.vim'), '\n')) do
   vim.api.nvim_command('source ' .. vf)

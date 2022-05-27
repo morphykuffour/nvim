@@ -128,10 +128,10 @@ return packer.startup(function(use)
   use "rafamadriz/friendly-snippets"
 
   -- LSP
-	use_help({
+	use{
 		"neovim/nvim-lspconfig",
 		requires = { "folke/lua-dev.nvim" },
-	}, true)
+	}
 
   -- code
   use_help({ "mhartington/formatter.nvim" }, true)
@@ -186,6 +186,7 @@ return packer.startup(function(use)
   use 'euclidianAce/BetterLua.vim'
   -- use 'tjdevries/manillua.nvim'
 
+  use 'mfulz/cscope.nvim'
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end

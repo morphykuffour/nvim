@@ -62,6 +62,12 @@ function _G.ReloadConfig()
     end
 end
 
+function _G.CopyBufferName()
+  vim.cmd("echo expand('%:p')")
+  vim.cmd("let @+ = expand('%:p')")
+  vim.cmd("echo \"Full path of \" . expand('%:t') . \" was copied to system clipboard\"")
+end
+
 function GetLastIndex(list)
     local last
     for i, v in pairs(list) do

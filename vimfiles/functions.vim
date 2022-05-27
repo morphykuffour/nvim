@@ -31,3 +31,10 @@ endfunction
 
 command! Run call Run()
 
+" get full buffername
+function! PrintBufferName()
+  echo expand('%:p')
+endfunction
+
+command! PrintBufferName call  PrintBufferName()
+

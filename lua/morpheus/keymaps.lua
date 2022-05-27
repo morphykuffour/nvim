@@ -149,3 +149,9 @@ m.nmap("<leader>cls", "<cmd>SymbolsOutline<cr>")
 
 m.nmap("<leader>sv", "<cmd>lua ReloadConfig()<cr>")
 vim.cmd("command! ReloadConfig lua ReloadConfig()")
+
+
+
+vim.cmd("command! CopyBufferName lua CopyBufferName()")
+m.nmap("<leader>bn", "<cmd>lua CopyBufferName()<cr>")
+
