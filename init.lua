@@ -21,10 +21,15 @@ Jcall(require, "morpheus/plugins")
 Jcall(require, "morpheus/keymaps")
 
 -- Themes
--- vim.cmd("colorscheme darkplus")
 -- vim.cmd("colorscheme gruvbox")
-vim.g.material_style = "darker"
-vim.cmd 'colorscheme material'
+if (tonumber(os.date('%H')) < 17) then
+    vim.g.material_style = "palenight"
+    vim.cmd 'colorscheme material'
+  else
+    vim.g.material_style = "Deep Ocean"
+    vim.cmd 'colorscheme material'
+-- vim.cmd("colorscheme darkplus")
+end
 
 -- disable python2
 vim.cmd("let g:loaded_python_provider = 0")
