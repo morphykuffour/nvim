@@ -1,0 +1,1 @@
+-- vim.cmd("autocmd! BufWritePost $MYVIMRC source $MYVIMRC | echom 'Reloaded $MYVIMRC'")

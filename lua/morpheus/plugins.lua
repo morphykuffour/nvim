@@ -115,6 +115,7 @@ return packer.startup(function(use)
   -- Colorschemes
   use "gruvbox-community/gruvbox"
   use "lunarvim/darkplus.nvim"
+  use 'marko-cerovac/material.nvim'
 
   -- use "hrsh7th/nvim-cmp"
   -- use "hrsh7th/cmp-buffer"
@@ -186,7 +187,7 @@ return packer.startup(function(use)
   use 'euclidianAce/BetterLua.vim'
   -- use 'tjdevries/manillua.nvim'
 
-  use 'mfulz/cscope.nvim'
+  -- use 'mfulz/cscope.nvim'
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end
