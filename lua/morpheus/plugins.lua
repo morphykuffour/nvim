@@ -111,6 +111,7 @@ return packer.startup(function(use)
   use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
   use "tpope/vim-fugitive"
   use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+  use "lewis6991/gitsigns.nvim"
 
   -- Colorschemes
   use "gruvbox-community/gruvbox"
