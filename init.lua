@@ -34,7 +34,6 @@ end
 -- vim.cmd("colorscheme gruvbox")
 
 -- disable python2
--- vim.cmd("let g:loaded_python_provider = 0")
 vim.g.loaded_python_provider = 0
 vim.g.python3_host_prog = "/usr/bin/python3"
 
