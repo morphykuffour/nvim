@@ -9,6 +9,7 @@ require "morpheus.options"
 require "morpheus.plugins"
 require "morpheus.cmp"
 require "morpheus.telescope"
+require "morpheus.treesitter"
 require "morpheus.tsplayground"
 require "morpheus.xplr"
 require "morpheus.gitsigns"
@@ -32,7 +33,9 @@ if (tonumber(os.date('%H')) < 17) then
 end
 
 -- disable python2
-vim.cmd("let g:loaded_python_provider = 0")
+-- vim.cmd("let g:loaded_python_provider = 0")
+vim.g.loaded_python_provider = 0
+vim.g.python3_host_prog = "/usr/bin/python3"
 
 -- reload vimrc on save
 vim.api.nvim_create_autocmd('BufWritePost', {

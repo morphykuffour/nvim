@@ -119,11 +119,11 @@ return packer.startup(function(use)
   use 'marko-cerovac/material.nvim'
 
   -- use "hrsh7th/nvim-cmp"
-  -- use "hrsh7th/cmp-buffer"
-  -- use "hrsh7th/cmp-path"
-  -- use "hrsh7th/cmp-cmdline"
-  -- use "saadparwaiz1/cmp_luasnip"
-  -- use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/cmp-buffer"
+  use "hrsh7th/cmp-path"
+  use "hrsh7th/cmp-cmdline"
+  use "saadparwaiz1/cmp_luasnip"
+  use "hrsh7th/cmp-nvim-lsp"
 
   -- snippets
   use "L3MON4D3/LuaSnip"
@@ -158,8 +158,8 @@ return packer.startup(function(use)
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
 			"neovim/nvim-lspconfig",
-			"dcampos/nvim-snippy",
-			"dcampos/cmp-snippy",
+			-- "dcampos/nvim-snippy",
+			-- "dcampos/cmp-snippy",
 		},
 	})
 
@@ -169,8 +169,9 @@ return packer.startup(function(use)
   use "nvim-telescope/telescope-media-files.nvim"
 
   -- TODO figure out why nvim-treesitter does not work on OSX
-  if jit.os ~= "OSX" then
-  use_help({ "nvim-treesitter/nvim-treesitter" }, true)
+  -- if jit.os ~= "OSX" then
+  if vim.fn.has("mac") ~= 1 then 
+    use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
     use "nvim-treesitter/playground"
     use 'bryall/contextprint.nvim'
   end

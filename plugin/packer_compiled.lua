@@ -110,10 +110,10 @@ _G.packer_plugins = {
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
-  ["cmp-snippy"] = {
+  cmp_luasnip = {
     loaded = true,
-    path = "/home/morp/.local/share/nvim/site/pack/packer/start/cmp-snippy",
-    url = "https://github.com/dcampos/cmp-snippy"
+    path = "/home/morp/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
+    url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["completion-nvim"] = {
     loaded = true,
@@ -239,11 +239,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/nvim-luaref",
     url = "https://github.com/milisims/nvim-luaref"
-  },
-  ["nvim-snippy"] = {
-    loaded = true,
-    path = "/home/morp/.local/share/nvim/site/pack/packer/start/nvim-snippy",
-    url = "https://github.com/dcampos/nvim-snippy"
   },
   ["nvim-treesitter"] = {
     loaded = true,
