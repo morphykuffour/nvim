@@ -126,18 +126,55 @@ m.nmap("<leader>sf", "/\\c")
 m.nmap("<leader>sb", "?\\c")
 m.nmap("<leader>nh", "<cmd>noh<CR>")
 
+
+
+
+if not pcall(require, "telescope") then
+  return
+end
+
+local sorters = require "telescope.sorters"
+
+TelescopeMapArgs = TelescopeMapArgs or {}
+
+local map_tele = function(key, f, options, buffer)
+  local map_key = vim.api.nvim_replace_termcodes(key .. f, true, true, true)
+
+  TelescopeMapArgs[map_key] = options or {}
+
+  local mode = "n"
+  local rhs = string.format("<cmd>lua R('morpheus.telescope')['%s'](TelescopeMapArgs['%s'])<CR>", f, map_key)
+
+  local map_options = {
+    noremap = true,
+    silent = true,
+  }
+
+  if not buffer then
+    vim.api.nvim_set_keymap(mode, key, rhs, map_options)
+  else
+    vim.api.nvim_buf_set_keymap(0, mode, key, rhs, map_options)
+  end
+end
+
+
 -- Telescope keymaps
 m.nmap("<leader>fb","<cmd> lua require('telescope.builtin').buffers()<CR>")
 m.nmap("<leader>fo","<cmd> lua require('telescope.builtin').oldfiles()<CR>")
 m.nmap("<leader>ff","<cmd> lua require('telescope.builtin').find_files()<CR>")
 m.nmap("<leader>gs","<cmd> lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ')})<CR>")
-m.nmap("<leader>df","<cmd> lua require('morpheus.telescope').search_dotfiles()<CR>")
-m.nmap("<leader>vr","<cmd> lua require('morpheus.telescope').search_vimrc()<CR>")
+-- m.nmap("<leader>df","<cmd> lua require('morpheus.telescope').search_dotfiles()<CR>")
+-- m.nmap("<leader>vr","<cmd> lua require('morpheus.telescope').search_vimrc()<CR>")
 m.nmap("<leader>ht","<cmd> lua require('telescope.builtin').help_tags()<CR>")
 m.nmap("<leader>lr","<cmd>lua require'telescope.builtin'.lsp_references{}<CR>")
 m.nmap("<leader>f", "<cmd>Telescope find_files<cr>")
+
+map_tele("<space>fpl", "installed_plugins")
+map_tele("<space>dot", "search_dotfiles")
+map_tele("<space>vrc", "search_vimrc")
+-- m.nmap("<leader>df","<cmd> lua require('morpheus.telescope').search_dotfiles()<CR>")
+-- m.nmap("<leader>vr","<cmd> lua require('morpheus.telescope').search_vimrc()<CR>")
 -- keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts)
--- keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
 -- keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
 
 -- Git
@@ -153,8 +190,8 @@ vim.cmd("command! ReloadConfig lua ReloadConfig()")
 vim.cmd("command! CopyBufferName lua CopyBufferName()")
 m.nmap("<leader>bn", "<cmd>lua CopyBufferName()<cr>")
 
-vim.keymap.set('n', '<leader>n', ':tabe ~/Dropbox/notes/notes.md<CR>')
+-- vim.keymap.set('n', '<leader>n',
+-- vim.keymap.set('n', '<leader>n', vim.cmd(string.format(':tabe ~/Dropbox/notes/note-%s.md', os.date "%y_%m_%d")))
 
-
-
-
+vim.api.nvim_set_keymap("n", "<leader>wd", '<cmd>lua R("morpheus.wiki").make_diary_entry()<CR>', { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>wt", '<cmd>lua R("morpheus.wiki").make_todo()<CR>', { noremap = true })

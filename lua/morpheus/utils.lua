@@ -68,6 +68,10 @@ function _G.CopyBufferName()
   vim.cmd("echo \"Full path of \" . expand('%:t') . \" was copied to system clipboard\"")
 end
 
+-- function _G.Diary_entry()
+--    vim.cmd(string.format(':85vnew ~/Dropbox/notes/note-%s.md', os.date "%y_%m_%d"))
+-- end
+
 function GetLastIndex(list)
     local last
     for i, v in pairs(list) do

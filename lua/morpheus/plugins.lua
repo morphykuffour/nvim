@@ -72,25 +72,15 @@ return packer.startup(function(use)
   use  "vim-pandoc/vim-rmarkdown"
   use  "vim-pandoc/vim-pandoc"
   use "vim-pandoc/vim-pandoc-syntax"
-  -- use {'nvim-orgmode/orgmode', config = function() require('orgmode').setup{} end }
 
-  use_help({
-    "nvim-orgmode/orgmode",
-  }, true)
+  use_help({ "nvim-orgmode/orgmode", }, true)
 
   -- ui enchancements
   use "kyazdani42/nvim-web-devicons"
   use "moll/vim-bbye"
   use "antoinemadec/FixCursorHold.nvim"
   use "kevinhwang91/nvim-bqf"
-  -- use "ptzz/lf.vim"
-  use {
-    'fhill2/xplr.nvim',
-    run = function() require'xplr'.install({hide=true}) end,
-    requires = {{'nvim-lua/plenary.nvim'}, {'MunifTanjim/nui.nvim'}}
-  }
-
-
+  use "ptzz/lf.vim"
   use "mhinz/vim-startify"
   use "voldikss/vim-floaterm"
   use 'junegunn/goyo.vim'
@@ -98,6 +88,11 @@ return packer.startup(function(use)
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
+  -- use {
+  --   'fhill2/xplr.nvim',
+  --   run = function() require'xplr'.install({hide=true}) end,
+  --   requires = {{'nvim-lua/plenary.nvim'}, {'MunifTanjim/nui.nvim'}}
+  -- }
 
   -- tpope
   use "tpope/vim-sensible"
@@ -169,8 +164,7 @@ return packer.startup(function(use)
   use "nvim-telescope/telescope-media-files.nvim"
 
   -- TODO figure out why nvim-treesitter does not work on OSX
-  -- if jit.os ~= "OSX" then
-  if vim.fn.has("mac") ~= 1 then 
+  if vim.fn.has("mac") ~= 1 then --support for wsl see :h has
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
     use "nvim-treesitter/playground"
     use 'bryall/contextprint.nvim'
@@ -187,9 +181,9 @@ return packer.startup(function(use)
   use 'tjdevries/nlua.nvim'
   use 'nvim-lua/completion-nvim'
   use 'euclidianAce/BetterLua.vim'
+  use 'rafamadriz/friendly-snippets'
   -- use 'tjdevries/manillua.nvim'
 
-  -- use 'mfulz/cscope.nvim'
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end

@@ -4,6 +4,7 @@
 
 -- Personal settings
 vim.g.mapleader = " "
+vim.g.snippets = "luasnip"
 
 require "morpheus.options"
 require "morpheus.plugins"
@@ -12,19 +13,21 @@ require "morpheus.telescope"
 require "morpheus.treesitter"
 require "morpheus.tsplayground"
 require "morpheus.neogit"
-require "morpheus.xplr"
+-- require "morpheus.xplr"
+require "morpheus.luasnip"
 require "morpheus.gitsigns"
 require "morpheus.lsp"
 require "morpheus.cucumbertables"
 require "morpheus.godbolt"
 require "morpheus.lualine"
 require "morpheus.utils"
+require "morpheus.globals"
 Jcall(require, "morpheus/plugins")
 Jcall(require, "morpheus/keymaps")
 
 -- Themes
 if (tonumber(os.date('%H')) < 17) then
-    vim.g.material_style = "palenight"
+    vim.g.material_style = "lighter"
     vim.cmd 'colorscheme material'
   else
     vim.g.material_style = "Deep Ocean"
