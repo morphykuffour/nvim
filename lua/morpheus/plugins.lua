@@ -89,7 +89,8 @@ return packer.startup(function(use)
 	use("ptzz/lf.vim")
 	use("mhinz/vim-startify")
 	use("voldikss/vim-floaterm")
-	use("junegunn/goyo.vim")use "projekt0n/github-nvim-theme"
+	use("junegunn/goyo.vim")
+	use("projekt0n/github-nvim-theme")
 	-- use("samjwill/nvim-unception")
 	use({
 		"kyazdani42/nvim-tree.lua",
@@ -175,7 +176,22 @@ return packer.startup(function(use)
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
 	use("nvim-telescope/telescope-fzy-native.nvim")
-	use("nvim-telescope/telescope-media-files.nvim")
+	use({
+		"nvim-telescope/telescope-fzf-native.nvim",
+		run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+	})
+	use({ "dhruvmanila/telescope-bookmarks.nvim" })
+  use "tyru/open-browser.vim"
+	use({
+		"AckslD/nvim-neoclip.lua",
+		requires = {
+			{ "tami5/sqlite.lua", module = "sqlite" },
+			{ "nvim-telescope/telescope.nvim" },
+		},
+		config = function()
+			require("neoclip").setup()
+		end,
+	})
 
 	-- TODO figure out why nvim-treesitter does not work on OSX
 	if vim.fn.has("mac") ~= 1 then --support for wsl see :h has

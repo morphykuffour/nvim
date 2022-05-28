@@ -64,3 +64,5 @@ autocmd("BufWritePost", { pattern = "*.rs", command = "AutoFormatBuffer rustfmt"
 for i, vf in pairs(vim.split(vim.fn.glob("$HOME/.config/nvim/vimfiles/*.vim"), "\n")) do
 	vim.api.nvim_command("source " .. vf)
 end
+
+require("plenary.filetype").add_file("ft")
