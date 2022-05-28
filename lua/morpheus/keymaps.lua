@@ -12,7 +12,8 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- file tree
-keymap("n", "<leader>n", ":Lf<cr>", opts)
+-- keymap("n", "<leader>n", ":Lf<cr>", opts)
+keymap("n", "<leader>n", ":NvimTreeToggle<cr>", opts)
 keymap("n", "<leader>e", ":Lex 30<cr>", opts)
 
 

@@ -145,6 +145,11 @@ _G.packer_plugins = {
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
+  ["github-nvim-theme"] = {
+    loaded = true,
+    path = "/home/morp/.local/share/nvim/site/pack/packer/start/github-nvim-theme",
+    url = "https://github.com/projekt0n/github-nvim-theme"
+  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
@@ -240,6 +245,11 @@ _G.packer_plugins = {
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/nvim-luaref",
     url = "https://github.com/milisims/nvim-luaref"
   },
+  ["nvim-tree.lua"] = {
+    loaded = true,
+    path = "/home/morp/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    url = "https://github.com/kyazdani42/nvim-tree.lua"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
@@ -275,6 +285,11 @@ _G.packer_plugins = {
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
   },
+  ["stylua.nvim"] = {
+    loaded = true,
+    path = "/home/morp/.local/share/nvim/site/pack/packer/start/stylua.nvim",
+    url = "https://github.com/wesleimp/stylua.nvim"
+  },
   syntastic = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/syntastic",
@@ -300,6 +315,11 @@ _G.packer_plugins = {
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/vim-bbye",
     url = "https://github.com/moll/vim-bbye"
   },
+  ["vim-codefmt"] = {
+    loaded = true,
+    path = "/home/morp/.local/share/nvim/site/pack/packer/start/vim-codefmt",
+    url = "https://github.com/google/vim-codefmt"
+  },
   ["vim-eunuch"] = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/vim-eunuch",
@@ -314,6 +334,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-maktaba"] = {
+    loaded = true,
+    path = "/home/morp/.local/share/nvim/site/pack/packer/start/vim-maktaba",
+    url = "https://github.com/google/vim-maktaba"
   },
   ["vim-markdown-toc"] = {
     loaded = true,
