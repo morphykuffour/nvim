@@ -56,10 +56,6 @@ autocmd("BufWritePost", {
 	end,
 })
 
--- autocmd("BufWritePost", {
--- 	pattern = "*.lua",
--- 	command = "lua require('stylua').format()",
--- })
 autocmd("BufWritePost", { pattern = "*.lua", command = "lua require('stylua').format()" })
 autocmd("BufWritePost", { pattern = "*.py", command = "AutoFormatBuffer yapf" })
 autocmd("BufWritePost", { pattern = "*.go", command = "AutoFormatBuffer gofmt" })
