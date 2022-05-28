@@ -174,8 +174,5 @@ vim.cmd("command! ReloadConfig lua ReloadConfig()")
 vim.cmd("command! CopyBufferName lua CopyBufferName()")
 m.nmap("<leader>bn", "<cmd>lua CopyBufferName()<cr>")
 
--- vim.keymap.set('n', '<leader>n',
--- vim.keymap.set('n', '<leader>n', vim.cmd(string.format(':tabe ~/Dropbox/notes/note-%s.md', os.date "%y_%m_%d")))
-
 vim.api.nvim_set_keymap("n", "<leader>wd", '<cmd>lua R("morpheus.wiki").make_diary_entry()<CR>', { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>wt", '<cmd>lua R("morpheus.wiki").make_todo()<CR>', { noremap = true })
