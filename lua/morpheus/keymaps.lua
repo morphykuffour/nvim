@@ -141,9 +141,9 @@ m.nmap("<leader>f", "<cmd>Telescope find_files<cr>")
 -- keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
 
 -- Git
-m.nmap("<leader>gg", "Neogit<CR>")
+-- m.nmap("<leader>gg", "<cmd> require('neogit').open()<CR>")
+m.nmap("<leader>gg", ":Neogit <CR>")
 m.nmap("<leader>gd", "DiffviewOpen<CR>")
-m.nmap("<leader>gg", "Neogit push<CR>")
 
 m.nmap("<leader>ev", "<cmd>e ~/.config/nvim/init.lua<ENTER>")
 m.nmap("<leader>cls", "<cmd>SymbolsOutline<cr>")
@@ -155,3 +155,7 @@ vim.cmd("command! CopyBufferName lua CopyBufferName()")
 m.nmap("<leader>bn", "<cmd>lua CopyBufferName()<cr>")
 
 vim.keymap.set('n', '<leader>n', ':tabe ~/Dropbox/notes/notes.md<CR>')
+
+
+
+
