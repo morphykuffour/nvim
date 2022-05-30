@@ -120,12 +120,16 @@ return packer.startup(function(use)
 	use("lunarvim/darkplus.nvim")
 	use("marko-cerovac/material.nvim")
 
-	-- use "hrsh7th/nvim-cmp"
+	-- cmp plugins
+	use("hrsh7th/nvim-cmp")
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-path")
 	use("hrsh7th/cmp-cmdline")
-	use("saadparwaiz1/cmp_luasnip")
+	use("hrsh7th/cmp-nvim-lua")
 	use("hrsh7th/cmp-nvim-lsp")
+	use("saadparwaiz1/cmp_luasnip")
+	use("tjdevries/complextras.nvim")
+	use("onsails/lspkind.nvim")
 
 	-- snippets
 	use("L3MON4D3/LuaSnip")
@@ -137,10 +141,9 @@ return packer.startup(function(use)
 		requires = { "folke/lua-dev.nvim" },
 	})
 
-	-- code
+	-- code formatting and documentation
 	use_help({ "mhartington/formatter.nvim" }, true)
-
-	use({ "vim-syntastic/syntastic" })
+	-- use({ "vim-syntastic/syntastic" })
 	use("milisims/nvim-luaref")
 	use({
 		"numToStr/Comment.nvim",
@@ -150,20 +153,6 @@ return packer.startup(function(use)
 	})
 	-- LSP
 	use("williamboman/nvim-lsp-installer")
-
-	-- cmp plugins
-	use({
-		"hrsh7th/nvim-cmp",
-		requires = {
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-cmdline",
-			"neovim/nvim-lspconfig",
-			-- "dcampos/nvim-snippy",
-			-- "dcampos/cmp-snippy",
-		},
-	})
 
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
@@ -209,7 +198,7 @@ return packer.startup(function(use)
 	-- dap for nvim plguins
 	use("jbyuki/one-small-step-for-vimkind")
 	use_help({ "mfussenegger/nvim-dap" }, true)
-use 'theHamsta/nvim-dap-virtual-text'
+	use("theHamsta/nvim-dap-virtual-text")
 	use("bfredl/nvim-luadev")
 
 	if PACKER_BOOTSTRAP then

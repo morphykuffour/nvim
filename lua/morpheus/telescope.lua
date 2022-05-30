@@ -86,6 +86,7 @@ telescope.setup({
 
 			-- Either provide a shell command to open the URL
 			url_open_command = "open",
+			-- url_open_command = "brave",
 
 			-- Or provide the plugin name which is already installed
 			-- Available: 'vim_external', 'open_browser'
