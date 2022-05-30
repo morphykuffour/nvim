@@ -6,33 +6,29 @@
 vim.g.mapleader = " "
 vim.g.snippets = "luasnip"
 
+require("morpheus.utils")
+require("morpheus.globals")
 require("morpheus.options")
-require("morpheus.plugins")
 require("morpheus.cmp")
 require("morpheus.telescope")
 require("morpheus.treesitter")
 require("morpheus.tsplayground")
 require("morpheus.neogit")
 require("morpheus.nvim-tree")
--- require "morpheus.xplr"
 require("morpheus.luasnip")
 require("morpheus.gitsigns")
 require("morpheus.lsp")
 require("morpheus.cucumbertables")
 require("morpheus.godbolt")
--- require("morpheus.lualine")
 -- require("morpheus.statusline")
-require("morpheus.utils")
-require("morpheus.globals")
 Jcall(require, "morpheus/plugins")
 Jcall(require, "morpheus/keymaps")
 
 -- Themes
--- vim.cmd("colorscheme darkplus")
--- vim.cmd("colorscheme gruvbox")
 require("github-theme").setup({
 	comment_style = "italic",
 })
+
 if tonumber(os.date("%H")) < 17 then
 	vim.cmd("colorscheme github_light")
 	require("morpheus.theme.lualine_github_light")
@@ -41,6 +37,7 @@ else
 	require("morpheus.theme.lualine_github_dark")
 end
 
+vim.cmd("colorscheme github_dark")
 -- 	theme_style = "light",
 
 -- disable python2
@@ -65,4 +62,8 @@ for i, vf in pairs(vim.split(vim.fn.glob("$HOME/.config/nvim/vimfiles/*.vim"), "
 	vim.api.nvim_command("source " .. vf)
 end
 
-require("plenary.filetype").add_file("ft")
+require("plenary.filetype").add_file("base")
+require("plenary.filetype").add_file("builtin")
+
+require("nvim-dap-virtual-text").setup()
+-- require('rest-nvim').setup()

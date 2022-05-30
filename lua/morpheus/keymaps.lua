@@ -5,6 +5,10 @@ local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
 
+-- nvim-luadev
+keymap("n", "<leader>ll", "<Plug>(Luadev-RunLine)", opts)
+keymap("n", "<leader>lr", "<Plug>(Luadev-Run)", opts)
+
 -- move between vim panes
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
@@ -160,6 +164,14 @@ map_tele("<space>vr", "search_vimrc")
 m.nmap("<leader>fm", "<cmd>Telescope bookmarks<cr>")
 m.nmap("<leader>fc", "<cmd>Telescope neoclip<cr>")
 -- m.nmap("<c-f>", "<cmd>Telescope find_files hidden=true<CR>")
+
+-- lua dap
+m.nmap("<leader>dd", '<cmd>lua require("osv").launch()<cr>')
+m.nmap("<leader>db", '<cmd>lua require("dap").toggle_breakpoint()<cr>')
+m.nmap("<leader>dj", "<cmd>lua require'dap'.step_over()<cr>")
+m.nmap("<leader>dl", "<cmd>lua require'dap'.step_into()<cr>")
+m.nmap("<leader>dk", "<cmd>lua require'dap'.step_out()<cr>")
+m.nmap("<leader>dc", "<cmd>lua require'dap'.continue()<cr>")
 
 -- Git
 m.nmap("<leader>gg", ":Neogit <CR>")

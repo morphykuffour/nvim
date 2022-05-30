@@ -78,7 +78,6 @@ return packer.startup(function(use)
 	use("vim-pandoc/vim-rmarkdown")
 	use("vim-pandoc/vim-pandoc")
 	use("vim-pandoc/vim-pandoc-syntax")
-
 	use_help({ "nvim-orgmode/orgmode" }, true)
 
 	-- ui enchancements
@@ -91,7 +90,7 @@ return packer.startup(function(use)
 	use("voldikss/vim-floaterm")
 	use("junegunn/goyo.vim")
 	use("projekt0n/github-nvim-theme")
-	-- use("samjwill/nvim-unception")
+
 	use({
 		"kyazdani42/nvim-tree.lua",
 		requires = {
@@ -103,11 +102,6 @@ return packer.startup(function(use)
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
-	-- use {
-	--   'fhill2/xplr.nvim',
-	--   run = function() require'xplr'.install({hide=true}) end,
-	--   requires = {{'nvim-lua/plenary.nvim'}, {'MunifTanjim/nui.nvim'}}
-	-- }
 
 	-- tpope
 	use("tpope/vim-sensible")
@@ -115,11 +109,9 @@ return packer.startup(function(use)
 	use("tpope/vim-repeat")
 	use("tpope/vim-eunuch")
 	use("tpope/vim-unimpaired")
-	use("tpope/vim-obsession")
 
 	-- git
 	use({ "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" })
-	use("tpope/vim-fugitive")
 	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 	use("lewis6991/gitsigns.nvim")
 
@@ -181,7 +173,7 @@ return packer.startup(function(use)
 		run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 	})
 	use({ "dhruvmanila/telescope-bookmarks.nvim" })
-  use "tyru/open-browser.vim"
+	use("tyru/open-browser.vim")
 	use({
 		"AckslD/nvim-neoclip.lua",
 		requires = {
@@ -205,15 +197,20 @@ return packer.startup(function(use)
 
 	-- low level stuff
 	use("p00f/godbolt.nvim")
-	use("sakhnik/nvim-gdb")
+	-- use("sakhnik/nvim-gdb")
 
 	-- plug dev
-	use("tjdevries/nlua.nvim")
 	use("nvim-lua/completion-nvim")
-	use("euclidianAce/BetterLua.vim")
 	use({ "wesleimp/stylua.nvim" })
 	use({ "google/vim-codefmt", requires = { "google/vim-maktaba" } })
-	-- use 'tjdevries/manillua.nvim'
+	use("~/Dropbox/projects/neovim-plugins/lookup.nvim")
+	-- use("~/Dropbox/projects/neovim-plugins/rest.nvim")
+
+	-- dap for nvim plguins
+	use("jbyuki/one-small-step-for-vimkind")
+	use_help({ "mfussenegger/nvim-dap" }, true)
+use 'theHamsta/nvim-dap-virtual-text'
+	use("bfredl/nvim-luadev")
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
