@@ -116,7 +116,8 @@ return packer.startup(function(use)
 	use("lewis6991/gitsigns.nvim")
 
 	-- Colorschemes
-	use("gruvbox-community/gruvbox")
+	-- use("gruvbox-community/gruvbox")
+	use({ "ellisonleao/gruvbox.nvim" })
 	use("lunarvim/darkplus.nvim")
 	use("marko-cerovac/material.nvim")
 
@@ -143,7 +144,6 @@ return packer.startup(function(use)
 
 	-- code formatting and documentation
 	use_help({ "mhartington/formatter.nvim" }, true)
-	-- use({ "vim-syntastic/syntastic" })
 	use("milisims/nvim-luaref")
 	use({
 		"numToStr/Comment.nvim",

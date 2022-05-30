@@ -28,7 +28,6 @@ vim.api.nvim_set_keymap(
 	{ noremap = true }
 )
 
--- use lspkind symbol defaults
 lspkind.init()
 
 local cmp = require("cmp")
@@ -86,6 +85,7 @@ cmp.setup({
 		{ name = "path" },
 		{ name = "nvim_lua" },
 		{ name = "nvim_lsp" },
+        { name = 'orgmode' },
 	},
 
 	snippet = {
