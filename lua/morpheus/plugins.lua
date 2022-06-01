@@ -165,6 +165,11 @@ return packer.startup(function(use)
 	})
 	use({ "dhruvmanila/telescope-bookmarks.nvim" })
 	use("tyru/open-browser.vim")
+use {
+    'glacambre/firenvim',
+    run = function() vim.fn['firenvim#install'](0) end 
+}
+
 	use({
 		"AckslD/nvim-neoclip.lua",
 		requires = {
