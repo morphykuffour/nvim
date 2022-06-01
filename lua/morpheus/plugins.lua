@@ -165,10 +165,12 @@ return packer.startup(function(use)
 	})
 	use({ "dhruvmanila/telescope-bookmarks.nvim" })
 	use("tyru/open-browser.vim")
-use {
-    'glacambre/firenvim',
-    run = function() vim.fn['firenvim#install'](0) end 
-}
+	use({
+		"glacambre/firenvim",
+		run = function()
+			vim.fn["firenvim#install"](0)
+		end,
+	})
 
 	use({
 		"AckslD/nvim-neoclip.lua",
@@ -208,6 +210,8 @@ use {
 	use("theHamsta/nvim-dap-virtual-text")
 	use("bfredl/nvim-luadev")
 
+	use("https://github.com/mfussenegger/nvim-treehopper")
+	use("https://github.com/phaazon/hop.nvim")
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
