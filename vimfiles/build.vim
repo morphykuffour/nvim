@@ -1,6 +1,7 @@
 " compile and run
 autocmd filetype cpp    nnoremap <F5> :w <bar> !rm -rf %:r && g++ -ggdb -O2 -ulimit -Wall -Wno-unused-result -std=c++11 % -o %:r && ./%:r <CR>
-autocmd filetype c      nnoremap <F5> :w <bar> !rm -rf %:r && gcc -ggdb -Wall -Werror -std=c99 -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined % -o %:r && ./%:r <CR>
+" autocmd filetype c      nnoremap <F5> :w <bar> !rm -rf %:r && gcc -ggdb -Wall -Werror -std=c99 -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined % -o %:r && ./%:r <CR>
+autocmd filetype c      nnoremap <F5> :w <bar> !rm -rf %:r && gcc -ggdb -Wall -Werror -std=c99 % -o %:r && ./%:r <CR>
 autocmd filetype python nnoremap <F5> :w <bar> !python3 % <CR>
 autocmd BufNewFile,BufRead *.hy set filetype=hy
 autocmd filetype hy     nnoremap <F5> :w <bar> !hy % <CR>

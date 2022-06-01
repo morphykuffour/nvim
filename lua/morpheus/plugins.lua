@@ -78,7 +78,8 @@ return packer.startup(function(use)
 	use("vim-pandoc/vim-rmarkdown")
 	use("vim-pandoc/vim-pandoc")
 	use("vim-pandoc/vim-pandoc-syntax")
-	use_help({ "nvim-orgmode/orgmode" }, true)
+	use("nvim-orgmode/orgmode")
+	use("lukas-reineke/headlines.nvim")
 
 	-- ui enchancements
 	use("kyazdani42/nvim-web-devicons")
@@ -105,6 +106,7 @@ return packer.startup(function(use)
 
 	-- tpope
 	use("tpope/vim-sensible")
+	use("tpope/vim-fugitive")
 	use("tpope/vim-surround")
 	use("tpope/vim-repeat")
 	use("tpope/vim-eunuch")
@@ -186,7 +188,7 @@ return packer.startup(function(use)
 
 	-- low level stuff
 	use("p00f/godbolt.nvim")
-	-- use("sakhnik/nvim-gdb")
+	use("sakhnik/nvim-gdb")
 
 	-- plug dev
 	use("nvim-lua/completion-nvim")

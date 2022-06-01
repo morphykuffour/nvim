@@ -14,10 +14,9 @@ require("morpheus.telescope")
 require("morpheus.treesitter")
 require("morpheus.tsplayground")
 require("morpheus.neogit")
--- TODO: get netrw_browsex_viewer working with nvim-tree
--- maybe gx => n <Plug>(openbrowser-open)
--- require("morpheus.nvim-tree")
+require("morpheus.nvim-tree")
 require("morpheus.luasnip")
+require("morpheus.headlines")
 require("morpheus.gitsigns")
 require("morpheus.lsp")
 require("morpheus.orgmode")
@@ -28,6 +27,7 @@ Jcall(require, "morpheus/plugins")
 Jcall(require, "morpheus/keymaps")
 
 -- Theme
+require("morpheus.theme.lualine_gruvbox")
 if tonumber(os.date("%H")) < 17 then
 	vim.opt.background = "light"
 	vim.cmd("colorscheme gruvbox")
@@ -53,7 +53,9 @@ autocmd("BufWritePost", { pattern = "*.lua", command = "lua require('stylua').fo
 autocmd("BufWritePost", { pattern = "*.py", command = "AutoFormatBuffer yapf" })
 autocmd("BufWritePost", { pattern = "*.go", command = "AutoFormatBuffer gofmt" })
 autocmd("BufWritePost", { pattern = "*.rs", command = "AutoFormatBuffer rustfmt" })
+autocmd("BufWritePost", { pattern = "*.c", command = "AutoFormatBuffer clang-format" })
 
+-- source vimfiles
 for i, vf in pairs(vim.split(vim.fn.glob("$HOME/.config/nvim/vimfiles/*.vim"), "\n")) do
 	vim.api.nvim_command("source " .. vf)
 end
@@ -69,5 +71,10 @@ end
 
 require("plenary.filetype").add_file("base")
 require("plenary.filetype").add_file("builtin")
-
 require("nvim-dap-virtual-text").setup()
+
+-- orgmode settings
+vim.opt.shellslash = true
+vim.cmd("language en_US.utf8")
+vim.opt.conceallevel = 2
+vim.opt.concealcursor = "nc"

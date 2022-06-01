@@ -166,7 +166,7 @@ m.nmap("<leader>fc", "<cmd>Telescope neoclip<cr>")
 -- m.nmap("<c-f>", "<cmd>Telescope find_files hidden=true<CR>")
 
 -- lua dap
-m.nmap("<leader>dd", '<cmd>lua require("osv").launch()<cr>')
+-- m.nmap("<leader>dd", '<cmd>lua require("osv").launch()<cr>')
 m.nmap("<leader>db", '<cmd>lua require("dap").toggle_breakpoint()<cr>')
 m.nmap("<leader>dj", "<cmd>lua require'dap'.step_over()<cr>")
 m.nmap("<leader>dl", "<cmd>lua require'dap'.step_into()<cr>")
@@ -185,6 +185,9 @@ vim.cmd("command! ReloadConfig lua ReloadConfig()")
 
 vim.cmd("command! CopyBufferName lua CopyBufferName()")
 m.nmap("<leader>bn", "<cmd>lua CopyBufferName()<cr>")
+
+m.nmap("gx", "<Plug>(openbrowser-smart-search)<cr>")
+m.vmap("gx", "<Plug>(openbrowser-smart-search)<cr>")
 
 vim.api.nvim_set_keymap("n", "<leader>wd", '<cmd>lua R("morpheus.wiki").make_diary_entry()<CR>', { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>wt", '<cmd>lua R("morpheus.wiki").make_todo()<CR>', { noremap = true })
