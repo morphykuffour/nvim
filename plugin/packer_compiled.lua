@@ -235,6 +235,11 @@ _G.packer_plugins = {
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/neogit",
     url = "https://github.com/TimUntersberger/neogit"
   },
+  ["nui.nvim"] = {
+    loaded = true,
+    path = "/home/morp/.local/share/nvim/site/pack/packer/start/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
+  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
@@ -358,6 +363,16 @@ _G.packer_plugins = {
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/stylua.nvim",
     url = "https://github.com/wesleimp/stylua.nvim"
   },
+  syntastic = {
+    loaded = true,
+    path = "/home/morp/.local/share/nvim/site/pack/packer/start/syntastic",
+    url = "https://github.com/vim-syntastic/syntastic"
+  },
+  ["syntax-tree-surfer"] = {
+    loaded = true,
+    path = "/home/morp/.local/share/nvim/site/pack/packer/start/syntax-tree-surfer",
+    url = "https://github.com/ziontee113/syntax-tree-surfer"
+  },
   ["telescope-bookmarks.nvim"] = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/telescope-bookmarks.nvim",
@@ -378,6 +393,11 @@ _G.packer_plugins = {
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ultisnips = {
+    loaded = true,
+    path = "/home/morp/.local/share/nvim/site/pack/packer/start/ultisnips",
+    url = "https://github.com/SirVer/ultisnips"
+  },
   ["vim-bbye"] = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/vim-bbye",
@@ -387,6 +407,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/vim-codefmt",
     url = "https://github.com/google/vim-codefmt"
+  },
+  ["vim-dadbod"] = {
+    loaded = true,
+    path = "/home/morp/.local/share/nvim/site/pack/packer/start/vim-dadbod",
+    url = "https://github.com/tpope/vim-dadbod"
   },
   ["vim-eunuch"] = {
     loaded = true,
@@ -452,6 +477,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/vim-unimpaired",
     url = "https://github.com/tpope/vim-unimpaired"
+  },
+  ["xplr.nvim"] = {
+    loaded = true,
+    path = "/home/morp/.local/share/nvim/site/pack/packer/start/xplr.nvim",
+    url = "https://github.com/fhill2/xplr.nvim"
   }
 }
 

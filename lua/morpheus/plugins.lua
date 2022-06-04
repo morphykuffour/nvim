@@ -91,6 +91,11 @@ return packer.startup(function(use)
 	use("voldikss/vim-floaterm")
 	use("junegunn/goyo.vim")
 	use("projekt0n/github-nvim-theme")
+use {
+  'fhill2/xplr.nvim',
+  run = function() require'xplr'.install({hide=true}) end,
+  requires = {{'nvim-lua/plenary.nvim'}, {'MunifTanjim/nui.nvim'}}
+}
 
 	use({
 		"kyazdani42/nvim-tree.lua",
@@ -111,6 +116,7 @@ return packer.startup(function(use)
 	use("tpope/vim-repeat")
 	use("tpope/vim-eunuch")
 	use("tpope/vim-unimpaired")
+	use("tpope/vim-dadbod")
 
 	-- git
 	use({ "TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim" })
@@ -210,8 +216,11 @@ return packer.startup(function(use)
 	use("theHamsta/nvim-dap-virtual-text")
 	use("bfredl/nvim-luadev")
 
-	use("https://github.com/mfussenegger/nvim-treehopper")
-	use("https://github.com/phaazon/hop.nvim")
+	use("mfussenegger/nvim-treehopper")
+	use("phaazon/hop.nvim")
+	use("ziontee113/syntax-tree-surfer")
+	use("SirVer/ultisnips")
+  use "vim-syntastic/syntastic"
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
