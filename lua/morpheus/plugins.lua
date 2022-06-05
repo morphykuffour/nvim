@@ -91,11 +91,25 @@ return packer.startup(function(use)
 	use("voldikss/vim-floaterm")
 	use("junegunn/goyo.vim")
 	use("projekt0n/github-nvim-theme")
-use {
-  'fhill2/xplr.nvim',
-  run = function() require'xplr'.install({hide=true}) end,
-  requires = {{'nvim-lua/plenary.nvim'}, {'MunifTanjim/nui.nvim'}}
-}
+-- use {
+--   'fhill2/xplr.nvim',
+--   run = function() require'xplr'.install({hide=true}) end,
+--   requires = {{'nvim-lua/plenary.nvim'}, {'MunifTanjim/nui.nvim'}}
+-- }
+
+  use({
+    "sayanarijit/xplr.vim",
+    config = function()
+      vim.cmd([[
+        let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.9, 'highlight': 'Debug' } }
+        let g:nnn#action = {
+              \ '<c-t>': 'tab split',
+              \ '<c-x>': 'split',
+              \ '<c-v>': 'vsplit' }
+        let g:nnn#replace_netrw = 1
+      ]])
+    end,
+  })
 
 	use({
 		"kyazdani42/nvim-tree.lua",
@@ -213,6 +227,7 @@ use {
 	-- dap for nvim plguins
 	use("jbyuki/one-small-step-for-vimkind")
 	use_help({ "mfussenegger/nvim-dap" }, true)
+	use( "rcarriga/nvim-dap-ui" )
 	use("theHamsta/nvim-dap-virtual-text")
 	use("bfredl/nvim-luadev")
 

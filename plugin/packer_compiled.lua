@@ -235,11 +235,6 @@ _G.packer_plugins = {
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/neogit",
     url = "https://github.com/TimUntersberger/neogit"
   },
-  ["nui.nvim"] = {
-    loaded = true,
-    path = "/home/morp/.local/share/nvim/site/pack/packer/start/nui.nvim",
-    url = "https://github.com/MunifTanjim/nui.nvim"
-  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
@@ -259,6 +254,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/nvim-dap",
     url = "https://github.com/mfussenegger/nvim-dap"
+  },
+  ["nvim-dap-ui"] = {
+    loaded = true,
+    path = "/home/morp/.local/share/nvim/site/pack/packer/start/nvim-dap-ui",
+    url = "https://github.com/rcarriga/nvim-dap-ui"
   },
   ["nvim-dap-virtual-text"] = {
     loaded = true,
@@ -478,10 +478,11 @@ _G.packer_plugins = {
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/vim-unimpaired",
     url = "https://github.com/tpope/vim-unimpaired"
   },
-  ["xplr.nvim"] = {
+  ["xplr.vim"] = {
+    config = { "\27LJ\2\n·\2\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0—\2        let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.9, 'highlight': 'Debug' } }\n        let g:nnn#action = {\n              \\ '<c-t>': 'tab split',\n              \\ '<c-x>': 'split',\n              \\ '<c-v>': 'vsplit' }\n        let g:nnn#replace_netrw = 1\n      \bcmd\bvim\0" },
     loaded = true,
-    path = "/home/morp/.local/share/nvim/site/pack/packer/start/xplr.nvim",
-    url = "https://github.com/fhill2/xplr.nvim"
+    path = "/home/morp/.local/share/nvim/site/pack/packer/start/xplr.vim",
+    url = "https://github.com/sayanarijit/xplr.vim"
   }
 }
 
@@ -518,6 +519,10 @@ end
 time([[Config for nvim-neoclip.lua]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fneoclip\frequire\0", "config", "nvim-neoclip.lua")
 time([[Config for nvim-neoclip.lua]], false)
+-- Config for: xplr.vim
+time([[Config for xplr.vim]], true)
+try_loadstring("\27LJ\2\n·\2\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0—\2        let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.9, 'highlight': 'Debug' } }\n        let g:nnn#action = {\n              \\ '<c-t>': 'tab split',\n              \\ '<c-x>': 'split',\n              \\ '<c-v>': 'vsplit' }\n        let g:nnn#replace_netrw = 1\n      \bcmd\bvim\0", "config", "xplr.vim")
+time([[Config for xplr.vim]], false)
 -- Config for: Comment.nvim
 time([[Config for Comment.nvim]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")

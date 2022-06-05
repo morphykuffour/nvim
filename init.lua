@@ -14,6 +14,7 @@ require("morpheus.telescope")
 require("morpheus.treesitter")
 require("morpheus.tsplayground")
 require("morpheus.neogit")
+-- require("morpheus.xplr") TODO update when .nvim is ready
 require("morpheus.nvim-tree")
 require("morpheus.snippets")
 require("morpheus.luasnip")
@@ -31,8 +32,8 @@ Jcall(require, "morpheus/keymaps")
 -- Theme
 require("morpheus.theme.lualine_gruvbox")
 if tonumber(os.date("%H")) < 17 then
-	-- vim.opt.background = "light"
-	vim.opt.background = "dark"
+	vim.opt.background = "light"
+	-- vim.opt.background = "dark"
 	vim.cmd("colorscheme gruvbox")
 else
 	vim.opt.background = "dark"
@@ -85,9 +86,9 @@ vim.opt.concealcursor = "nc"
 -- firenvim font
 vim.cmd("set guifont=JetBrainsMono:h18")
 
-vim.cmd[["set statusline+=%#warningmsg#"]]
-vim.cmd[["set statusline+=%{SyntasticStatuslineFlag()}"]]
-vim.cmd[["set statusline+=%*"]]
+vim.cmd([["set statusline+=%#warningmsg#"]])
+vim.cmd([["set statusline+=%{SyntasticStatuslineFlag()}"]])
+vim.cmd([["set statusline+=%*"]])
 
 vim.g.syntastic_always_populate_loc_list = 1
 vim.g.syntastic_auto_loc_list = 1
