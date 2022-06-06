@@ -15,7 +15,7 @@ require("morpheus.treesitter")
 require("morpheus.tsplayground")
 require("morpheus.neogit")
 -- require("morpheus.xplr") TODO update when .nvim is ready
-require("morpheus.nvim-tree")
+-- require("morpheus.nvim-tree")
 require("morpheus.snippets")
 require("morpheus.luasnip")
 require("morpheus.headlines")
@@ -32,8 +32,8 @@ Jcall(require, "morpheus/keymaps")
 -- Theme
 require("morpheus.theme.lualine_gruvbox")
 if tonumber(os.date("%H")) < 17 then
-	vim.opt.background = "light"
-	-- vim.opt.background = "dark"
+	-- vim.opt.background = "light"
+	vim.opt.background = "dark"
 	vim.cmd("colorscheme gruvbox")
 else
 	vim.opt.background = "dark"
@@ -58,6 +58,7 @@ autocmd("BufWritePost", { pattern = "*.py", command = "AutoFormatBuffer yapf" })
 autocmd("BufWritePost", { pattern = "*.go", command = "AutoFormatBuffer gofmt" })
 autocmd("BufWritePost", { pattern = "*.rs", command = "AutoFormatBuffer rustfmt" })
 autocmd("BufWritePost", { pattern = "*.c", command = "AutoFormatBuffer clang-format" })
+autocmd("BufWritePost", { pattern = "*.cpp", command = "AutoFormatBuffer clang-format" })
 
 -- source vimfiles
 for i, vf in pairs(vim.split(vim.fn.glob("$HOME/.config/nvim/vimfiles/*.vim"), "\n")) do
