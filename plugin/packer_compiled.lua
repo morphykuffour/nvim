@@ -135,6 +135,11 @@ _G.packer_plugins = {
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/darkplus.nvim",
     url = "https://github.com/lunarvim/darkplus.nvim"
   },
+  ["diaglist.nvim"] = {
+    loaded = true,
+    path = "/home/morp/.local/share/nvim/site/pack/packer/start/diaglist.nvim",
+    url = "https://github.com/onsails/diaglist.nvim"
+  },
   ["diffview.nvim"] = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/diffview.nvim",
@@ -393,6 +398,11 @@ _G.packer_plugins = {
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["tokyonight.nvim"] = {
+    loaded = true,
+    path = "/home/morp/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
+  },
   ultisnips = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/ultisnips",
@@ -515,10 +525,6 @@ if not vim.g.packer_custom_loader_enabled then
   vim.g.packer_custom_loader_enabled = true
 end
 
--- Config for: nvim-neoclip.lua
-time([[Config for nvim-neoclip.lua]], true)
-try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fneoclip\frequire\0", "config", "nvim-neoclip.lua")
-time([[Config for nvim-neoclip.lua]], false)
 -- Config for: xplr.vim
 time([[Config for xplr.vim]], true)
 try_loadstring("\27LJ\2\n·\2\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0—\2        let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.9, 'highlight': 'Debug' } }\n        let g:nnn#action = {\n              \\ '<c-t>': 'tab split',\n              \\ '<c-x>': 'split',\n              \\ '<c-v>': 'vsplit' }\n        let g:nnn#replace_netrw = 1\n      \bcmd\bvim\0", "config", "xplr.vim")
@@ -527,6 +533,10 @@ time([[Config for xplr.vim]], false)
 time([[Config for Comment.nvim]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
 time([[Config for Comment.nvim]], false)
+-- Config for: nvim-neoclip.lua
+time([[Config for nvim-neoclip.lua]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fneoclip\frequire\0", "config", "nvim-neoclip.lua")
+time([[Config for nvim-neoclip.lua]], false)
 if should_profile then save_profiles() end
 
 end)

@@ -91,6 +91,7 @@ return packer.startup(function(use)
 	use("voldikss/vim-floaterm")
 	use("junegunn/goyo.vim")
 	use("projekt0n/github-nvim-theme")
+  use 'folke/tokyonight.nvim'
 -- use {
 --   'fhill2/xplr.nvim',
 --   run = function() require'xplr'.install({hide=true}) end,
@@ -230,7 +231,9 @@ return packer.startup(function(use)
 	use( "rcarriga/nvim-dap-ui" )
 	use("theHamsta/nvim-dap-virtual-text")
 	use("bfredl/nvim-luadev")
+  use "onsails/diaglist.nvim"
 
+  -- movement
 	use("mfussenegger/nvim-treehopper")
 	use("phaazon/hop.nvim")
 	use("ziontee113/syntax-tree-surfer")

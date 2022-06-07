@@ -24,21 +24,24 @@ require("morpheus.lsp")
 require("morpheus.orgmode")
 require("morpheus.cucumbertables")
 require("morpheus.godbolt")
-require("morpheus.hop")
+-- require("morpheus.diaglist")
+-- require("morpheus.hop") Use nvim sneak
 -- require("morpheus.statusline")
 Jcall(require, "morpheus/plugins")
 Jcall(require, "morpheus/keymaps")
 
 -- Theme
-require("morpheus.theme.lualine_gruvbox")
-if tonumber(os.date("%H")) < 17 then
-	-- vim.opt.background = "light"
-	vim.opt.background = "dark"
-	vim.cmd("colorscheme gruvbox")
-else
-	vim.opt.background = "dark"
-	vim.cmd("colorscheme gruvbox")
-end
+-- require("morpheus.theme.lualine_tokyonight")
+vim.cmd("colorscheme darkplus")
+
+-- -- require("morpheus.theme.lualine_gruvbox")
+-- if tonumber(os.date("%H")) > 17 then
+-- 	vim.opt.background = "light"
+-- 	vim.cmd("colorscheme gruvbox")
+-- else
+-- 	vim.opt.background = "dark"
+-- 	vim.cmd("colorscheme gruvbox")
+-- end
 
 -- disable python2
 vim.g.loaded_python_provider = 0
