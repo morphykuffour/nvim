@@ -91,27 +91,27 @@ return packer.startup(function(use)
 	use("voldikss/vim-floaterm")
 	use("junegunn/goyo.vim")
 	use("projekt0n/github-nvim-theme")
-  use 'folke/tokyonight.nvim'
--- use {
---   'fhill2/xplr.nvim',
---   run = function() require'xplr'.install({hide=true}) end,
---   requires = {{'nvim-lua/plenary.nvim'}, {'MunifTanjim/nui.nvim'}}
--- }
+	use("folke/tokyonight.nvim")
+	-- use {
+	--   'fhill2/xplr.nvim',
+	--   run = function() require'xplr'.install({hide=true}) end,
+	--   requires = {{'nvim-lua/plenary.nvim'}, {'MunifTanjim/nui.nvim'}}
+	-- }
 
-  use({
-    "sayanarijit/xplr.vim",
-    config = function()
-      vim.cmd([[
-        let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.9, 'highlight': 'Debug' } }
-        let g:nnn#action = {
-              \ '<c-t>': 'tab split',
-              \ '<c-x>': 'split',
-              \ '<c-v>': 'vsplit' }
-        let g:nnn#replace_netrw = 1
-      ]])
-    end,
-  })
-
+	-- use({
+	--   "sayanarijit/xplr.vim",
+	--   config = function()
+	--     vim.cmd([[
+	--       let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.9, 'highlight': 'Debug' } }
+	--       let g:nnn#action = {
+	--             \ '<c-t>': 'tab split',
+	--             \ '<c-x>': 'split',
+	--             \ '<c-v>': 'vsplit' }
+	--       let g:nnn#replace_netrw = 1
+	--     ]])
+	--   end,
+	-- })
+	--
 	use({
 		"kyazdani42/nvim-tree.lua",
 		requires = {
@@ -154,6 +154,7 @@ return packer.startup(function(use)
 	use("saadparwaiz1/cmp_luasnip")
 	use("tjdevries/complextras.nvim")
 	use("onsails/lspkind.nvim")
+	use("nvim-lua/lsp_extensions.nvim")
 
 	-- snippets
 	use("L3MON4D3/LuaSnip")
@@ -228,17 +229,17 @@ return packer.startup(function(use)
 	-- dap for nvim plguins
 	use("jbyuki/one-small-step-for-vimkind")
 	use_help({ "mfussenegger/nvim-dap" }, true)
-	use( "rcarriga/nvim-dap-ui" )
+	use("rcarriga/nvim-dap-ui")
 	use("theHamsta/nvim-dap-virtual-text")
 	use("bfredl/nvim-luadev")
-  use "onsails/diaglist.nvim"
+	use("onsails/diaglist.nvim")
 
-  -- movement
+	-- movement
 	use("mfussenegger/nvim-treehopper")
 	use("phaazon/hop.nvim")
 	use("ziontee113/syntax-tree-surfer")
 	use("SirVer/ultisnips")
-  use "vim-syntastic/syntastic"
+	use("vim-syntastic/syntastic")
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
