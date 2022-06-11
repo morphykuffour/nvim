@@ -9,25 +9,22 @@ vim.g.snippets = "luasnip"
 require("morpheus.utils")
 require("morpheus.globals")
 require("morpheus.options")
--- require("morpheus.completion")
+require("morpheus.lsp")
+require("morpheus.completion")
 require("morpheus.syntastic")
 require("morpheus.telescope")
 require("morpheus.treesitter")
 require("morpheus.tsplayground")
 require("morpheus.neogit")
--- TODO update when .nvim is ready
--- require("morpheus.xplr")
--- require("morpheus.nvim-tree")
 require("morpheus.snippets")
 require("morpheus.luasnip")
 require("morpheus.headlines")
 require("morpheus.gitsigns")
--- require("morpheus.lsp")
 require("morpheus.orgmode")
 require("morpheus.cucumbertables")
 require("morpheus.godbolt")
--- require("morpheus.diaglist")
 require("morpheus.hop")
+require("morpheus.lsp.null-ls")
 require("morpheus.statusline")
 Jcall(require, "morpheus/plugins")
 Jcall(require, "morpheus/keymaps")
@@ -59,15 +56,16 @@ autocmd("BufWritePost", {
 
 autocmd("BufWritePost", { pattern = "*.lua", command = "lua require('stylua').format()" })
 -- autocmd("BufWritePost", { pattern = "*.py", command = "AutoFormatBuffer yapf" })
-autocmd("BufWritePost", { pattern = "*.go", command = "AutoFormatBuffer gofmt" })
-autocmd("BufWritePost", { pattern = "*.rs", command = "AutoFormatBuffer rustfmt" })
-autocmd("BufWritePost", { pattern = "*.c", command = "AutoFormatBuffer clang-format" })
-autocmd("BufWritePost", { pattern = "*.cpp", command = "AutoFormatBuffer clang-format" })
+-- autocmd("BufWritePost", { pattern = "*.go", command = "AutoFormatBuffer gofmt" })
+-- autocmd("BufWritePost", { pattern = "*.rs", command = "AutoFormatBuffer rustfmt" })
+-- autocmd("BufWritePost", { pattern = "*.c", command = "AutoFormatBuffer clang-format" })
+-- autocmd("BufWritePost", { pattern = "*.cpp", command = "AutoFormatBuffer clang-format" })
 
 -- source vimfiles
 for i, vf in pairs(vim.split(vim.fn.glob("$HOME/.config/nvim/vimfiles/*.vim"), "\n")) do
 	vim.api.nvim_command("source " .. vf)
 end
+-- vim.cmd([[runtime! vimfiles/*.vim]])
 
 -- gx => open url in browser
 if vim.fn.has("wsl") then

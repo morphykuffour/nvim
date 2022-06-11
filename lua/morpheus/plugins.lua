@@ -42,29 +42,6 @@ packer.init({
 
 -- Plugins
 return packer.startup(function(use)
-	-- use_help function
-	local use_help = function(params, create_config)
-		local plugin = params[1]
-		local requires = params.requires
-		local config = params.config
-		use({ plugin, requires = requires, config = config, disable = params.disable })
-		if create_config then
-			local split = SplitString(plugin, "/")
-			local plugin_name = split[GetLastIndex(split)]
-			plugin_name = plugin_name:gsub("%.", "-")
-			local plugin_dir = PLUGIN_CONF_PATH .. plugin_name .. "/"
-			local dir_exists = FileExists(plugin_dir)
-			if not dir_exists then
-				os.execute("mkdir -p " .. plugin_dir)
-			end
-			local init_file = plugin_dir .. "init.lua"
-			local init_exist = FileExists(init_file)
-			if not init_exist then
-				os.execute("touch " .. init_file)
-			end
-			Jcall(require, "morpheus/plugin_conf/" .. plugin_name)
-		end
-	end
 
 	-- utils
 	use("wbthomason/packer.nvim")
@@ -161,13 +138,21 @@ return packer.startup(function(use)
 	use("nvim-lua/lsp_extensions.nvim")
 	use("glepnir/lspsaga.nvim")
 	use("simrat39/symbols-outline.nvim")
+    use {
+      "ericpubu/lsp_codelens_extensions.nvim",
+      config = function()
+        require("codelens_extensions").setup()
+      end,
+    }
+    use "jose-elias-alvarez/null-ls.nvim"
+      use "williamboman/nvim-lsp-installer" -- simple to use language server installer
 
 	-- snippets
 	use("L3MON4D3/LuaSnip")
 	use("rafamadriz/friendly-snippets")
 
 	-- code formatting and documentation
-	use_help({ "mhartington/formatter.nvim" }, true)
+	-- use_help({ "mhartington/formatter.nvim" }, true)
 	use("milisims/nvim-luaref")
 	use({
 		"numToStr/Comment.nvim",
@@ -226,11 +211,10 @@ return packer.startup(function(use)
 
 	-- dap for nvim plguins
 	use("jbyuki/one-small-step-for-vimkind")
-	use_help({ "mfussenegger/nvim-dap" }, true)
+	-- use_help({ "mfussenegger/nvim-dap" }, true)
 	use("rcarriga/nvim-dap-ui")
 	use("theHamsta/nvim-dap-virtual-text")
 	use("bfredl/nvim-luadev")
-	use("onsails/diaglist.nvim")
 
 	-- movement
 	use("mfussenegger/nvim-treehopper")
