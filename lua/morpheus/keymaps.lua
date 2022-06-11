@@ -185,6 +185,7 @@ vim.cmd("command! ReloadConfig lua ReloadConfig()")
 
 vim.cmd("command! CopyBufferName lua CopyBufferName()")
 m.nmap("<leader>bn", "<cmd>lua CopyBufferName()<cr>")
+m.nmap("<leader>sa", "<cmd>Scratch<cr>")
 
 m.nmap("gx", "<Plug>(openbrowser-smart-search)<cr>")
 m.vmap("gx", "<Plug>(openbrowser-smart-search)<cr>")

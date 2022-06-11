@@ -110,24 +110,8 @@ function get_visual_selection()
 	return table.concat(lines, "\n")
 end
 
-function _G.GoogleSearch()
-	local word = vim.api.nvim_call_function("expand", { "<cword>" })
-	-- local word1 = get_visual_selection()
-	vim.cmd("OpenBrowserSearch -google " .. word)
-end
-
--- 	let g:netrw_nogx = 1 " disable netrw's gx mapping.
 -- 	nmap gx <Plug>(openbrowser-smart-search)
 -- 	vmap gx <Plug>(openbrowser-smart-search)
---
---
--- Usage:
---
---  
--- 	" Open URI under cursor.
--- 	nmap map-you-like <Plug>(openbrowser-open)
--- 	" Open selected URI.
--- 	vmap map-you-like <Plug>(openbrowser-open)
 
 function GetLastIndex(list)
 	local last

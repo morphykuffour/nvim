@@ -6,7 +6,7 @@
 " :SDelete[!]  delete a session
 " :SClose      close a session
 "
-let g:startify_session_dir = '$HOME/.config/nvim/session'
+let g:startify_session_dir = '$HOME/tmp/nvim_sessions'
 "
 let g:startify_lists = [
           \ { 'type': 'files',     'header': ['   MRU Files']            },

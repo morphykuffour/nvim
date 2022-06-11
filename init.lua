@@ -25,27 +25,27 @@ require("morpheus.orgmode")
 require("morpheus.cucumbertables")
 require("morpheus.godbolt")
 -- require("morpheus.diaglist")
--- require("morpheus.hop") Use nvim sneak
--- require("morpheus.statusline")
+require("morpheus.hop")
+require("morpheus.statusline")
 Jcall(require, "morpheus/plugins")
 Jcall(require, "morpheus/keymaps")
 
 -- Theme
--- require("morpheus.theme.lualine_tokyonight")
+-- require("morpheus.theme.lualine_github_dark")
 vim.cmd("colorscheme darkplus")
+-- vim.cmd("colorscheme gruvbox")
 
--- -- require("morpheus.theme.lualine_gruvbox")
--- if tonumber(os.date("%H")) > 17 then
+-- if tonumber(os.date("%H")) < 17 then
 -- 	vim.opt.background = "light"
--- 	vim.cmd("colorscheme gruvbox")
+-- 	vim.cmd("colorscheme github_dark_default")
 -- else
 -- 	vim.opt.background = "dark"
--- 	vim.cmd("colorscheme gruvbox")
+-- 	vim.cmd("colorscheme github_dark")
 -- end
 
 -- disable python2
 vim.g.loaded_python_provider = 0
-vim.g.python3_host_prog = "/usr/bin/python3"
+vim.g.python3_host_prog = "/home/morp/miniconda3/bin/python3.9"
 
 -- reload vimrc on save
 local autocmd = vim.api.nvim_create_autocmd
@@ -57,7 +57,7 @@ autocmd("BufWritePost", {
 })
 
 autocmd("BufWritePost", { pattern = "*.lua", command = "lua require('stylua').format()" })
-autocmd("BufWritePost", { pattern = "*.py", command = "AutoFormatBuffer yapf" })
+-- autocmd("BufWritePost", { pattern = "*.py", command = "AutoFormatBuffer yapf" })
 autocmd("BufWritePost", { pattern = "*.go", command = "AutoFormatBuffer gofmt" })
 autocmd("BufWritePost", { pattern = "*.rs", command = "AutoFormatBuffer rustfmt" })
 autocmd("BufWritePost", { pattern = "*.c", command = "AutoFormatBuffer clang-format" })

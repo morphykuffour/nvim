@@ -9,5 +9,9 @@
 -- %l/%L,%c                                       rownumber/total,colnumber
 -- %{&fileencoding?&fileencoding:&encoding}       file encoding
 vim.opt.statusline =
-	"  %< %{FugitiveHead()}  %f %m %r %w %= Ln %l, Col %c  %{&fileencoding?&fileencoding:&encoding}  "
+	" <b>[%N]  %< %{FugitiveHead()}  %F %m %r %w %= %y %{&fileencoding?&fileencoding:&encoding} [%{&fileformat}]  Ln %l, Col %c "
 
+-- %#DiffAdd#%{(mode()=='n')?'\ \ NORMAL\ ':''}
+-- %#DiffChange#%{(mode()=='i')?'\ \ INSERT\ ':''}
+-- %#DiffDelete#%{(mode()=='r')?'\ \ RPLACE\ ':''}
+-- %#Cursor#%{(mode()=='v')?'\ \ VISUAL\ ':''}
