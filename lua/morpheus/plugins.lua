@@ -172,8 +172,6 @@ return packer.startup(function(use)
 			require("Comment").setup()
 		end,
 	})
-	-- LSP
-	use("williamboman/nvim-lsp-installer")
 
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
