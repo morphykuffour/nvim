@@ -1,8 +1,6 @@
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
--- TODO clone to local remove nvim-lsp-installer
 local sumneko_root_path = "~/.local/share/nvim/lsp_servers/sumneko_lua/extension/server"
 local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
 
@@ -49,7 +47,5 @@ local function config(_config)
 	}, _config or {})
 end
 
--- -- require("lspconfig").jedi_language_server.setup(config())
--- -- require("lspconfig").tsserver.setup(config())
--- -- require("lspconfig").jedi_language_server.setup(config())
--- -- require("lspconfig").tsserver.setup(confi ())
+require("lspconfig").jedi_language_server.setup(config())
+require("lspconfig").tsserver.setup(config())
