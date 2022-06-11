@@ -181,13 +181,6 @@ cmp.setup.cmdline("/", {
 	}),
 })
 
--- Add vim-dadbod-completion in sql files
--- _ = vim.cmd([[
---   augroup DadbodSql
---     au!
---     autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer { sources = { { name = 'vim-dadbod-completion' } } }
---   augroup END
--- ]])
 
 _ = vim.cmd([[
   augroup CmpZsh

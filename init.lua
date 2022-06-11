@@ -9,12 +9,14 @@ vim.g.snippets = "luasnip"
 require("morpheus.utils")
 require("morpheus.globals")
 require("morpheus.options")
-require("morpheus.completion")
+-- require("morpheus.completion")
+require("morpheus.syntastic")
 require("morpheus.telescope")
 require("morpheus.treesitter")
 require("morpheus.tsplayground")
 require("morpheus.neogit")
--- require("morpheus.xplr") TODO update when .nvim is ready
+-- TODO update when .nvim is ready
+-- require("morpheus.xplr")
 -- require("morpheus.nvim-tree")
 require("morpheus.snippets")
 require("morpheus.luasnip")
@@ -30,7 +32,7 @@ require("morpheus.statusline")
 Jcall(require, "morpheus/plugins")
 Jcall(require, "morpheus/keymaps")
 
--- Theme
+-- Themes
 -- require("morpheus.theme.lualine_github_dark")
 vim.cmd("colorscheme darkplus")
 -- vim.cmd("colorscheme gruvbox")
@@ -43,9 +45,8 @@ vim.cmd("colorscheme darkplus")
 -- 	vim.cmd("colorscheme github_dark")
 -- end
 
--- disable python2
-vim.g.loaded_python_provider = 0
-vim.g.python3_host_prog = "/home/morp/miniconda3/bin/python3.9"
+vim.g.loaded_python_provider = 0 -- disable python2
+vim.g.python3_host_prog = "/usr/bin/python3"
 
 -- reload vimrc on save
 local autocmd = vim.api.nvim_create_autocmd
@@ -76,25 +77,3 @@ elseif vim.fn.has("mac") then
 elseif vim.fn.has("linux") then
 	vim.g.netrw_browsex_viewer = "xdg-open"
 end
-
-require("plenary.filetype").add_file("base")
-require("plenary.filetype").add_file("builtin")
-require("nvim-dap-virtual-text").setup()
-
--- orgmode settings
-vim.opt.shellslash = true
-vim.cmd("language en_US.utf8")
-vim.opt.conceallevel = 2
-vim.opt.concealcursor = "nc"
-
--- firenvim font
-vim.cmd("set guifont=JetBrainsMono:h18")
-
-vim.cmd([["set statusline+=%#warningmsg#"]])
-vim.cmd([["set statusline+=%{SyntasticStatuslineFlag()}"]])
-vim.cmd([["set statusline+=%*"]])
-
-vim.g.syntastic_always_populate_loc_list = 1
-vim.g.syntastic_auto_loc_list = 1
-vim.g.syntastic_check_on_open = 1
-vim.g.syntastic_check_on_wq = 0

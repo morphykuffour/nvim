@@ -1,3 +1,9 @@
+-- orgmode settings
+vim.opt.shellslash = true
+vim.cmd("language en_US.utf8")
+vim.opt.conceallevel = 2
+vim.opt.concealcursor = "nc"
+
 require("orgmode").setup_ts_grammar()
 
 require("orgmode").setup({
