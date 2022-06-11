@@ -1,4 +1,3 @@
-
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 -- Don't show the dumb matching stuff.
@@ -19,6 +18,16 @@ vim.api.nvim_set_keymap(
 	{ noremap = true }
 )
 
+local cmp = require("cmp")
+local source_mapping = {
+	buffer = "[buffer]",
+	nvim_lsp = "[LSP]",
+	nvim_lua = "[api]",
+	cmp_tabnine = "[tn]",
+	luasnip = "[snip]",
+	path = "[path]",
+}
+
 local ok, lspkind = pcall(require, "lspkind")
 if not ok then
 	return
@@ -26,15 +35,13 @@ end
 
 lspkind.init()
 
-local cmp = require("cmp")
-
 cmp.setup({
 	mapping = {
 		["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
 		["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-		["<C-d>"] = cmp.mapping.scroll_docs(-4),
-		["<C-f>"] = cmp.mapping.scroll_docs(4),
-		["<C-e>"] = cmp.mapping.abort(),
+		["<C-u>"] = cmp.mapping.scroll_docs(-4),
+		["<C-d>"] = cmp.mapping.scroll_docs(4),
+		["<c-space>"] = cmp.mapping.complete(),
 		["<c-y>"] = cmp.mapping(
 			cmp.mapping.confirm({
 				behavior = cmp.ConfirmBehavior.Insert,
@@ -43,36 +50,8 @@ cmp.setup({
 			{ "i", "c" }
 		),
 
-		["<c-space>"] = cmp.mapping({
-			i = cmp.mapping.complete(),
-			c = function(
-				_ --[[fallback]]
-			)
-				if cmp.visible() then
-					if not cmp.confirm({ select = true }) then
-						return
-					end
-				else
-					cmp.complete()
-				end
-			end,
-		}),
-
 		-- ["<tab>"] = false,
 		["<tab>"] = cmp.config.disable,
-
-		-- ["<tab>"] = cmp.mapping {
-		--   i = cmp.config.disable,
-		--   c = function(fallback)
-		--     fallback()
-		--   end,
-		-- },
-
-		-- Testing
-		["<c-q>"] = cmp.mapping.confirm({
-			behavior = cmp.ConfirmBehavior.Replace,
-			select = true,
-		}),
 
 		-- If you want tab completion :'(
 		--  First you have to just promise to read `:help ins-completion`.
@@ -93,21 +72,13 @@ cmp.setup({
 		-- end,
 	},
 
-	-- Youtube:
-	--    the order of your sources matter (by default). That gives them priority
-	--    you can configure:
-	--        keyword_length
-	--        priority
-	--        max_item_count
-	--        (more?)
 	sources = {
-		-- { name = "gh_issues" },
-		-- Youtube: Could enable this only for lua, but nvim_lua handles that already.
-		{ name = "nvim_lua" },
+		{ name = "cmp_tabnine" },
 		{ name = "nvim_lsp" },
+		{ name = "buffer", keyword_length = 3 },
+		{ name = "nvim_lua" },
 		{ name = "path" },
 		{ name = "luasnip" },
-		{ name = "buffer", keyword_length = 5 },
 	},
 
 	sorting = {
@@ -145,20 +116,35 @@ cmp.setup({
 		end,
 	},
 
+	-- formatting = {
+	-- 	-- Youtube: How to set up nice formatting for your sources.
+	-- 	format = lspkind.cmp_format({
+	-- 		with_text = true,
+	-- 		menu = {
+	-- 			buffer = "[bufffer]",
+	-- 			nvim_lsp = "[LSP]",
+	-- 			nvim_lua = "[api]",
+	-- 			path = "[path]",
+	-- 			luasnip = "[snip]",
+	-- 			-- gh_issues = "[issues]",
+	-- 			tn = "[TabNine]",
+	-- 		},
+	-- 	}),
+	-- },
+
 	formatting = {
-		-- Youtube: How to set up nice formatting for your sources.
-		format = lspkind.cmp_format({
-			with_text = true,
-			menu = {
-				buffer = "[buf]",
-				nvim_lsp = "[LSP]",
-				nvim_lua = "[api]",
-				path = "[path]",
-				luasnip = "[snip]",
-				gh_issues = "[issues]",
-				tn = "[TabNine]",
-			},
-		}),
+		format = function(entry, vim_item)
+			vim_item.kind = lspkind.presets.default[vim_item.kind]
+			local menu = source_mapping[entry.source.name]
+			if entry.source.name == "cmp_tabnine" then
+				if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+					menu = entry.completion_item.data.detail .. " " .. menu
+				end
+				vim_item.kind = ""
+			end
+			vim_item.menu = menu
+			return vim_item
+		end,
 	},
 
 	experimental = {
@@ -169,18 +155,6 @@ cmp.setup({
 		ghost_text = false,
 	},
 })
-
-cmp.setup.cmdline("/", {
-	completion = {
-		autocomplete = true,
-	},
-	sources = cmp.config.sources({
-		{ name = "nvim_lsp_document_symbol" },
-	}, {
-		-- { name = "buffer", keyword_length = 5 },
-	}),
-})
-
 
 _ = vim.cmd([[
   augroup CmpZsh

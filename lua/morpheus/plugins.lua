@@ -6,14 +6,7 @@ local PLUGIN_CONF_PATH = fn.stdpath("config") .. "/lua/morpheus/plugin_conf/"
 -- Automatically install packer
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-	PACKER_BOOTSTRAP = fn.system({
-		"git",
-		"clone",
-		"--depth",
-		"1",
-		"https://github.com/wbthomason/packer.nvim",
-		install_path,
-	})
+	PACKER_BOOTSTRAP = fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path, })
 	print("Installing packer close and reopen Neovim...")
 	vim.cmd([[packadd packer.nvim]])
 end
@@ -32,17 +25,16 @@ if not status_ok then
 end
 
 -- Have packer use a popup window
-packer.init({
-	display = {
-		open_fn = function()
-			return require("packer.util").float({ border = "rounded" })
-		end,
-	},
-})
+-- packer.init({
+-- 	display = {
+-- 		open_fn = function()
+-- 			return require("packer.util").float({ border = "rounded" })
+-- 		end,
+-- 	},
+-- })
 
 -- Plugins
 return packer.startup(function(use)
-
 	-- utils
 	use("wbthomason/packer.nvim")
 	use("nvim-lua/popup.nvim")
@@ -69,33 +61,6 @@ return packer.startup(function(use)
 	use("junegunn/goyo.vim")
 	use("projekt0n/github-nvim-theme")
 	use("folke/tokyonight.nvim")
-	-- use {
-	--   'fhill2/xplr.nvim',
-	--   run = function() require'xplr'.install({hide=true}) end,
-	--   requires = {{'nvim-lua/plenary.nvim'}, {'MunifTanjim/nui.nvim'}}
-	-- }
-
-	-- use({
-	--   "sayanarijit/xplr.vim",
-	--   config = function()
-	--     vim.cmd([[
-	--       let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.9, 'highlight': 'Debug' } }
-	--       let g:nnn#action = {
-	--             \ '<c-t>': 'tab split',
-	--             \ '<c-x>': 'split',
-	--             \ '<c-v>': 'vsplit' }
-	--       let g:nnn#replace_netrw = 1
-	--     ]])
-	--   end,
-	-- })
-	--
-	use({
-		"kyazdani42/nvim-tree.lua",
-		requires = {
-			"kyazdani42/nvim-web-devicons", -- optional, for file icon
-		},
-		tag = "nightly", -- optional, updated every week. (see issue #1193)
-	})
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
@@ -136,23 +101,22 @@ return packer.startup(function(use)
 	use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
 	use("onsails/lspkind.nvim")
 	use("nvim-lua/lsp_extensions.nvim")
-	use("glepnir/lspsaga.nvim")
+	-- use("glepnir/lspsaga.nvim")
 	use("simrat39/symbols-outline.nvim")
-    use {
-      "ericpubu/lsp_codelens_extensions.nvim",
-      config = function()
-        require("codelens_extensions").setup()
-      end,
-    }
-    use "jose-elias-alvarez/null-ls.nvim"
-      use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+	use({
+		"ericpubu/lsp_codelens_extensions.nvim",
+		config = function()
+			require("codelens_extensions").setup()
+		end,
+	})
+	use("jose-elias-alvarez/null-ls.nvim")
+	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
 
 	-- snippets
 	use("L3MON4D3/LuaSnip")
 	use("rafamadriz/friendly-snippets")
 
 	-- code formatting and documentation
-	-- use_help({ "mhartington/formatter.nvim" }, true)
 	use("milisims/nvim-luaref")
 	use({
 		"numToStr/Comment.nvim",
@@ -170,13 +134,6 @@ return packer.startup(function(use)
 	})
 	use({ "dhruvmanila/telescope-bookmarks.nvim" })
 	use("tyru/open-browser.vim")
-	use({
-		"glacambre/firenvim",
-		run = function()
-			vim.fn["firenvim#install"](0)
-		end,
-	})
-
 	use({
 		"AckslD/nvim-neoclip.lua",
 		requires = {
@@ -207,14 +164,13 @@ return packer.startup(function(use)
 	use({ "wesleimp/stylua.nvim" })
 	use({ "google/vim-codefmt", requires = { "google/vim-maktaba" } })
 	use("~/Dropbox/projects/neovim-plugins/lookup.nvim")
-	-- use("~/Dropbox/projects/neovim-plugins/rest.nvim")
 
 	-- dap for nvim plguins
-	use("jbyuki/one-small-step-for-vimkind")
-	-- use_help({ "mfussenegger/nvim-dap" }, true)
-	use("rcarriga/nvim-dap-ui")
-	use("theHamsta/nvim-dap-virtual-text")
-	use("bfredl/nvim-luadev")
+	-- use("jbyuki/one-small-step-for-vimkind")
+	-- use( "mfussenegger/nvim-dap" )
+	-- use("rcarriga/nvim-dap-ui")
+	-- use("theHamsta/nvim-dap-virtual-text")
+	-- use("bfredl/nvim-luadev")
 
 	-- movement
 	use("mfussenegger/nvim-treehopper")
