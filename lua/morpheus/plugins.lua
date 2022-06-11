@@ -161,10 +161,7 @@ return packer.startup(function(use)
 	use("rafamadriz/friendly-snippets")
 
 	-- LSP
-	use({
-		"neovim/nvim-lspconfig",
-		requires = { "folke/lua-dev.nvim" },
-	})
+	use({ "neovim/nvim-lspconfig"})
 
 	-- code formatting and documentation
 	use_help({ "mhartington/formatter.nvim" }, true)
