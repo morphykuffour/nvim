@@ -5,10 +5,6 @@ local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
 
--- nvim-luadev
-keymap("n", "<leader>ll", "<Plug>(Luadev-RunLine)", opts)
-keymap("n", "<leader>lr", "<Plug>(Luadev-Run)", opts)
-
 -- move between vim panes
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
@@ -16,8 +12,7 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- file tree
--- keymap("n", "<leader>n", ":Lf<cr>", opts)
--- keymap("n", "<leader>n", ":NvimTreeToggle<cr>", opts)
+keymap("n", "<leader>n", ":Lf<cr>", opts)
 keymap("n", "<leader>e", ":Lex 30<cr>", opts)
 
 -- Resize with arrows
@@ -40,12 +35,10 @@ keymap("n", "<leader><leader>", "<C-^>", opts)
 keymap("n", "Q", "<nop>", opts)
 
 -- "Edit configs
-keymap("n", "<F10>", ":edit $MYVIMRC<cr>", opts)
-keymap("n", "<leader><F10>", ":vsplit $MYVIMRC<cr>", opts)
-keymap("n", "<F11>", ":edit $HOME/dotfiles/misc/.tmux.conf<cr>", opts)
-keymap("n", "<F12>", ":edit $HOME/dotfiles/misc/.zshrc<cr>", opts)
+m.nmap("<leader>vc", "<cmd>e $MYVIMRC<cr>")
+m.nmap("<leader>tc", ":edit $HOME/dotfiles/tmux/.tmux.conf<cr>")
+m.nmap("<leader>zc", ":edit $HOME/dotfiles/zsh/.zshrc<cr>")
 
--- Visual --
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
@@ -70,6 +63,10 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 -- Harpoon mappings
 m.nmap("<leader>hm", [[:lua require("harpoon.mark").add_file()<cr>]])
 m.nmap("<leader>hv", [[:lua require("harpoon.ui").toggle_quick_menu()<cr>]])
+
+-- nnoremap <leader><F1> :Startify<CR>
+m.nmap("<leader>st", ":Startify<CR>")
+m.nmap("<leader>so", ":source %<CR>")
 
 m.nmap("<leader>pp", ":lua require('nabla').popup()<CR>")
 m.vmap("<leader>pp", ":lua require('nabla').popup()<CR>")
@@ -98,9 +95,9 @@ m.nmap("<leader>tn", ":tabnew<CR>")
 m.nmap("<leader>tk", ":tabnext<CR>")
 m.nmap("<leader>tj", ":tabprev<CR>")
 
-m.nmap("<leader>ff", "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>")
+-- m.nmap("<leader>ff", "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>")
 --m.nmap("<leader>ff", "<cmd>lua vim.lsp.buf.format({async = true})<CR>")
-m.vmap("<leader>ff", "<cmd>lua vim.lsp.buf.range_formatting()<CR>")
+-- m.vmap("<leader>ff", "<cmd>lua vim.lsp.buf.range_formatting()<CR>")
 m.nmap("di$", "T$dt$")
 m.nmap("ci$", "T$ct$")
 m.nmap("<leader>hn", "<cmd>:setlocal nonumber norelativenumber<CR>")
@@ -177,7 +174,6 @@ m.nmap("<leader>dc", "<cmd>lua require'dap'.continue()<cr>")
 m.nmap("<leader>gg", ":Neogit <CR>")
 m.nmap("<leader>gd", ":DiffviewOpen<CR>")
 
-m.nmap("<leader>ev", "<cmd>e ~/.config/nvim/init.lua<ENTER>")
 m.nmap("<leader>cls", "<cmd>SymbolsOutline<cr>")
 
 m.nmap("<leader>sv", "<cmd>lua ReloadConfig()<cr>")
@@ -193,6 +189,5 @@ m.vmap("gx", "<Plug>(openbrowser-smart-search)<cr>")
 m.nmap("<leader>wd", '<cmd>lua R("morpheus.wiki").make_diary_entry()<CR>', { noremap = true })
 m.nmap("<leader>wt", '<cmd>lua R("morpheus.wiki").make_todo()<CR>', { noremap = true })
 
-m.nmap("<leader>dw","<cmd>lua require('diaglist').open_all_diagnostics()<cr>")
-m.nmap("<leader>d0","<cmd>lua require('diaglist').open_buffer_diagnostics()<cr>")
-
+m.nmap("<leader>dw", "<cmd>lua require('diaglist').open_all_diagnostics()<cr>")
+m.nmap("<leader>d0", "<cmd>lua require('diaglist').open_buffer_diagnostics()<cr>")

@@ -6,7 +6,14 @@ local PLUGIN_CONF_PATH = fn.stdpath("config") .. "/lua/morpheus/plugin_conf/"
 -- Automatically install packer
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-	PACKER_BOOTSTRAP = fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path, })
+	PACKER_BOOTSTRAP = fn.system({
+		"git",
+		"clone",
+		"--depth",
+		"1",
+		"https://github.com/wbthomason/packer.nvim",
+		install_path,
+	})
 	print("Installing packer close and reopen Neovim...")
 	vim.cmd([[packadd packer.nvim]])
 end
@@ -25,13 +32,13 @@ if not status_ok then
 end
 
 -- Have packer use a popup window
--- packer.init({
--- 	display = {
--- 		open_fn = function()
--- 			return require("packer.util").float({ border = "rounded" })
--- 		end,
--- 	},
--- })
+packer.init({
+	display = {
+		open_fn = function()
+			return require("packer.util").float({ border = "rounded" })
+		end,
+	},
+})
 
 -- Plugins
 return packer.startup(function(use)
@@ -39,6 +46,8 @@ return packer.startup(function(use)
 	use("wbthomason/packer.nvim")
 	use("nvim-lua/popup.nvim")
 	use("nvim-lua/plenary.nvim")
+	use("christoomey/vim-tmux-navigator")
+
 	use("windwp/nvim-autopairs")
 
 	-- writing
@@ -115,6 +124,7 @@ return packer.startup(function(use)
 	-- snippets
 	use("L3MON4D3/LuaSnip")
 	use("rafamadriz/friendly-snippets")
+	use("SirVer/ultisnips")
 
 	-- code formatting and documentation
 	use("milisims/nvim-luaref")
@@ -172,12 +182,10 @@ return packer.startup(function(use)
 	-- use("theHamsta/nvim-dap-virtual-text")
 	-- use("bfredl/nvim-luadev")
 
-	-- movement
 	use("mfussenegger/nvim-treehopper")
 	use("phaazon/hop.nvim")
 	use("ziontee113/syntax-tree-surfer")
-	use("SirVer/ultisnips")
-	use("vim-syntastic/syntastic")
+	-- use("vim-syntastic/syntastic")
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
