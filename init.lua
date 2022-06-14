@@ -30,8 +30,9 @@ Jcall(require, "morpheus/plugins")
 Jcall(require, "morpheus/keymaps")
 
 -- Themes
--- require("morpheus.theme.lualine_github_dark")
-vim.cmd("colorscheme darkplus")
+-- vim.cmd("colorscheme darkplus")
+vim.cmd("colorscheme github_dark")
+require("morpheus.theme.lualine_github_dark")
 -- vim.cmd("colorscheme gruvbox")
 
 -- if tonumber(os.date("%H")) < 17 then
