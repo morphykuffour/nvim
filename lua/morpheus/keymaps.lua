@@ -11,10 +11,6 @@ m.nmap("<C-j>", "<C-w>j", opts)
 m.nmap("<C-k>", "<C-w>k", opts)
 m.nmap("<C-l>", "<C-w>l", opts)
 
--- file tree TODO use telescope file-browser
--- keymap("n", "<leader>n", ":Lf<cr>", opts)
--- keymap("n", "<leader>e", ":Lex 30<cr>", opts)
-
 -- Resize with arrows
 m.nmap("<C-Up>", ":resize -2<CR>", opts)
 m.nmap("<C-Down>", ":resize +2<CR>", opts)
@@ -161,14 +157,6 @@ m.nmap("<leader>fm", "<cmd>Telescope bookmarks<cr>")
 m.nmap("<leader>fc", "<cmd>Telescope neoclip<cr>")
 -- m.nmap("<c-f>", "<cmd>Telescope find_files hidden=true<CR>")
 
--- lua dap
--- m.nmap("<leader>dd", '<cmd>lua require("osv").launch()<cr>')
-m.nmap("<leader>db", '<cmd>lua require("dap").toggle_breakpoint()<cr>')
-m.nmap("<leader>dj", "<cmd>lua require'dap'.step_over()<cr>")
-m.nmap("<leader>dl", "<cmd>lua require'dap'.step_into()<cr>")
-m.nmap("<leader>dk", "<cmd>lua require'dap'.step_out()<cr>")
-m.nmap("<leader>dc", "<cmd>lua require'dap'.continue()<cr>")
-
 -- Git
 m.nmap("<leader>gg", ":Neogit <CR>")
 m.nmap("<leader>gd", ":DiffviewOpen<CR>")
@@ -185,8 +173,31 @@ m.nmap("<leader>sa", "<cmd>Scratch<cr>")
 m.nmap("gx", "<Plug>(openbrowser-smart-search)<cr>")
 m.vmap("gx", "<Plug>(openbrowser-smart-search)<cr>")
 
+-- writing
 m.nmap("<leader>wd", '<cmd>lua R("morpheus.wiki").make_diary_entry()<CR>', { noremap = true })
 m.nmap("<leader>wt", '<cmd>lua R("morpheus.wiki").make_todo()<CR>', { noremap = true })
+m.nmap("<leader>oc", '<cmd>lua require("orgmode").action("capture.prompt")<CR>', { noremap = true })
+m.nmap("<leader>oa", '<cmd>lua require("orgmode").action("agenda.prompt")<CR>', { noremap = true })
 
+-- debugging
+m.nmap("<leader>ddd", '<cmd>lua require("osv").launch()<cr>')
+m.nmap("<leader>ddr", '<cmd>lua require("osv").run_this()<cr>')
+m.nmap("<leader>db", '<cmd>lua require("dap").toggle_breakpoint()<cr>')
+m.nmap("<leader>dj", "<cmd>lua require'dap'.step_over()<cr>")
+m.nmap("<leader>dl", "<cmd>lua require'dap'.step_into()<cr>")
+m.nmap("<leader>dk", "<cmd>lua require'dap'.step_out()<cr>")
+m.nmap("<leader>dc", "<cmd>lua require'dap'.continue()<cr>")
+m.nmap("<leader>dr", "<cmd>lua require'dap'.repl.open()<cr>")
+keymap("n", "<leader>dB", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
+keymap("n", "<leader>lp", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", opts)
 m.nmap("<leader>dw", "<cmd>lua require('diaglist').open_all_diagnostics()<cr>")
 m.nmap("<leader>d0", "<cmd>lua require('diaglist').open_buffer_diagnostics()<cr>")
+
+-- vim.keymap.set("n", "<F5>", ":lua require'dap'.continue()<CR>")
+-- vim.keymap.set("n", "<F3>", ":lua require'dap'.step_over()<CR>")
+-- vim.keymap.set("n", "<F2>", ":lua require'dap'.step_into()<CR>")
+-- vim.keymap.set("n", "<F12>", ":lua require'dap'.step_out()<CR>")
+-- vim.keymap.set("n", "<leader>br", ":lua require'dap'.toggle_breakpoint()<CR>")
+-- vim.keymap.set("n", "<leader>B", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+-- vim.keymap.set("n", "<leader>lp", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
+-- vim.keymap.set("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>")

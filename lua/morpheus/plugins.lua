@@ -47,6 +47,7 @@ return packer.startup(function(use)
 	use("nvim-lua/popup.nvim")
 	use("nvim-lua/plenary.nvim")
 	use("christoomey/vim-tmux-navigator")
+  use "AndrewRadev/bufferize.vim"
 
 	use("windwp/nvim-autopairs")
 
@@ -138,7 +139,7 @@ return packer.startup(function(use)
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
 	use("nvim-telescope/telescope-fzy-native.nvim")
-  -- use("nvim-telescope/telescope-cheat.nvim")
+	-- use("nvim-telescope/telescope-cheat.nvim")
 	use({ "nvim-telescope/telescope-file-browser.nvim" })
 	use({ "dhruvmanila/telescope-bookmarks.nvim" })
 	use("tyru/open-browser.vim")
@@ -169,7 +170,7 @@ return packer.startup(function(use)
 
 	-- low level stuff
 	use("p00f/godbolt.nvim")
-	use("sakhnik/nvim-gdb")
+	-- use("sakhnik/nvim-gdb") TODO configure dap for c and cpp
 
 	-- plug dev
 	use("nvim-lua/completion-nvim")
@@ -178,8 +179,9 @@ return packer.startup(function(use)
 	use("~/Dropbox/projects/neovim-plugins/lookup.nvim")
 
 	-- dap for nvim plguins
-	-- use("jbyuki/one-small-step-for-vimkind")
-	use( "mfussenegger/nvim-dap" )
+	use("jbyuki/one-small-step-for-vimkind")
+	use("mfussenegger/nvim-dap")
+	use("mfussenegger/nvim-dap-python")
 	use("rcarriga/nvim-dap-ui")
 	use("theHamsta/nvim-dap-virtual-text")
 	-- use("bfredl/nvim-luadev")
