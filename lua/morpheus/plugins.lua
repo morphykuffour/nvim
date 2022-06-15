@@ -177,6 +177,7 @@ return packer.startup(function(use)
 	use({ "wesleimp/stylua.nvim" })
 	use({ "google/vim-codefmt", requires = { "google/vim-maktaba" } })
 	use("~/Dropbox/projects/neovim-plugins/lookup.nvim")
+	use("~/Dropbox/projects/neovim-plugins/nvim-whid")
 
 	-- dap for nvim plguins
 	use("jbyuki/one-small-step-for-vimkind")

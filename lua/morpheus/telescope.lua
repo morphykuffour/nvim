@@ -5,6 +5,9 @@ end
 
 local actions = require("telescope.actions")
 local fb_actions = require("telescope").extensions.file_browser.actions
+local fb_utils = require("telescope._extensions.file_browser.utils")
+local action_state = require("telescope.actions.state")
+local Job = require("plenary.job")
 
 telescope.setup({
 	defaults = {
@@ -82,37 +85,38 @@ telescope.setup({
 			-- the default case_mode is "smart_case"
 		},
 		bookmarks = {
-			-- Available: 'brave', 'buku', 'chrome', 'chrome_beta', 'edge', 'safari', 'firefox', 'vivaldi'
 			selected_browser = "brave",
-
-			-- Either provide a shell command to open the URL
 			url_open_command = "open",
-			-- url_open_command = "brave",
-
-			-- Or provide the plugin name which is already installed
-			-- Available: 'vim_external', 'open_browser'
 			url_open_plugin = "open_browser",
-
-			-- Show the full path to the bookmark instead of just the bookmark name
 			full_path = true,
-
-			-- Provide a custom profile name for Firefox
 			firefox_profile_name = nil,
 		},
 		file_browser = {
 			theme = "ivy",
-			-- disables netrw and use telescope-file-browser in its place
 			hijack_netrw = true,
 			mappings = {
 				["i"] = {
-					-- your custom insert mode mappings
-            ["<C-h>"] = fb_actions.goto_home_dir,
-            ["<C-r>"] = function(prompt_bufnr)
-              -- bulk rename with edir
-            end
+					["<C-h>"] = fb_actions.goto_home_dir,
+
+					-- mass renameing with edir
+					["<C-r>"] = function(prompt_bufnr)
+						-- bulk rename with edir
+						-- https://github.com/bulletmark/edir
+						-- local quiet = action_state.get_current_picker(prompt_bufnr).finder.quiet
+						local selections = fb_utils.get_selected_files(prompt_bufnr, true)
+						Job:new({ "edir", selections }):start()
+					end,
 				},
 				["n"] = {
 					-- your custom normal mode mappings
+					["<C-h>"] = fb_actions.goto_home_dir,
+					["."] = fb_actions.toggle_hidden,
+					["dd"] = fb_actions.remove,
+					["re"] = fb_actions.rename,
+					["yy"] = fb_actions.copy,
+					["c"] = fb_actions.create,
+					["p"] = fb_actions.move,
+					["o"] = fb_actions.open,
 				},
 			},
 		},
