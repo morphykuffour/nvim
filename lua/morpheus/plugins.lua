@@ -1,7 +1,7 @@
 require("morpheus/utils")
 
 local fn = vim.fn
-local PLUGIN_CONF_PATH = fn.stdpath("config") .. "/lua/morpheus/plugin_conf/"
+-- local PLUGIN_CONF_PATH = fn.stdpath("config") .. "/lua/morpheus/plugin_conf/"
 
 -- Automatically install packer
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
@@ -64,7 +64,7 @@ return packer.startup(function(use)
 	use("moll/vim-bbye")
 	use("antoinemadec/FixCursorHold.nvim")
 	use("kevinhwang91/nvim-bqf")
-	use("ptzz/lf.vim")
+	-- use("ptzz/lf.vim")
 	use("mhinz/vim-startify")
 	use("voldikss/vim-floaterm")
 	use("junegunn/goyo.vim")
@@ -138,10 +138,8 @@ return packer.startup(function(use)
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
 	use("nvim-telescope/telescope-fzy-native.nvim")
-	use({
-		"nvim-telescope/telescope-fzf-native.nvim",
-		run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-	})
+  -- use("nvim-telescope/telescope-cheat.nvim")
+	use({ "nvim-telescope/telescope-file-browser.nvim" })
 	use({ "dhruvmanila/telescope-bookmarks.nvim" })
 	use("tyru/open-browser.vim")
 	use({
@@ -153,6 +151,10 @@ return packer.startup(function(use)
 		config = function()
 			require("neoclip").setup()
 		end,
+	})
+	use({
+		"nvim-telescope/telescope-fzf-native.nvim",
+		run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 	})
 
 	-- TODO figure out why nvim-treesitter does not work on OSX
@@ -177,15 +179,49 @@ return packer.startup(function(use)
 
 	-- dap for nvim plguins
 	-- use("jbyuki/one-small-step-for-vimkind")
-	-- use( "mfussenegger/nvim-dap" )
-	-- use("rcarriga/nvim-dap-ui")
-	-- use("theHamsta/nvim-dap-virtual-text")
+	use( "mfussenegger/nvim-dap" )
+	use("rcarriga/nvim-dap-ui")
+	use("theHamsta/nvim-dap-virtual-text")
 	-- use("bfredl/nvim-luadev")
+	use("onsails/diaglist.nvim")
 
 	use("mfussenegger/nvim-treehopper")
 	use("phaazon/hop.nvim")
 	use("ziontee113/syntax-tree-surfer")
 	-- use("vim-syntastic/syntastic")
+
+	-- TESTING NEW PLUGINS
+	use({
+		"NTBBloodbath/rest.nvim",
+		requires = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("rest-nvim").setup({
+				-- Open request results in a horizontal split
+				result_split_horizontal = false,
+				-- Keep the http file buffer above|left when split horizontal|vertical
+				result_split_in_place = false,
+				-- Skip SSL verification, useful for unknown certificates
+				skip_ssl_verification = false,
+				-- Highlight request on run
+				highlight = {
+					enabled = true,
+					timeout = 150,
+				},
+				result = {
+					-- toggle showing URL, HTTP info, headers at top the of result window
+					show_url = true,
+					show_http_info = true,
+					show_headers = true,
+				},
+				-- Jump to request line on run
+				jump_to_request = false,
+				env_file = ".env",
+				custom_dynamic_variables = {},
+				yank_dry_run = true,
+			})
+		end,
+	})
+
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end

@@ -4,6 +4,7 @@ if not status_ok then
 end
 
 local actions = require("telescope.actions")
+local fb_actions = require("telescope").extensions.file_browser.actions
 
 telescope.setup({
 	defaults = {
@@ -98,6 +99,23 @@ telescope.setup({
 			-- Provide a custom profile name for Firefox
 			firefox_profile_name = nil,
 		},
+		file_browser = {
+			theme = "ivy",
+			-- disables netrw and use telescope-file-browser in its place
+			hijack_netrw = true,
+			mappings = {
+				["i"] = {
+					-- your custom insert mode mappings
+            ["<C-h>"] = fb_actions.goto_home_dir,
+            ["<C-r>"] = function(prompt_bufnr)
+              -- bulk rename with edir
+            end
+				},
+				["n"] = {
+					-- your custom normal mode mappings
+				},
+			},
+		},
 	},
 })
 
@@ -105,6 +123,7 @@ telescope.setup({
 telescope.load_extension("fzf")
 telescope.load_extension("neoclip")
 telescope.load_extension("bookmarks")
+telescope.load_extension("file_browser")
 
 local M = {}
 
@@ -123,13 +142,6 @@ M.search_vimrc = function()
 		hidden = true,
 	})
 end
-
--- keymap("n", "<leader>ft", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
--- M.search_themes = function()
---     require("telescope.builtin").find_files(
---        require('telescope.themes').get_dropdown({ previewer = false })
---     )
--- end
 
 function M.installed_plugins()
 	require("telescope.builtin").find_files({

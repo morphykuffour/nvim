@@ -15,7 +15,7 @@ let g:startify_lists = [
           \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
           \ { 'type': 'commands', 'header': ['   Commands']      },
           \ ]
-let g:startify_bookmarks = [ { 'd': '~/dotfiles' }, {'p': '~/.config/nvim/lua/morpheus/plugins.lua'}, {'v': '$MYVIMRC'}, {'z': '~/dotfiles/zsh/.zshrc'}, {'e': '~/dotfiles/emacs/.emacs.d/init.el'}, {'ts': '~/.config/nvim/vimfiles/telescope.vim'}]
+let g:startify_bookmarks = [ { 'd': '~/dotfiles' }, {'p': '~/.config/nvim/lua/morpheus/plugins.lua'}, {'v': '$MYVIMRC'}, {'z': '~/dotfiles/zsh/.zshrc'}, {'e': '~/dotfiles/emacs/.emacs.d/init.el'}, {'ts': '~/.config/nvim/vimfiles/telescope.vim'}, {'km': '~/.config/nvim/lua/morpheus/keymaps.lua'}]
 
 let g:startify_commands = [
       \ {'o': ['oldfiles', 'Telescope oldfiles']},

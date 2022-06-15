@@ -6,33 +6,28 @@ local term_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 -- move between vim panes
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+m.nmap("<C-h>", "<C-w>h", opts)
+m.nmap("<C-j>", "<C-w>j", opts)
+m.nmap("<C-k>", "<C-w>k", opts)
+m.nmap("<C-l>", "<C-w>l", opts)
 
--- file tree
-keymap("n", "<leader>n", ":Lf<cr>", opts)
-keymap("n", "<leader>e", ":Lex 30<cr>", opts)
+-- file tree TODO use telescope file-browser
+-- keymap("n", "<leader>n", ":Lf<cr>", opts)
+-- keymap("n", "<leader>e", ":Lex 30<cr>", opts)
 
 -- Resize with arrows
-keymap("n", "<C-Up>", ":resize -2<CR>", opts)
-keymap("n", "<C-Down>", ":resize +2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
-
--- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+m.nmap("<C-Up>", ":resize -2<CR>", opts)
+m.nmap("<C-Down>", ":resize +2<CR>", opts)
+m.nmap("<C-Left>", ":vertical resize -2<CR>", opts)
+m.nmap("<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Move text up and down
-keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
-keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
+m.nmap("<A-j>", "<Esc>:m .+1<CR>==gi", opts)
+m.nmap("<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
 -- Switch between last two buffers
-keymap("n", "<leader><leader>", "<C-^>", opts)
-
-keymap("n", "Q", "<nop>", opts)
+m.nmap("<leader><leader>", "<C-^>", opts)
+m.nmap("Q", "<nop>", opts)
 
 -- "Edit configs
 m.nmap("<leader>vc", "<cmd>e $MYVIMRC<cr>")
@@ -40,8 +35,8 @@ m.nmap("<leader>tc", ":edit $HOME/dotfiles/tmux/.tmux.conf<cr>")
 m.nmap("<leader>zc", ":edit $HOME/dotfiles/zsh/.zshrc<cr>")
 
 -- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+-- m.vmap("<", "<gv", opts)
+-- m.vmap(">", ">gv", opts)
 
 -- Move text up and down
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
@@ -79,6 +74,9 @@ m.nmap("c.", "<cmd>cnext<cr>")
 -- buffer switching
 m.nmap("<leader>,", "<cmd>bprev<cr>")
 m.nmap("<leader>.", "<cmd>bnext<cr>")
+-- Navigate buffers
+keymap("n", "<S-l>", ":bnext<CR>", opts)
+keymap("n", "<S-h>", ":bprevious<CR>", opts)
 m.nmap("<leader>bf", ":bfirst<CR>")
 m.nmap("<leader>bl", ":blast<CR>")
 
@@ -145,14 +143,15 @@ local map_tele = function(key, f, options, buffer)
 end
 
 -- Telescope keymaps
-m.nmap("<leader>fb", "<cmd> lua require('telescope.builtin').buffers()<CR>")
-m.nmap("<leader>fo", "<cmd> lua require('telescope.builtin').oldfiles()<CR>")
-m.nmap("<leader>ff", "<cmd> lua require('telescope.builtin').find_files()<CR>")
-m.nmap("<leader>fk", "<cmd> lua require('telescope.builtin').keymaps()<CR>")
+m.nmap("<leader>bb", "<cmd> Telescope buffers<CR>")
+m.nmap("<leader>fb", "<cmd> Telescope file_browser<CR>")
+m.nmap("<leader>fo", "<cmd> Telescope oldfiles<CR>")
+m.nmap("<leader>ff", "<cmd> Telescope find_files<CR>")
+m.nmap("<leader>fk", "<cmd> Telescope keymaps<CR>")
 m.nmap("<leader>fs", "<cmd> lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ')})<CR>")
-m.nmap("<leader>fh", "<cmd> lua require('telescope.builtin').help_tags()<CR>")
-m.nmap("<leader>fg", "<cmd> lua require('telescope.builtin').live_grep()<CR>")
-m.nmap("<leader>lr", "<cmd> lua require('telescope.builtin').lsp_references{}<CR>")
+m.nmap("<leader>fh", "<cmd> Telescope help_tags<CR>")
+m.nmap("<leader>fg", "<cmd> Telescope live_grep<CR>")
+m.nmap("<leader>lr", "<cmd> Telescope lsp_references<CR>")
 map_tele("<space>fp", "installed_plugins")
 map_tele("<space>do", "search_dotfiles")
 map_tele("<space>vr", "search_vimrc")

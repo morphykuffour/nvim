@@ -1,1 +1,16 @@
 -- vim.cmd("autocmd! BufWritePost $MYVIMRC source $MYVIMRC | echom 'Reloaded $MYVIMRC'")
+
+-- if jit.os ~= "OSX" then
+-- end
+
+-- for i, vf in pairs(vim.split(vim.fn.glob("$HOME/.config/nvim/vimfiles/*.vim"), "\n")) do
+-- 	vim.api.nvim_command("source " .. vf)
+-- end
+
+-- if tonumber(os.date("%H")) < 17 then
+-- 	vim.opt.background = "light"
+-- 	vim.cmd("colorscheme github_dark_default")
+-- else
+-- 	vim.opt.background = "dark"
+-- 	vim.cmd("colorscheme github_dark")
+-- end
