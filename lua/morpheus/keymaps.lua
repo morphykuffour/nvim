@@ -11,7 +11,7 @@ m.nmap("<C-j>", "<C-w>j", opts)
 m.nmap("<C-k>", "<C-w>k", opts)
 m.nmap("<C-l>", "<C-w>l", opts)
 
-m.nmap("<leader>f", "<cmd> Ranger<CR>")
+m.nmap("<leader>rf", "<cmd> Ranger<CR>")
 
 -- Resize with arrows
 m.nmap("<C-Up>", ":resize -2<CR>", opts)
@@ -153,6 +153,7 @@ m.nmap("<leader>lr", "<cmd> Telescope lsp_references<CR>")
 map_tele("<space>fp", "installed_plugins")
 map_tele("<space>do", "search_dotfiles")
 map_tele("<space>vr", "search_vimrc")
+m.nmap("<leader>ft", "<cmd> TodoTelescope<CR>")
 
 -- Extension mappings
 m.nmap("<leader>fm", "<cmd>Telescope bookmarks<cr>")
@@ -181,7 +182,7 @@ m.nmap("<leader>wt", '<cmd>lua R("morpheus.wiki").make_todo()<CR>', { noremap = 
 m.nmap("<leader>oc", '<cmd>lua require("orgmode").action("capture.prompt")<CR>', { noremap = true })
 m.nmap("<leader>oa", '<cmd>lua require("orgmode").action("agenda.prompt")<CR>', { noremap = true })
 
--- debugging
+-- debugging remaps
 m.nmap("<leader>ddd", '<cmd>lua require("osv").launch()<cr>')
 m.nmap("<leader>ddr", '<cmd>lua require("osv").run_this()<cr>')
 m.nmap("<leader>db", '<cmd>lua require("dap").toggle_breakpoint()<cr>')
@@ -194,6 +195,7 @@ keymap("n", "<leader>dB", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakp
 keymap("n", "<leader>lp", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", opts)
 m.nmap("<leader>dw", "<cmd>lua require('diaglist').open_all_diagnostics()<cr>")
 m.nmap("<leader>d0", "<cmd>lua require('diaglist').open_buffer_diagnostics()<cr>")
+m.nmap("<leader>m", "<cmd> MaximizerToggle!<CR>")
 
 -- vim.keymap.set("n", "<F5>", ":lua require'dap'.continue()<CR>")
 -- vim.keymap.set("n", "<F3>", ":lua require'dap'.step_over()<CR>")

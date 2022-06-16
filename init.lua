@@ -6,7 +6,6 @@
 vim.g.mapleader = " "
 vim.g.snippets = "luasnip"
 
--- TODO install ranger, ranger-nvim, edir with ranger
 require("morpheus.utils")
 require("morpheus.globals")
 require("morpheus.options")
@@ -30,9 +29,10 @@ require("morpheus.hop")
 require("morpheus.lsp.null-ls")
 require("morpheus.debug")
 require("morpheus.statusline")
+require("morpheus.rest")
+require("morpheus.todo")
 Jcall(require, "morpheus/plugins")
 Jcall(require, "morpheus/keymaps")
-require('rest-nvim').setup()
 
 -- Themes
 -- vim.cmd("colorscheme darkplus")
@@ -63,3 +63,13 @@ elseif vim.fn.has("mac") then
 elseif vim.fn.has("linux") then
 	vim.g.netrw_browsex_viewer = "/usr/bin/xdg-open"
 end
+
+local luadev = require("lua-dev").setup({
+	-- add any options here, or leave empty to use the default settings
+	lspconfig = {
+		cmd = { "lua-language-server" },
+	},
+})
+
+local lspconfig = require("lspconfig")
+lspconfig.sumneko_lua.setup(luadev)

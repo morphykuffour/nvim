@@ -2,6 +2,7 @@ require("morpheus/utils")
 
 local fn = vim.fn
 -- local PLUGIN_CONF_PATH = fn.stdpath("config") .. "/lua/morpheus/plugin_conf/"
+-- TODO
 
 -- Automatically install packer
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
@@ -50,7 +51,7 @@ return packer.startup(function(use)
 	use("AndrewRadev/bufferize.vim")
 	use("francoiscabrol/ranger.vim")
 	use("rbgrouleff/bclose.vim")
-
+	use("szw/vim-maximizer")
 	use("windwp/nvim-autopairs")
 
 	-- writing
@@ -178,53 +179,34 @@ return packer.startup(function(use)
 	use("nvim-lua/completion-nvim")
 	use({ "wesleimp/stylua.nvim" })
 	use({ "google/vim-codefmt", requires = { "google/vim-maktaba" } })
-	use("~/Dropbox/projects/neovim-plugins/lookup.nvim")
+	-- use("~/Dropbox/projects/neovim-plugins/lookup.nvim")
 	use("~/Dropbox/projects/neovim-plugins/nvim-whid")
 
-	-- dap for nvim plguins
+	-- dapfalse for nvim plguins
 	use("jbyuki/one-small-step-for-vimkind")
 	use("mfussenegger/nvim-dap")
 	use("mfussenegger/nvim-dap-python")
 	use("rcarriga/nvim-dap-ui")
 	use("theHamsta/nvim-dap-virtual-text")
-	-- use("bfredl/nvim-luadev")
+	use("bfredl/nvim-luadev")
 	use("onsails/diaglist.nvim")
+	use("folke/lua-dev.nvim")
 
+  -- Lua
+use {
+  "folke/todo-comments.nvim",
+  requires = "nvim-lua/plenary.nvim",
+}
+
+	-- maxwell jump
 	use("mfussenegger/nvim-treehopper")
 	use("phaazon/hop.nvim")
 	use("ziontee113/syntax-tree-surfer")
 	-- use("vim-syntastic/syntastic")
 
-	-- TESTING NEW PLUGINS
 	use({
 		"NTBBloodbath/rest.nvim",
 		requires = { "nvim-lua/plenary.nvim" },
-		config = function()
-			require("rest-nvim").setup({
-				-- Open request results in a horizontal split
-				result_split_horizontal = false,
-				-- Keep the http file buffer above|left when split horizontal|vertical
-				result_split_in_place = false,
-				-- Skip SSL verification, useful for unknown certificates
-				skip_ssl_verification = false,
-				-- Highlight request on run
-				highlight = {
-					enabled = true,
-					timeout = 150,
-				},
-				result = {
-					-- toggle showing URL, HTTP info, headers at top the of result window
-					show_url = true,
-					show_http_info = true,
-					show_headers = true,
-				},
-				-- Jump to request line on run
-				jump_to_request = false,
-				env_file = ".env",
-				custom_dynamic_variables = {},
-				yank_dry_run = true,
-			})
-		end,
 	})
 
 	if PACKER_BOOTSTRAP then

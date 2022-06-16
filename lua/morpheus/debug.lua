@@ -43,6 +43,37 @@ require("dapui").setup()
 local debugpy = vim.fn.expand("$HOME/miniconda3/envs/debugpy/bin/python")
 require("dap-python").setup(debugpy)
 require("dap-python").test_runner = "pytest"
+
+dap.configurations.python = {
+	{
+		-- The first three options are required by nvim-dap
+		type = "python", -- the type here established the link to the adapter definition: `dap.adapters.python`
+		request = "launch",
+		name = "Launch file",
+
+		-- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
+
+		program = "${file}", -- This configuration will launch the current file if used.
+		pythonPath = function()
+			-- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
+			-- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
+			-- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
+
+			local cwd_only = vim.fn.fnamemodify(vim.fn.getcwd(), ":t:h")
+			local debug_env = "$HOME/miniconda3/envs/" .. cwd_only .. "/bin/python"
+
+			if vim.fn.executable(debug_env) == 1 then
+				return debug_env
+			else
+				return vim.fn.expand("$HOME/miniconda3/bin/python")
+			end
+		end,
+	},
+}
+
+-- /home/morp/miniconda3/envs/bookmark-zettelkasten/bin/python
+-- /home/morp/miniconda3/bin/python
+
 -- dap.configurations.python = {
 -- 	{
 -- 		type = "python",
