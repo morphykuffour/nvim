@@ -20,7 +20,7 @@ let g:startify_bookmarks = [ { 'd': '~/dotfiles' }, {'p': '~/.config/nvim/lua/mo
 let g:startify_commands = [
       \ {'o': ['oldfiles', 'Telescope oldfiles']},
       \ {'t': ['terminal', 'FloatermNew']},
-      \ {'f': ['lf', 'Lf']},
+      \ {'f': ['ranger', 'Ranger']},
       \ {'g': ['Git', 'Neogit']},
       \ ]
 

@@ -11,6 +11,8 @@ m.nmap("<C-j>", "<C-w>j", opts)
 m.nmap("<C-k>", "<C-w>k", opts)
 m.nmap("<C-l>", "<C-w>l", opts)
 
+m.nmap("<leader>f", "<cmd> Ranger<CR>")
+
 -- Resize with arrows
 m.nmap("<C-Up>", ":resize -2<CR>", opts)
 m.nmap("<C-Down>", ":resize +2<CR>", opts)
@@ -31,8 +33,8 @@ m.nmap("<leader>tc", ":edit $HOME/dotfiles/tmux/.tmux.conf<cr>")
 m.nmap("<leader>zc", ":edit $HOME/dotfiles/zsh/.zshrc<cr>")
 
 -- Stay in indent mode
--- m.vmap("<", "<gv", opts)
--- m.vmap(">", ">gv", opts)
+m.vmap("<", "<gv", opts)
+m.vmap(">", ">gv", opts)
 
 -- Move text up and down
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)

@@ -6,6 +6,7 @@
 vim.g.mapleader = " "
 vim.g.snippets = "luasnip"
 
+-- TODO install ranger, ranger-nvim, edir with ranger
 require("morpheus.utils")
 require("morpheus.globals")
 require("morpheus.options")
