@@ -31,6 +31,7 @@ require("morpheus.debug")
 require("morpheus.statusline")
 require("morpheus.rest")
 require("morpheus.todo")
+-- require("morpheus.wilder") TODO move wilder.vim to wilder.lua
 Jcall(require, "morpheus/plugins")
 Jcall(require, "morpheus/keymaps")
 

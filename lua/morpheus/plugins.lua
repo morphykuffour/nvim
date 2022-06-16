@@ -53,6 +53,7 @@ return packer.startup(function(use)
 	use("rbgrouleff/bclose.vim")
 	use("szw/vim-maximizer")
 	use("windwp/nvim-autopairs")
+  use { 'gelguy/wilder.nvim', }
 
 	-- writing
 	use("mzlogin/vim-markdown-toc")
