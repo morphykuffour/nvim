@@ -34,11 +34,12 @@ require("morpheus.todo")
 -- require("morpheus.wilder") TODO move wilder.vim to wilder.lua
 Jcall(require, "morpheus/plugins")
 Jcall(require, "morpheus/keymaps")
+require("nrepl").config({})
 
 -- Themes
--- vim.cmd("colorscheme darkplus")
+vim.cmd("colorscheme darkplus")
 -- vim.cmd("colorscheme gruvbox")
-vim.cmd("colorscheme github_dark_default")
+-- vim.cmd("colorscheme github_dark_default")
 -- require("morpheus.theme.lualine_github_dark")
 
 vim.g.loaded_python_provider = 0 -- disable python2

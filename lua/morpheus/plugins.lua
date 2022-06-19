@@ -183,7 +183,7 @@ return packer.startup(function(use)
 	-- use("~/Dropbox/projects/neovim-plugins/lookup.nvim")
 	use("~/Dropbox/projects/neovim-plugins/nvim-whid")
 
-	-- dapfalse for nvim plguins
+	-- for nvim plguins
 	use("jbyuki/one-small-step-for-vimkind")
 	use("mfussenegger/nvim-dap")
 	use("mfussenegger/nvim-dap-python")
@@ -192,6 +192,7 @@ return packer.startup(function(use)
 	use("bfredl/nvim-luadev")
 	use("onsails/diaglist.nvim")
 	use("folke/lua-dev.nvim")
+  use 'ii14/nrepl.nvim'
 
   -- Lua
 use {
