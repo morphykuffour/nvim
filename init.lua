@@ -30,15 +30,21 @@ require("morpheus.lsp.null-ls")
 require("morpheus.debug")
 require("morpheus.statusline")
 require("morpheus.rest")
+require("morpheus.filetype")
 require("morpheus.todo")
 -- require("morpheus.wilder") TODO move wilder.vim to wilder.lua
 Jcall(require, "morpheus/plugins")
 Jcall(require, "morpheus/keymaps")
+
 require("nrepl").config({})
+require("lsp_signature").setup({})
+require("nvim-treesitter.configs").setup({
+	tree_docs = { enable = true },
+})
 
 -- Themes
-vim.cmd("colorscheme darkplus")
--- vim.cmd("colorscheme gruvbox")
+-- vim.cmd("colorscheme darkplus")
+vim.cmd("colorscheme gruvbox")
 -- vim.cmd("colorscheme github_dark_default")
 -- require("morpheus.theme.lualine_github_dark")
 
@@ -53,6 +59,9 @@ autocmd("BufWritePost", {
 		dofile(vim.env.MYVIMRC)
 	end,
 })
+
+-- Do not source the default filetype.vim
+vim.g.did_load_filetypes = 1
 
 -- source vimfiles
 vim.cmd([[runtime! vimfiles/*.vim]])

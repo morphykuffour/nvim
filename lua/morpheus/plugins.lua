@@ -190,6 +190,7 @@ return packer.startup(function(use)
 	use("rcarriga/nvim-dap-ui")
 	use("theHamsta/nvim-dap-virtual-text")
 	use("bfredl/nvim-luadev")
+  use { "ray-x/lsp_signature.nvim", }
 	use("onsails/diaglist.nvim")
 	use("folke/lua-dev.nvim")
   use 'ii14/nrepl.nvim'
@@ -199,6 +200,8 @@ use {
   "folke/todo-comments.nvim",
   requires = "nvim-lua/plenary.nvim",
 }
+use 'nvim-treesitter/nvim-tree-docs'
+use("nathom/filetype.nvim")
 
 	-- maxwell jump
 	use("mfussenegger/nvim-treehopper")
