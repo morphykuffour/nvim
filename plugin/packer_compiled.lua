@@ -454,11 +454,6 @@ _G.packer_plugins = {
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
   },
-  ultisnips = {
-    loaded = true,
-    path = "/home/morp/.local/share/nvim/site/pack/packer/start/ultisnips",
-    url = "https://github.com/SirVer/ultisnips"
-  },
   ["vim-bbye"] = {
     loaded = true,
     path = "/home/morp/.local/share/nvim/site/pack/packer/start/vim-bbye",

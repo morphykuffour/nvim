@@ -10,6 +10,7 @@ require("morpheus.utils")
 require("morpheus.globals")
 require("morpheus.options")
 require("morpheus.lsp")
+require("morpheus.lsp.null-ls")
 require("morpheus.completion")
 require("morpheus.syntastic")
 require("morpheus.telescope")
@@ -26,17 +27,16 @@ require("morpheus.orgmode")
 require("morpheus.cucumbertables")
 require("morpheus.godbolt")
 require("morpheus.hop")
-require("morpheus.lsp.null-ls")
 require("morpheus.debug")
 require("morpheus.statusline")
 require("morpheus.rest")
 require("morpheus.filetype")
 require("morpheus.todo")
--- require("morpheus.wilder") TODO move wilder.vim to wilder.lua
+-- -- require("morpheus.wilder") TODO move wilder.vim to wilder.lua
 Jcall(require, "morpheus/plugins")
 Jcall(require, "morpheus/keymaps")
 
-require("nrepl").config({})
+-- require("nrepl").config({})
 require("lsp_signature").setup({})
 require("nvim-treesitter.configs").setup({
 	tree_docs = { enable = true },

@@ -1,4 +1,4 @@
-require("morpheus/utils")
+-- require("morpheus/utils")
 
 local fn = vim.fn
 -- local PLUGIN_CONF_PATH = fn.stdpath("config") .. "/lua/morpheus/plugin_conf/"
@@ -129,7 +129,7 @@ return packer.startup(function(use)
 	-- snippets
 	use("L3MON4D3/LuaSnip")
 	use("rafamadriz/friendly-snippets")
-	use("SirVer/ultisnips")
+	-- use("SirVer/ultisnips")
 
 	-- code formatting and documentation
 	use("milisims/nvim-luaref")
