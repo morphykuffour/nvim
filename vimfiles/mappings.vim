@@ -20,7 +20,6 @@ nnoremap <leader>Y gg"+yG
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 
-
 " Better quit
 nnoremap <leader>q :qa!<CR>
 
@@ -37,49 +36,17 @@ nnoremap <leader>Y gg"+yG<C-o>
 nnoremap <leader>d "d_
 vnoremap <leader>d "d_
 
-"Navigate buffers
-" nnoremap <leader>bn :bnext<CR>
-" nnoremap <leader>bp :bprevious<CR>
-" nnoremap <leader>bf :bfirst<CR>
-" nnoremap <leader>bl :blast<CR>
 
 "Navigate quickfix list
-nnoremap <silent> <C-k> :cnext<CR>zz
-nnoremap <silent> <C-j> :cprev<CR>zz
 nnoremap <leader>k :lnext<CR>zz
 nnoremap <leader>j :lprev<CR>zz
-
-" Quickfix
-nnoremap  <C-J> :cprevious <CR>
-nnoremap  <C-K> :cnext <CR>
 
 " Remove trailing whitespaces
 nnoremap <silent> <leader>qed :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
-" Jump to anywhere you want with minimal keystrokes, with just one key binding.
-" `s{char}{label}`
-nmap s <Plug>(easymotion-overwin-f)
-" or
-" `s{char}{char}{label}`
-" Need one more keystroke, but on average, it may be more comfortable.
-nmap s <Plug>(easymotion-overwin-f2)
-
-" Turn on case-insensitive feature
-let g:EasyMotion_smartcase = 1
-
-" JK motions
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-
-" Fast JK with special "g"
-" nmap j <Plug>(accelerated_jk_gj_position)
-" nmap k <Plug>(accelerated_jk_gk_position)
 nmap j <Plug>(accelerated_jk_gj)
 nmap k <Plug>(accelerated_jk_gk)
-" nmap j gj
-" nmap k gk
 
 " Better Y
 nnoremap Y y$

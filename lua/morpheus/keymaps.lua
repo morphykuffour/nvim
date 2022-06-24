@@ -1,9 +1,16 @@
-local M = {}
 local m = require("morpheus/mapping_utils")
 
 local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
+
+vim.keymap.set("n", "<leader>/", function()
+	-- You can pass additional configuration to telescope to change theme, layout, etc.
+	require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+		winblend = 10,
+		previewer = false,
+	}))
+end, { desc = "[/] Fuzzily search in current buffer]" })
 
 -- move between vim panes
 m.nmap("<C-h>", "<C-w>h", opts)
@@ -91,9 +98,6 @@ m.nmap("<leader>tn", ":tabnew<CR>")
 m.nmap("<leader>tk", ":tabnext<CR>")
 m.nmap("<leader>tj", ":tabprev<CR>")
 
--- m.nmap("<leader>ff", "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>")
---m.nmap("<leader>ff", "<cmd>lua vim.lsp.buf.format({async = true})<CR>")
--- m.vmap("<leader>ff", "<cmd>lua vim.lsp.buf.range_formatting()<CR>")
 m.nmap("di$", "T$dt$")
 m.nmap("ci$", "T$ct$")
 m.nmap("<leader>hn", "<cmd>:setlocal nonumber norelativenumber<CR>")
@@ -103,10 +107,9 @@ m.nmap("_", "<C-W>>")
 m.nmap("=", "<C-W>-")
 m.nmap("+", "<C-W>+")
 
-vim.cmd([[
-noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
-noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
-]])
+-- Remap for dealing with word wrap
+m.nmap("k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+m.nmap("j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 m.nmap("<leader>sf", "/\\c")
 m.nmap("<leader>sb", "?\\c")

@@ -4,6 +4,7 @@
 
 -- Personal settings
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 vim.g.snippets = "luasnip"
 
 require("morpheus.utils")
@@ -32,11 +33,11 @@ require("morpheus.statusline")
 require("morpheus.rest")
 require("morpheus.filetype")
 require("morpheus.todo")
--- -- require("morpheus.wilder") TODO move wilder.vim to wilder.lua
+-- require("morpheus.wilder") TODO move wilder.vim to wilder.lua
 Jcall(require, "morpheus/plugins")
 Jcall(require, "morpheus/keymaps")
 
--- require("nrepl").config({})
+require("nrepl").config({})
 require("lsp_signature").setup({})
 require("nvim-treesitter.configs").setup({
 	tree_docs = { enable = true },
@@ -44,8 +45,8 @@ require("nvim-treesitter.configs").setup({
 
 -- Themes
 -- vim.cmd("colorscheme darkplus")
-vim.cmd("colorscheme gruvbox")
--- vim.cmd("colorscheme github_dark_default")
+-- vim.cmd("colorscheme gruvbox")
+vim.cmd("colorscheme github_dark_default")
 -- require("morpheus.theme.lualine_github_dark")
 
 vim.g.loaded_python_provider = 0 -- disable python2
@@ -58,6 +59,25 @@ autocmd("BufWritePost", {
 	callback = function()
 		dofile(vim.env.MYVIMRC)
 	end,
+})
+
+-- Automatically source and re-compile packer whenever you save this init.lua
+local packer_group = vim.api.nvim_create_augroup("Packer", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePost", {
+	command = "source <afile> | PackerCompile",
+	group = packer_group,
+	pattern = vim.fn.expand("$MYVIMRC"),
+})
+
+-- [[ Highlight on yank ]]
+-- See `:help vim.highlight.on_yank()`
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+	group = highlight_group,
+	pattern = "*",
 })
 
 -- Do not source the default filetype.vim

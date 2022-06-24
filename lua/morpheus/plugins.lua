@@ -53,7 +53,7 @@ return packer.startup(function(use)
 	use("rbgrouleff/bclose.vim")
 	use("szw/vim-maximizer")
 	use("windwp/nvim-autopairs")
-  use { 'gelguy/wilder.nvim', }
+	use({ "gelguy/wilder.nvim" })
 
 	-- writing
 	use("mzlogin/vim-markdown-toc")
@@ -177,7 +177,9 @@ return packer.startup(function(use)
 	-- use("sakhnik/nvim-gdb") TODO configure dap for c and cpp
 
 	-- plug dev
+	-- use("tjdevries/nlua.nvim")
 	use("nvim-lua/completion-nvim")
+	use("euclidianAce/BetterLua.vim")
 	use({ "wesleimp/stylua.nvim" })
 	use({ "google/vim-codefmt", requires = { "google/vim-maktaba" } })
 	-- use("~/Dropbox/projects/neovim-plugins/lookup.nvim")
@@ -190,18 +192,18 @@ return packer.startup(function(use)
 	use("rcarriga/nvim-dap-ui")
 	use("theHamsta/nvim-dap-virtual-text")
 	use("bfredl/nvim-luadev")
-  use { "ray-x/lsp_signature.nvim", }
+	use({ "ray-x/lsp_signature.nvim" })
 	use("onsails/diaglist.nvim")
 	use("folke/lua-dev.nvim")
-  use 'ii14/nrepl.nvim'
+	use("ii14/nrepl.nvim")
 
-  -- Lua
-use {
-  "folke/todo-comments.nvim",
-  requires = "nvim-lua/plenary.nvim",
-}
-use 'nvim-treesitter/nvim-tree-docs'
-use("nathom/filetype.nvim")
+	-- Lua
+	use({
+		"folke/todo-comments.nvim",
+		requires = "nvim-lua/plenary.nvim",
+	})
+	use("nvim-treesitter/nvim-tree-docs")
+	use("nathom/filetype.nvim")
 
 	-- maxwell jump
 	use("mfussenegger/nvim-treehopper")
