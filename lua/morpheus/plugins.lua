@@ -182,7 +182,7 @@ return packer.startup(function(use)
 	use("euclidianAce/BetterLua.vim")
 	use({ "wesleimp/stylua.nvim" })
 	use({ "google/vim-codefmt", requires = { "google/vim-maktaba" } })
-	-- use("~/Dropbox/projects/neovim-plugins/lookup.nvim")
+	use("~/Dropbox/projects/neovim-plugins/lookup.nvim")
 	use("~/Dropbox/projects/neovim-plugins/nvim-whid")
 
 	-- for nvim plguins

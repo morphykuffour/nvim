@@ -38,10 +38,10 @@ Jcall(require, "morpheus/plugins")
 Jcall(require, "morpheus/keymaps")
 
 require("nrepl").config({})
-require("lsp_signature").setup({})
-require("nvim-treesitter.configs").setup({
-	tree_docs = { enable = true },
-})
+-- require("lsp_signature").setup({})
+-- require("nvim-treesitter.configs").setup({
+-- 	-- tree_docs = { enable = true },
+-- })
 
 -- Themes
 -- vim.cmd("colorscheme darkplus")
@@ -94,13 +94,13 @@ elseif vim.fn.has("mac") then
 elseif vim.fn.has("linux") then
 	vim.g.netrw_browsex_viewer = "/usr/bin/xdg-open"
 end
-
-local luadev = require("lua-dev").setup({
-	-- add any options here, or leave empty to use the default settings
-	lspconfig = {
-		cmd = { "lua-language-server" },
-	},
-})
-
-local lspconfig = require("lspconfig")
-lspconfig.sumneko_lua.setup(luadev)
+--
+-- local luadev = require("lua-dev").setup({
+-- 	-- add any options here, or leave empty to use the default settings
+-- 	lspconfig = {
+-- 		cmd = { "lua-language-server" },
+-- 	},
+-- })
+--
+-- local lspconfig = require("lspconfig")
+-- lspconfig.sumneko_lua.setup(luadev)

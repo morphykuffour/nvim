@@ -108,8 +108,8 @@ m.nmap("=", "<C-W>-")
 m.nmap("+", "<C-W>+")
 
 -- Remap for dealing with word wrap
-m.nmap("k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-m.nmap("j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 m.nmap("<leader>sf", "/\\c")
 m.nmap("<leader>sb", "?\\c")
@@ -199,6 +199,10 @@ keymap("n", "<leader>lp", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.inp
 m.nmap("<leader>dw", "<cmd>lua require('diaglist').open_all_diagnostics()<cr>")
 m.nmap("<leader>d0", "<cmd>lua require('diaglist').open_buffer_diagnostics()<cr>")
 m.nmap("<leader>m", "<cmd> MaximizerToggle!<CR>")
+
+m.nmap("<leader>dn", "<cmd> lua require('dap-python').test_method()<CR>", opts)
+m.nmap("<leader>df", "<cmd> lua require('dap-python').test_class()<CR>", opts)
+m.vmap("<leader>ds", "<ESC> <cmd> lua require('dap-python').debug_selection()<CR>", opts)
 
 -- vim.keymap.set("n", "<F5>", ":lua require'dap'.continue()<CR>")
 -- vim.keymap.set("n", "<F3>", ":lua require'dap'.step_over()<CR>")
