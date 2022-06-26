@@ -33,7 +33,9 @@ require("morpheus.statusline")
 require("morpheus.rest")
 require("morpheus.filetype")
 require("morpheus.todo")
+require("morpheus.delimters")
 -- require("morpheus.wilder") TODO move wilder.vim to wilder.lua
+-- nix will take care of plugin installation
 Jcall(require, "morpheus/plugins")
 Jcall(require, "morpheus/keymaps")
 
@@ -104,3 +106,6 @@ end
 --
 -- local lspconfig = require("lspconfig")
 -- lspconfig.sumneko_lua.setup(luadev)
+
+-- vim.cmd([[ ]])
+-- vim.cmd([[ ]])
