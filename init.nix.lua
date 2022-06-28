@@ -1,4 +1,4 @@
--- vimrc
+--vimrc
 -- Author: Morphy Kuffour
 -- Alias:  JediGrandMaster
 
@@ -9,6 +9,8 @@ vim.g.snippets = "luasnip"
 vim.g.loaded_matchparen = 1
 
 local opt = vim.opt
+local opts = { noremap = true, silent = true }
+local keymap = vim.keymap.set
 
 -- Ignore compiled files
 opt.wildignore = "__pycache__"
@@ -19,6 +21,7 @@ opt.pumblend = 17
 opt.wildmode = "longest:full"
 opt.wildoptions = "pum"
 
+opt.termguicolors = true
 opt.showmode = false
 opt.showcmd = true
 opt.cmdheight = 1 -- Height of the command bar
@@ -105,14 +108,23 @@ opt.fillchars = { eob = "~" }
 
 vim.opt.diffopt = { "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal" }
 
+require("colorizer").setup()
+require("nvim_utils")
 require("nrepl").config({})
 -- require("lsp_signature").setup({})
 
 -- Themes
 -- vim.cmd("colorscheme darkplus")
-vim.cmd("colorscheme gruvbox")
--- vim.cmd("colorscheme github_dark_default")
+-- vim.cmd("colorscheme gruvbox")
+vim.cmd("colorscheme github_dark_default")
 -- require("morpheus.theme.lualine_github_dark")
+
+require("lualine").setup({
+	options = {
+		theme = "github_dark", -- or you can assign github_* themes individually.
+		-- ... your lualine config
+	},
+})
 
 vim.g.loaded_python_provider = 0 -- disable python2
 vim.g.python3_host_prog = "/usr/bin/python3"
@@ -127,23 +139,39 @@ autocmd("BufWritePost", {
 })
 
 -- Automatically source and re-compile packer whenever you save this init.lua
-local packer_group = vim.api.nvim_create_augroup("Packer", { clear = true })
-vim.api.nvim_create_autocmd("BufWritePost", {
-	command = "source <afile> | PackerCompile",
-	group = packer_group,
-	pattern = vim.fn.expand("$MYVIMRC"),
-})
+-- local packer_group = vim.api.nvim_create_augroup("Packer", { clear = true })
+-- vim.api.nvim_create_autocmd("BufWritePost", {
+-- 	command = "source <afile> | PackerCompile",
+-- 	group = packer_group,
+-- 	pattern = vim.fn.expand("$MYVIMRC"),
+-- })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
-vim.api.nvim_create_autocmd("TextYankPost", {
+autocmd("TextYankPost", {
 	callback = function()
 		vim.highlight.on_yank()
 	end,
 	group = highlight_group,
 	pattern = "*",
 })
+
+-- Treesitter
+-- autocmd("BufEnter", {
+-- 	pattern = "*.lua",
+-- 	command = "TSEnable highlight",
+-- })
+
+-- autocmd("BufWritePost", { pattern = "*.lua", command = "lua require('stylua').format()" })
+
+-- vim.cmd.("TSBufEnable rainbow"),
+-- vim.cmd.("TSBufEnable incremental_selection"),
+-- vim.cmd.("TSBufEnable indent"),
+-- vim.cmd([[au VimEnter * TSBufEnable ident]])
+-- vim.cmd([[au VimEnter * TSBufEnable rainbow]])
+-- vim.cmd([[au VimEnter * TSBufEnable highlight]])
+-- vim.cmd([[au VimEnter * TSBufEnable incremental_selection]])
 
 -- Do not source the default filetype.vim
 vim.g.did_load_filetypes = 1
@@ -331,13 +359,103 @@ _ = vim.cmd([[
   augroup END
 ]])
 
--- lsp
+-- LSP settings for nixos
 
-local sumneko_root_path = "/home/mpaulson/personal/lua-language-server"
-local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
+vim.cmd([[ packadd nvim-lspconfig]])
+vim.api.nvim_set_keymap("n", "<leader>L", "<cmd>lua vim.diagnostic.setloclist()<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>d",
+	"<cmd>lua vim.lsp.buf.document_symbol()<cr>",
+	{ noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap("i", "<c-h>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>w",
+	"<cmd>lua vim.lsp.buf.workspace_symbol()<cr>",
+	{ noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap("n", "<leader>e", "<cmd>lua vim.lsp.buf.rename()<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>n",
+	"<cmd>lua vim.diagnostic.goto_next({ float = true })<cr>",
+	{ noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>p",
+	"<cmd>lua vim.diagnostic.goto_prev({ float = true })<cr>",
+	{ noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap("n", "]i", "<cmd>lua vim.lsp.buf.implementation()<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "]t", "<cmd>lua vim.lsp.buf.type_definition()<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-p>", "<cmd>lua vim.diagnostic.open_float()<cr>", { noremap = true, silent = true })
+local nvim_lsp = require("lspconfig")
+local on_attach = function(client, bufnr)
+	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+end
+
+-- local configs = require("lspconfig/configs")
+nvim_lsp.util.default_config = vim.tbl_extend("force", nvim_lsp.util.default_config, { on_attach = on_attach })
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
+
+nvim_lsp.rust_analyzer.setup({ on_attach = on_attach })
+nvim_lsp.clojure_lsp.setup({ on_attach = on_attach })
+nvim_lsp.pyright.setup({ on_attach = on_attach })
+-- nvim_lsp.gopls.setup({ on_attach = on_attach })
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+nvim_lsp.sumneko_lua.setup({
+
+	settings = {
+		Lua = {
+			runtime = {
+				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+				version = "LuaJIT",
+				-- Setup your lua path
+				path = vim.split(package.path, ";"),
+			},
+			diagnostics = {
+				-- Get the language server to recognize the `vim` global
+				globals = { "vim" },
+			},
+			workspace = {
+				-- Make the server aware of Neovim runtime files
+				library = {
+					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+					[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+				},
+			},
+		},
+	},
+})
+
+require("lspfuzzy").setup({
+	methods = "all", -- either 'all' or a list of LSP methods (see below)
+	jump_one = true, -- jump immediately if there is only one location
+	save_last = false, -- save last location results for the :LspFuzzyLast command
+	callback = nil, -- callback called after jumping to a location
+	fzf_preview = { -- arguments to the FZF '--preview-window' option
+		"right:+{2}-/2", -- preview on the right and centered on entry
+	},
+	fzf_action = { -- FZF actions
+		["ctrl-t"] = "tab split", -- go to location in a new tab
+		["ctrl-v"] = "vsplit", -- go to location in a vertical split
+		["ctrl-x"] = "split", -- go to location in a horizontal split
+	},
+	fzf_modifier = ":~:.", -- format FZF entries, see |filename-modifiers|
+	fzf_trim = true, -- trim FZF entries
+})
+
+-- require("lightspeed").setup({
+-- 	ignore_case = true,
+-- })
 
 -- debug
 local dap, dapui = require("dap"), require("dapui")
@@ -436,14 +554,14 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 	dapui.close()
 end
 
--- require("diaglist").init({
---     -- optional settings
---     -- below are defaults
---     debug = false,
---
---     -- increase for noisy servers
---     debounce_ms = 150,
--- })
+require("diaglist").init({
+	-- optional settings
+	-- below are defaults
+	debug = false,
+
+	-- increase for noisy servers
+	debounce_ms = 150,
+})
 
 ---- In init.lua or filetype.nvim's config file
 require("filetype").setup({
@@ -493,15 +611,53 @@ require("filetype").setup({
 	},
 })
 
+-- nixos
+-- autocmd("BufWritePost", {
+-- 	pattern = "/etc/nixos/configuration.nix",
+-- 	callback = function()
+-- 		vim.fn.jobstart("sudo nixos-rebuild switch")
+-- 	end,
+-- })
+
+local Job = require("plenary.job")
+local nix_group = vim.api.nvim_create_augroup("nix", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePost", {
+	group = nix_group,
+	pattern = "/etc/nixos/configuration.nix",
+	callback = function()
+		-- local file = vim.fn.expand("<afile>")
+		Job
+			:new({
+				"sudo",
+				"nixos-rebuild",
+				"switch",
+			})
+			:sync()
+	end,
+})
+autocmd("BufWritePost", {
+	pattern = "$HOME/nix/nixpkgs/.config/nixpkgs/home.nix",
+	callback = function()
+		vim.fn.jobstart("home-manager switch")
+	end,
+})
+
+autocmd("BufWritePost", {
+	pattern = "$HOME/nix/nixpkgs/.config/nixpkgs/modules/nvim/nvim.nix",
+	callback = function()
+		vim.fn.jobstart("home-manager switch")
+	end,
+})
+
 -- Autoformatters
-local autocmd = vim.api.nvim_create_autocmd
 autocmd("BufWritePost", { pattern = "*.lua", command = "lua require('stylua').format()" })
+autocmd("BufWritePost", { pattern = "*.nix", command = "!nixpkgs-fmt %" })
 autocmd("BufWritePost", { pattern = "*.py", command = "AutoFormatBuffer yapf" })
 -- autocmd("BufWritePost", { pattern = "*.go", command = "AutoFormatBuffer gofmt" })
 -- autocmd("BufWritePost", { pattern = "*.rs", command = "AutoFormatBuffer rustfmt" })
 -- autocmd("BufWritePost", { pattern = "*.c", command = "AutoFormatBuffer clang-format" })
 -- autocmd("BufWritePost", { pattern = "*.cpp", command = "AutoFormatBuffer clang-format" })
-function diffThisBranch()
+function _G.diffThisBranch()
 	local branch = vim.fn.input("Branch: ", "")
 	require("gitsigns").diffthis(branch)
 end
@@ -621,18 +777,17 @@ require("gitsigns").setup({
 
 ---- testing out Hop.nvim with vim.schedule
 
---local opts = { noremap = true, silent = true }
---local function jump_back_to_original_buffer(original_buffer) --{{{
---	local current_buffer = vim.api.nvim_get_current_buf()
-
---	if current_buffer ~= original_buffer then
---		-- jump back to the original buffer
---		vim.cmd([[normal! ]])
---	else
---		-- jump back to the original line
---		vim.cmd([[normal! ]])
---	end
---end --}}}
+local opts = { noremap = true, silent = true }
+local function jump_back_to_original_buffer(original_buffer) --{{{
+	local current_buffer = vim.api.nvim_get_current_buf()
+	if current_buffer ~= original_buffer then
+		-- jump back to the original buffer
+		vim.cmd([[normal! ]])
+	else
+		-- jump back to the original line
+		vim.cmd([[normal! ]])
+	end
+end --}}}
 
 -- SECTION: Hyper Yank
 -- NOTE: Hyper Yank with Treesitter Node Select
@@ -829,9 +984,8 @@ end
 
 -- local m = require("morpheus/mapping_utils")
 
-local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
-local keymap = vim.api.nvim_set_keymap
+-- local keymap = vim.api.nvim_set_keymap
 
 -- move between vim panes
 nmap("<C-h>", "<C-w>h", opts)
@@ -961,13 +1115,18 @@ local map_tele = function(key, f, options, buffer)
 	end
 end
 
+function _G.diffThisBranch()
+	local branch = vim.fn.input("Branch: ", "")
+	require("gitsigns").diffthis(branch)
+end
+
 -- require("telescope").load_extension("fzy_native")
 -- telescope.load_extension("fzf")
 -- telescope.load_extension("neoclip")
 -- telescope.load_extension("bookmarks")
 telescope.load_extension("file_browser")
 
-local search_dotfiles = function()
+_G.search_dotfiles = function()
 	require("telescope.builtin").find_files({
 		prompt_title = "< dotfiles >",
 		cwd = vim.env.DOTFILES,
@@ -975,7 +1134,7 @@ local search_dotfiles = function()
 	})
 end
 
-local search_vimrc = function()
+_G.search_vimrc = function()
 	require("telescope.builtin").find_files({
 		prompt_title = "< vimrc >",
 		cwd = "~/.config/nvim/",
@@ -983,14 +1142,14 @@ local search_vimrc = function()
 	})
 end
 
-local installed_plugins = function()
+_G.installed_plugins = function()
 	require("telescope.builtin").find_files({
 		prompt_title = "< searching installed plugins >",
 		cwd = vim.fn.stdpath("data") .. "/site/pack/packer/start/",
 	})
 end
 
-local search_all_files = function()
+_G.search_all_files = function()
 	require("telescope.builtin").find_files({
 		prompt_title = "< searching all files >",
 		find_command = { "rg", "--no-ignore", "--files" },
@@ -998,26 +1157,29 @@ local search_all_files = function()
 end
 
 -- Telescope keymaps
-vim.keymap.set("n", "<leader>/", function()
-	-- You can pass additional configuration to telescope to change theme, layout, etc.
+keymap("n", "<leader>/", function()
 	require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 		winblend = 10,
 		previewer = false,
 	}))
-end, { desc = "[/] Fuzzily search in current buffer]" })
+end, { desc = "[/curr] Fuzzily search in current buffer]" })
 
-vim.keymap.set("n", "<leader>fk", function()
+keymap("n", "<leader>fk", function()
 	require("telescope.builtin").keymaps(require("telescope.themes").get_ivy({
 		winblend = 5,
 		previewer = false,
 	}))
-end, { desc = "[/keymaps] execute keymaps or functions]" })
+end, { desc = "[/keys] execute keymaps or functions]" })
 
-nmap("<leader>bb", "<cmd> Telescope buffers<CR>")
-nmap("<leader>fb", "<cmd> Telescope file_browser<CR>")
-nmap("<leader>fo", "<cmd> Telescope oldfiles<CR>")
-nmap("<leader>ff", "<cmd> Telescope find_files<CR>")
-nmap("<leader>fs", "<cmd> lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For > ')})<CR>")
+keymap("n", "<leader>fs", function()
+	require("telescope.builtin").grep_string({ search = vim.fn.input("Grep For > ") })
+end, { desc = "[/gr] grep string from pwd]" })
+
+keymap("n", "<leader>fb", "<cmd> Telescope file_browser<CR>", { desc = "[/fb] file browser search]" })
+keymap("n", "<leader>bb", "<cmd> Telescope buffers<CR>", { desc = "[/buf] search current nvim buffers]" })
+keymap("n", "<leader>fo", "<cmd> Telescope oldfiles<CR>", { desc = "[/old] old files search]" })
+keymap("n", "<leader>ff", "<cmd> Telescope find_files<CR>", { desc = "[/ff] find files search]" })
+
 nmap("<leader>fh", "<cmd> Telescope help_tags<CR>")
 nmap("<leader>fg", "<cmd> Telescope live_grep<CR>")
 nmap("<leader>lr", "<cmd> Telescope lsp_references<CR>")
@@ -1345,30 +1507,29 @@ ls.add_snippets(nil, {
 -- %=                                             left/right separator
 -- %l/%L,%c                                       rownumber/total,colnumber
 -- %{&fileencoding?&fileencoding:&encoding}       file encoding
-vim.opt.statusline =
-	" <b>[%N]  %< %{FugitiveHead()}  %F %m %r %w %= %y %{&fileencoding?&fileencoding:&encoding} [%{&fileformat}]  Ln %l, Col %c "
+-- vim.opt.statusline =
+-- 	" <b>[%N]  %< %{FugitiveHead()}  %F %m %r %w %= %y %{&fileencoding?&fileencoding:&encoding} [%{&fileformat}]  Ln %l, Col %c "
 
--- %#DiffAdd#%{(mode()=='n')?'\ \ NORMAL\ ':''}
--- %#DiffChange#%{(mode()=='i')?'\ \ INSERT\ ':''}
--- %#DiffDelete#%{(mode()=='r')?'\ \ RPLACE\ ':''}
--- %#Cursor#%{(mode()=='v')?'\ \ VISUAL\ ':''}
-vim.cmd([["set statusline+=%#warningmsg#"]])
-vim.cmd([["set statusline+=%{SyntasticStatuslineFlag()}"]])
-vim.cmd([["set statusline+=%*"]])
+-- -- %#DiffAdd#%{(mode()=='n')?'\ \ NORMAL\ ':''}
+-- -- %#DiffChange#%{(mode()=='i')?'\ \ INSERT\ ':''}
+-- -- %#DiffDelete#%{(mode()=='r')?'\ \ RPLACE\ ':''}
+-- -- %#Cursor#%{(mode()=='v')?'\ \ VISUAL\ ':''}
+-- vim.cmd([["set statusline+=%#warningmsg#"]])
+-- vim.cmd([["set statusline+=%{SyntasticStatuslineFlag()}"]])
+-- vim.cmd([["set statusline+=%*"]])
 
 vim.g.syntastic_always_populate_loc_list = 1
 vim.g.syntastic_auto_loc_list = 1
 vim.g.syntastic_check_on_open = 1
 vim.g.syntastic_check_on_wq = 0
 
-local telescope = require("telescope")
 local actions = require("telescope.actions")
 local fb_actions = require("telescope").extensions.file_browser.actions
 local fb_utils = require("telescope._extensions.file_browser.utils")
 local action_state = require("telescope.actions.state")
 local Job = require("plenary.job")
 
-telescope.setup({
+require("telescope").setup({
 	defaults = {
 
 		prompt_prefix = " ",
