@@ -11,6 +11,8 @@ function! TabCommandOutput(cmd)
         setlocal buftype=nofile bufhidden=wipe noswapfile nobuflisted nomodified
         silent put=message
     endif
+endfunction
+
 command! SyntasticDisableBuffer call SyntasticDisableBuffer()
 
 " The following command allows you to compile and run your C code in the floaterm window:
