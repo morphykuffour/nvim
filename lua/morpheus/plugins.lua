@@ -96,7 +96,7 @@ return packer.startup(function(use)
 
 	-- Colorschemes
 	-- use("gruvbox-community/gruvbox")
-	use({ "ellisonleao/gruvbox.nvim" })
+	use("ellisonleao/gruvbox.nvim")
 	use("lunarvim/darkplus.nvim")
 	use("marko-cerovac/material.nvim")
 
@@ -215,6 +215,8 @@ return packer.startup(function(use)
 		"NTBBloodbath/rest.nvim",
 		requires = { "nvim-lua/plenary.nvim" },
 	})
+
+	use "p00f/nvim-ts-rainbow"
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
