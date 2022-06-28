@@ -8,6 +8,7 @@ vim.g.maplocalleader = " "
 vim.g.snippets = "luasnip"
 
 require("morpheus.utils")
+Jcall(require, "morpheus/plugins")
 require("morpheus.globals")
 require("morpheus.options")
 require("morpheus.lsp")
@@ -36,7 +37,6 @@ require("morpheus.todo")
 require("morpheus.delimters")
 -- require("morpheus.wilder") TODO move wilder.vim to wilder.lua
 -- nix will take care of plugin installation
-Jcall(require, "morpheus/plugins")
 Jcall(require, "morpheus/keymaps")
 
 require("nrepl").config({})

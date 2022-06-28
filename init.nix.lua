@@ -407,6 +407,7 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { 
 nvim_lsp.rust_analyzer.setup({ on_attach = on_attach })
 nvim_lsp.clojure_lsp.setup({ on_attach = on_attach })
 nvim_lsp.pyright.setup({ on_attach = on_attach })
+nvim_lsp.rnix.setup({ on_attach = on_attach })
 -- nvim_lsp.gopls.setup({ on_attach = on_attach })
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
