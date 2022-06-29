@@ -292,6 +292,9 @@ in
       (plugin "nvim-lualine/lualine.nvim")
       (plugin "norcalli/nvim-colorizer.lua")
       (plugin "norcalli/nvim_utils")
+      (plugin "nvim-treesitter/nvim-treesitter-refactor")
+      (plugin "nvim-treesitter/nvim-treesitter-textobjects")
+      # (plugin "nvim-treesitter/nvim-treesitter-playground")
     ];
   };
 }
