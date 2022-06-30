@@ -9,8 +9,6 @@ vim.g.snippets = "luasnip"
 vim.g.loaded_matchparen = 1
 
 local opt = vim.opt
-local opts = { noremap = true, silent = true }
-local keymap = vim.keymap.set
 
 -- Ignore compiled files
 opt.wildignore = "__pycache__"
@@ -20,7 +18,7 @@ opt.wildignore = opt.wildignore + { "*.o", "*~", "*.pyc", "*pycache*" }
 opt.pumblend = 17
 opt.wildmode = "longest:full"
 opt.wildoptions = "pum"
-
+vim.o.lazyredraw = false
 opt.termguicolors = true
 opt.showmode = false
 opt.showcmd = true
@@ -654,14 +652,27 @@ autocmd("BufWritePost", {
 autocmd("BufWritePost", { pattern = "*.lua", command = "lua require('stylua').format()" })
 autocmd("BufWritePost", { pattern = "*.nix", command = "!nixpkgs-fmt %" })
 autocmd("BufWritePost", { pattern = "*.py", command = "AutoFormatBuffer yapf" })
--- autocmd("BufWritePost", { pattern = "*.go", command = "AutoFormatBuffer gofmt" })
--- autocmd("BufWritePost", { pattern = "*.rs", command = "AutoFormatBuffer rustfmt" })
--- autocmd("BufWritePost", { pattern = "*.c", command = "AutoFormatBuffer clang-format" })
--- autocmd("BufWritePost", { pattern = "*.cpp", command = "AutoFormatBuffer clang-format" })
-function _G.diffThisBranch()
-	local branch = vim.fn.input("Branch: ", "")
-	require("gitsigns").diffthis(branch)
-end
+autocmd("BufWritePost", { pattern = "*.go", command = "AutoFormatBuffer gofmt" })
+autocmd("BufWritePost", { pattern = "*.rs", command = "AutoFormatBuffer rustfmt" })
+autocmd("BufWritePost", { pattern = "*.c", command = "AutoFormatBuffer clang-format" })
+autocmd("BufWritePost", { pattern = "*.cpp", command = "AutoFormatBuffer clang-format" })
+
+-- auto resize
+local wr_group = vim.api.nvim_create_augroup("WinResize", { clear = true })
+
+vim.api.nvim_create_autocmd("VimResized", {
+	group = wr_group,
+	pattern = "*",
+	command = "wincmd =",
+	desc = "Automatically resize windows when the host window size changes.",
+})
+
+vim.api.nvim_create_autocmd("TermOpen", {
+	callback = function()
+		vim.opt_local.number = false
+		vim.opt_local.relativenumber = false
+	end,
+})
 
 -- gitsigns.lua
 require("gitsigns").setup({
@@ -985,8 +996,9 @@ end
 
 -- local m = require("morpheus/mapping_utils")
 
+local keymap = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
--- local keymap = vim.api.nvim_set_keymap
 
 -- move between vim panes
 nmap("<C-h>", "<C-w>h", opts)
@@ -1092,29 +1104,29 @@ nmap("<leader>sb", "?\\c")
 nmap("<leader>nh", "<cmd>noh<CR>")
 
 local telescope = require("telescope")
-local sorters = require("telescope.sorters")
+-- local sorters = require("telescope.sorters")
 
-TelescopeMapArgs = TelescopeMapArgs or {}
+-- TelescopeMapArgs = TelescopeMapArgs or {}
 
-local map_tele = function(key, f, options, buffer)
-	local map_key = vim.api.nvim_replace_termcodes(key .. f, true, true, true)
+-- local map_tele = function(key, f, options, buffer)
+-- 	local map_key = vim.api.nvim_replace_termcodes(key .. f, true, true, true)
 
-	TelescopeMapArgs[map_key] = options or {}
+-- 	TelescopeMapArgs[map_key] = options or {}
 
-	local mode = "n"
-	local rhs = string.format("<cmd>lua R('morpheus.telescope')['%s'](TelescopeMapArgs['%s'])<CR>", f, map_key)
+-- 	local mode = "n"
+-- 	local rhs = string.format("<cmd>lua R('morpheus.telescope')['%s'](TelescopeMapArgs['%s'])<CR>", f, map_key)
 
-	local map_options = {
-		noremap = true,
-		silent = true,
-	}
+-- 	local map_options = {
+-- 		noremap = true,
+-- 		silent = true,
+-- 	}
 
-	if not buffer then
-		vim.api.nvim_set_keymap(mode, key, rhs, map_options)
-	else
-		vim.api.nvim_buf_set_keymap(0, mode, key, rhs, map_options)
-	end
-end
+-- 	if not buffer then
+-- 		vim.api.nvim_set_keymap(mode, key, rhs, map_options)
+-- 	else
+-- 		vim.api.nvim_buf_set_keymap(0, mode, key, rhs, map_options)
+-- 	end
+-- end
 
 function _G.diffThisBranch()
 	local branch = vim.fn.input("Branch: ", "")
@@ -1127,7 +1139,11 @@ end
 -- telescope.load_extension("bookmarks")
 telescope.load_extension("file_browser")
 
-_G.search_dotfiles = function()
+-- map_tele("<space>fp", "installed_plugins")
+-- map_tele("<space>do", "search_dotfiles")
+-- map_tele("<space>vr", "search_vimrc")
+
+local search_dotfiles = function()
 	require("telescope.builtin").find_files({
 		prompt_title = "< dotfiles >",
 		cwd = vim.env.DOTFILES,
@@ -1184,15 +1200,20 @@ keymap("n", "<leader>ff", "<cmd> Telescope find_files<CR>", { desc = "[/ff] find
 nmap("<leader>fh", "<cmd> Telescope help_tags<CR>")
 nmap("<leader>fg", "<cmd> Telescope live_grep<CR>")
 nmap("<leader>lr", "<cmd> Telescope lsp_references<CR>")
-map_tele("<space>fp", "installed_plugins")
-map_tele("<space>do", "search_dotfiles")
-map_tele("<space>vr", "search_vimrc")
 nmap("<leader>ft", "<cmd> TodoTelescope<CR>")
 
 -- Extension mappings
 nmap("<leader>fm", "<cmd>Telescope bookmarks<cr>")
 nmap("<leader>fc", "<cmd>Telescope neoclip<cr>")
 -- m.nmap("<c-f>", "<cmd>Telescope find_files hidden=true<CR>")
+
+-- " Goodies
+keymap("v", "J", ":m '>+1<CR>gv=gv")
+keymap("v", "K", ":m '<-2<CR>gv=gv")
+keymap("n", "Y", "yg$")
+keymap("n", "J", "mzJ`z")
+keymap("n", "n", "nzzzv", opts)
+keymap("n", "N", "nzzzv", opts)
 
 -- Git
 nmap("<leader>gg", ":Neogit <CR>")

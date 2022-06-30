@@ -3,14 +3,14 @@ nnoremap <leader>w :w!<cr>
 
 " Goodies
 command! W w
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-nnoremap Y yg$
-nnoremap n nzzzv
-nnoremap N Nzzzv
-nnoremap J mzJ`z
+" vnoremap J :m '>+1<CR>gv=gv
+" vnoremap K :m '<-2<CR>gv=gv
+" nnoremap Y yg$
+" nnoremap n nzzzv
+" nnoremap N Nzzzv
+" nnoremap J mzJ`z
 
-" greatest remap ever
+" " greatest remap ever
 xnoremap <leader>p "_dP
 
 " next greatest remap ever : asbjornHaland
