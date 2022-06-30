@@ -32,6 +32,7 @@ in
 
   xdg.configFile = makeFtPlugins
     {
+      # TODO move all filetype settings to autocmd_filetype
       xml = ''
         setl formatprg=prettier\ --stdin-filepath\ %";
       '';
@@ -294,6 +295,8 @@ in
       (plugin "norcalli/nvim_utils")
       (plugin "nvim-treesitter/nvim-treesitter-refactor")
       (plugin "nvim-treesitter/nvim-treesitter-textobjects")
+      (plugin "anuvyklack/hydra.nvim#foreign-keys")
+      (plugin "phaazon/hop.nvim")
       # (plugin "nvim-treesitter/nvim-treesitter-playground")
     ];
   };
