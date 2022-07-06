@@ -182,6 +182,7 @@ in
       ''
         lua << EOF
         ${lib.strings.fileContents ./init.nix.lua}
+        ${lib.strings.fileContents ./lua/morpheus/hydra.lua}
         EOF
       ''
     ];
@@ -291,13 +292,15 @@ in
       (plugin "ojroques/nvim-lspfuzzy")
       (plugin "onsails/diaglist.nvim")
       (plugin "nvim-lualine/lualine.nvim")
-      (plugin "norcalli/nvim-colorizer.lua")
+      # (plugin "norcalli/nvim-colorizer.lua")
       (plugin "norcalli/nvim_utils")
       (plugin "nvim-treesitter/nvim-treesitter-refactor")
       (plugin "nvim-treesitter/nvim-treesitter-textobjects")
       (plugin "anuvyklack/hydra.nvim#foreign-keys")
       (plugin "phaazon/hop.nvim")
+      (plugin "bfredl/nvim-miniyank")
       # (plugin "nvim-treesitter/nvim-treesitter-playground")
+      (plugin "anuvyklack/keymap-layer.nvim")
     ];
   };
 }

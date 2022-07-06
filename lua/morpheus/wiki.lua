@@ -1,7 +1,5 @@
 local wiki = {}
 
--- TODO: need to open this only if it isn't open already.
--- otherwise just go to the window
 wiki.make_diary_entry = function()
    vim.cmd(string.format(':85vnew ~/Dropbox/notes/note-%s.md', os.date "%y_%m_%d"))
 end

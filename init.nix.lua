@@ -25,8 +25,8 @@ opt.showcmd = true
 opt.cmdheight = 1 -- Height of the command bar
 opt.incsearch = true -- Makes search act like search in modern browsers
 opt.showmatch = true -- show matching brackets when text indicator is over them
-opt.relativenumber = true -- Show line numbers
-opt.number = true -- But show the actual number for the line we're on
+-- opt.relativenumber = true -- Show line numbers
+-- opt.number = true -- But show the actual number for the line we're on
 opt.ignorecase = true -- Ignore case when searching...
 opt.smartcase = true -- ... unless there is a capital letter in the query
 opt.hidden = true -- I like having buffers stay around
@@ -106,7 +106,7 @@ opt.fillchars = { eob = "~" }
 
 vim.opt.diffopt = { "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal" }
 
-require("colorizer").setup()
+-- require("colorizer").setup()
 require("nvim_utils")
 require("nrepl").config({})
 -- require("lsp_signature").setup({})
@@ -114,8 +114,8 @@ require("nrepl").config({})
 -- Themes
 -- vim.cmd("colorscheme darkplus")
 -- vim.cmd("colorscheme gruvbox")
--- vim.cmd("colorscheme github_dark")
-vim.cmd("colorscheme default")
+vim.cmd("colorscheme github_dark")
+-- vim.cmd("colorscheme default")
 -- require("morpheus.theme.lualine_github_dark")
 
 require("lualine").setup({
@@ -302,22 +302,6 @@ cmp.setup({
 		end,
 	},
 
-	-- formatting = {
-	-- 	-- Youtube: How to set up nice formatting for your sources.
-	-- 	format = lspkind.cmp_format({
-	-- 		with_text = true,
-	-- 		menu = {
-	-- 			buffer = "[bufffer]",
-	-- 			nvim_lsp = "[LSP]",
-	-- 			nvim_lua = "[api]",
-	-- 			path = "[path]",
-	-- 			luasnip = "[snip]",
-	-- 			-- gh_issues = "[issues]",
-	-- 			tn = "[TabNine]",
-	-- 		},
-	-- 	}),
-	-- },
-
 	formatting = {
 		format = function(entry, vim_item)
 			vim_item.kind = lspkind.presets.default[vim_item.kind]
@@ -334,10 +318,7 @@ cmp.setup({
 	},
 
 	experimental = {
-		-- I like the new menu better! Nice work hrsh7th
 		native_menu = false,
-
-		-- Let's play with this for a day or two
 		ghost_text = false,
 	},
 })
@@ -359,15 +340,17 @@ _ = vim.cmd([[
 ]])
 
 -- LSP settings for nixos
-
 vim.cmd([[ packadd nvim-lspconfig]])
-vim.api.nvim_set_keymap("n", "<leader>L", "<cmd>lua vim.diagnostic.setloclist()<cr>", { noremap = true, silent = true })
+
+-- vim.api.nvim_set_keymap("n", "<leader>L", "<cmd>lua vim.diagnostic.setloclist()<cr>", { noremap = true, silent = true })
+
 vim.api.nvim_set_keymap(
 	"n",
-	"<leader>d",
+	"<leader>ds",
 	"<cmd>lua vim.lsp.buf.document_symbol()<cr>",
 	{ noremap = true, silent = true }
 )
+
 vim.api.nvim_set_keymap("i", "<c-h>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap(
 	"n",
@@ -378,13 +361,13 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_set_keymap("n", "<leader>e", "<cmd>lua vim.lsp.buf.rename()<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap(
 	"n",
-	"<leader>n",
+	"<leader>d.",
 	"<cmd>lua vim.diagnostic.goto_next({ float = true })<cr>",
 	{ noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
 	"n",
-	"<leader>p",
+	"<leader>d,",
 	"<cmd>lua vim.diagnostic.goto_prev({ float = true })<cr>",
 	{ noremap = true, silent = true }
 )
@@ -416,9 +399,7 @@ nvim_lsp.sumneko_lua.setup({
 	settings = {
 		Lua = {
 			runtime = {
-				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
 				version = "LuaJIT",
-				-- Setup your lua path
 				path = vim.split(package.path, ";"),
 			},
 			diagnostics = {
@@ -452,10 +433,6 @@ require("lspfuzzy").setup({
 	fzf_modifier = ":~:.", -- format FZF entries, see |filename-modifiers|
 	fzf_trim = true, -- trim FZF entries
 })
-
--- require("lightspeed").setup({
--- 	ignore_case = true,
--- })
 
 -- debug
 local dap, dapui = require("dap"), require("dapui")
@@ -587,11 +564,11 @@ require("filetype").setup({
 				-- Remove annoying indent jumping
 				vim.bo.cinoptions = vim.bo.cinoptions .. "L0"
 			end,
-			-- ["pdf"] = function()
-			-- 	vim.bo.filetype = "pdf"
-			-- 	-- Open in PDF viewer (Skim.app) automatically TODO add wslview
-			-- 	vim.fn.jobstart("open -a skim " .. '"' .. vim.fn.expand("%") .. '"')
-			-- end,
+			["pdf"] = function()
+				vim.bo.filetype = "pdf"
+				-- Open in PDF viewer (Skim.app) automatically TODO add wslview
+				vim.fn.jobstart("open -a skim " .. '"' .. vim.fn.expand("%") .. '"')
+			end,
 		},
 		function_literal = {
 			Brewfile = function()
@@ -790,7 +767,10 @@ require("gitsigns").setup({
 
 ---- testing out Hop.nvim with vim.schedule
 
+local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
+local term_opts = { silent = true }
+
 local function jump_back_to_original_buffer(original_buffer) --{{{
 	local current_buffer = vim.api.nvim_get_current_buf()
 	if current_buffer ~= original_buffer then
@@ -997,16 +977,12 @@ end
 
 -- local m = require("morpheus/mapping_utils")
 
-local keymap = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
-local term_opts = { silent = true }
+-- local keymap = vim.api.nvim_set_keymap
+-- TODO find difference between nvim_set_keymap() and vim.keymap.set()
+-- nvim_set_keymap({mode}, {lhs}, {rhs}, {*opts})             *nvim_set_keymap()*
+-- set({mode}, {lhs}, {rhs}, {opts})                           *vim.keymap.set()*
 
--- move between vim panes
-nmap("<C-h>", "<C-w>h", opts)
-nmap("<C-j>", "<C-w>j", opts)
-nmap("<C-k>", "<C-w>k", opts)
-nmap("<C-l>", "<C-w>l", opts)
-
+nmap("<leader>w", "<cmd>w<cr>", opts)
 nmap("<leader>rf", "<cmd> Ranger<CR>")
 
 -- Resize with arrows
@@ -1044,6 +1020,11 @@ keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Better terminal navigation
+-- move between vim panes
+nmap("<C-h>", "<C-w>h", opts)
+nmap("<C-j>", "<C-w>j", opts)
+nmap("<C-k>", "<C-w>k", opts)
+nmap("<C-l>", "<C-w>l", opts)
 keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
@@ -1053,12 +1034,8 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 nmap("<leader>hm", [[:lua require("harpoon.mark").add_file()<cr>]])
 nmap("<leader>hv", [[:lua require("harpoon.ui").toggle_quick_menu()<cr>]])
 
--- nnoremap <leader><F1> :Startify<CR>
 nmap("<leader>st", ":Startify<CR>")
 nmap("<leader>so", ":source %<CR>")
-
-nmap("<leader>pp", ":lua require('nabla').popup()<CR>")
-vmap("<leader>pp", ":lua require('nabla').popup()<CR>")
 
 nmap("K", "<Cmd>lua vim.lsp.buf.hover()<CR>")
 nmap("<leader>w", "<Cmd>w<CR>")
@@ -1086,6 +1063,14 @@ cmap("<c-k>", "<Up>")
 nmap("<leader>tn", ":tabnew<CR>")
 nmap("<leader>tk", ":tabnext<CR>")
 nmap("<leader>tj", ":tabprev<CR>")
+
+-- pasting from clipboard
+nmap("p", "<Plug>(miniyank-autoput)")
+nmap("P'", "<Plug>(miniyank-autoPut)")
+nmap("<leader>p", "<Plug>(miniyank-startput)")
+nmap("<leader>P", "<Plug>(miniyank-startPut)")
+nmap("<leader>n", "<Plug>(miniyank-cycle)")
+nmap("<leader>N", "<Plug>(miniyank-cycleback)")
 
 nmap("di$", "T$dt$")
 nmap("ci$", "T$ct$")
@@ -1134,31 +1119,37 @@ function _G.diffThisBranch()
 	require("gitsigns").diffthis(branch)
 end
 
--- require("telescope").load_extension("fzy_native")
--- telescope.load_extension("fzf")
--- telescope.load_extension("neoclip")
--- telescope.load_extension("bookmarks")
-telescope.load_extension("file_browser")
+-- Telescope keymaps
 
--- map_tele("<space>fp", "installed_plugins")
--- map_tele("<space>do", "search_dotfiles")
 -- map_tele("<space>vr", "search_vimrc")
 
-local search_dotfiles = function()
+keymap("n", "<leader>/", function()
+	require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+		winblend = 10,
+		previewer = false,
+	}))
+end, { desc = "[/curr] Fuzzily search in current buffer]" })
+
+keymap("n", "<space>do", function()
 	require("telescope.builtin").find_files({
 		prompt_title = "< dotfiles >",
 		cwd = vim.env.DOTFILES,
 		hidden = true,
 	})
-end
+end, { desc = "[/dot] search dotfiles]" })
 
+--[[
 _G.search_vimrc = function()
-	require("telescope.builtin").find_files({
-		prompt_title = "< vimrc >",
-		cwd = "~/.config/nvim/",
-		hidden = true,
-	})
 end
+--]]
+
+--[[
+require("telescope.builtin").find_files({
+	prompt_title = "< vimrc >",
+	cwd = "~/.config/nvim/",
+	hidden = true,
+})
+--]]
 
 _G.installed_plugins = function()
 	require("telescope.builtin").find_files({
@@ -1167,20 +1158,14 @@ _G.installed_plugins = function()
 	})
 end
 
+-- keymap("<space>fp", installed_plugins)
+
 _G.search_all_files = function()
 	require("telescope.builtin").find_files({
 		prompt_title = "< searching all files >",
 		find_command = { "rg", "--no-ignore", "--files" },
 	})
 end
-
--- Telescope keymaps
-keymap("n", "<leader>/", function()
-	require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-		winblend = 10,
-		previewer = false,
-	}))
-end, { desc = "[/curr] Fuzzily search in current buffer]" })
 
 keymap("n", "<leader>fk", function()
 	require("telescope.builtin").keymaps(require("telescope.themes").get_ivy({
@@ -1194,9 +1179,27 @@ keymap("n", "<leader>fs", function()
 end, { desc = "[/gr] grep string from pwd]" })
 
 keymap("n", "<leader>fb", "<cmd> Telescope file_browser<CR>", { desc = "[/fb] file browser search]" })
-keymap("n", "<leader>bb", "<cmd> Telescope buffers<CR>", { desc = "[/buf] search current nvim buffers]" })
-keymap("n", "<leader>fo", "<cmd> Telescope oldfiles<CR>", { desc = "[/old] old files search]" })
-keymap("n", "<leader>ff", "<cmd> Telescope find_files<CR>", { desc = "[/ff] find files search]" })
+
+keymap("n", "<leader>bb", function()
+	require("telescope.builtin").buffers(require("telescope.themes").get_ivy({
+		winblend = 5,
+		previewer = false,
+	}))
+end, { desc = "[/buf] search current nvim buffers]" })
+
+keymap("n", "<leader>fo", function()
+	require("telescope.builtin").oldfiles(require("telescope.themes").get_ivy({
+		winblend = 5,
+		previewer = false,
+	}))
+end, { desc = "[/old] old files search]" })
+
+keymap("n", "<leader>ff", function()
+	require("telescope.builtin").find_files(require("telescope.themes").get_ivy({
+		winblend = 5,
+		previewer = true,
+	}))
+end, { desc = "[/ff] find files search]" })
 
 nmap("<leader>fh", "<cmd> Telescope help_tags<CR>")
 nmap("<leader>fg", "<cmd> Telescope live_grep<CR>")
@@ -1287,18 +1290,6 @@ neogit.setup({
 	-- S
 })
 
-
--- Example of way to do picker
--- pickers.new({}, {
---     prompt_title = "Find Files",
---     finder = require("telescope.finders").new_table({
---         results = {"sup", "my", "dude"}
---     }),
---     sorter = require("telescope.config").values.generic_sorter({})
--- }):find()
---
--- Regex to find a property
--- ^\* .*\_.\{-}:zoom:\s*\zs.*
 -- orgmode settings
 vim.opt.shellslash = true
 vim.cmd("language en_US.utf8")
@@ -1399,6 +1390,7 @@ ls.add_snippets(nil, {
 		}),
 	},
 })
+
 -- statusline
 -- %<                                             trim from here
 -- %{fugitive#head()}                             name of the current branch (needs fugitive.vim)
@@ -1499,20 +1491,6 @@ require("telescope").setup({
 		-- builtin picker
 	},
 	extensions = {
-		fzf = {
-			fuzzy = true, -- false will only do exact matching
-			override_generic_sorter = true, -- override the generic sorter
-			override_file_sorter = true, -- override the file sorter
-			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
-			-- the default case_mode is "smart_case"
-		},
-		bookmarks = {
-			selected_browser = "brave",
-			url_open_command = "open",
-			url_open_plugin = "open_browser",
-			full_path = true,
-			firefox_profile_name = nil,
-		},
 		file_browser = {
 			theme = "ivy",
 			hijack_netrw = true,
@@ -1542,8 +1520,27 @@ require("telescope").setup({
 				},
 			},
 		},
+		fzf = {
+			fuzzy = true, -- false will only do exact matching
+			override_generic_sorter = true, -- override the generic sorter
+			override_file_sorter = true, -- override the file sorter
+			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+			-- the default case_mode is "smart_case"
+		},
+		bookmarks = {
+			selected_browser = "brave",
+			url_open_command = "open",
+			url_open_plugin = "open_browser",
+			full_path = true,
+			firefox_profile_name = nil,
+		},
 	},
 })
+-- require("telescope").load_extension("fzy_native")
+-- telescope.load_extension("fzf")
+-- telescope.load_extension("neoclip")
+-- telescope.load_extension("bookmarks")
+telescope.load_extension("file_browser")
 
 -- your configuration comes here
 -- or leave it empty to use the default settings
@@ -1607,13 +1604,14 @@ require("todo-comments").setup({
 if vim.fn.has("mac") ~= 1 then --support for wsl see :h has
 	require("nvim-treesitter.configs").setup({
 		-- Add languages to be installed here that you want installed for treesitter
-		ensure_installed = { "lua", "typescript", "rust", "go", "python", "nix" },
+		ensure_installed = { "lua", "typescript", "rust", "go", "python" },
 		-- ensure_installed = { enable = "all", },
 
 		-- tree_docs = { enable = true },
 		highlight = {
 			enable = true,
-			-- disable = {'org'}, -- Remove this to use TS highlighter for some of the highlights (Experimental)
+			-- disable = {'org'},
+			disable = { "nix" },
 		},
 
 		context_commentstring = {
