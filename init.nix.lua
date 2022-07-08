@@ -68,8 +68,8 @@ opt.breakindent = true
 opt.showbreak = string.rep(" ", 3) -- Make it so that long lines wrap smartly
 opt.linebreak = true
 
-opt.foldmethod = "marker"
-opt.foldlevel = 0
+-- opt.foldmethod = "marker"
+-- opt.foldlevel = 0
 opt.modelines = 1
 
 opt.belloff = "all" -- Just turn the dang bell off
@@ -114,7 +114,7 @@ require("nrepl").config({})
 -- Themes
 -- vim.cmd("colorscheme darkplus")
 -- vim.cmd("colorscheme gruvbox")
-vim.cmd("colorscheme github_dark")
+vim.cmd("colorscheme github_dark_default")
 -- vim.cmd("colorscheme default")
 -- require("morpheus.theme.lualine_github_dark")
 
@@ -176,7 +176,7 @@ autocmd("TextYankPost", {
 vim.g.did_load_filetypes = 1
 
 -- source vimfiles
-vim.cmd([[runtime! vimfiles/*.vim]])
+-- vim.cmd([[runtime! vimfiles/*.vim]])
 
 -- gx => open url in browser
 if vim.fn.has("wsl") then
@@ -566,8 +566,14 @@ require("filetype").setup({
 			end,
 			["pdf"] = function()
 				vim.bo.filetype = "pdf"
-				-- Open in PDF viewer (Skim.app) automatically TODO add wslview
-				vim.fn.jobstart("open -a skim " .. '"' .. vim.fn.expand("%") .. '"')
+				if vim.fn.has("wsl") then
+					vim.fn.jobstart("wslview " .. '"' .. vim.fn.expand("%") .. '"')
+				elseif vim.fn.has("mac") then
+					-- Open in PDF viewer (Skim.app)
+					vim.fn.jobstart("open -a skim " .. '"' .. vim.fn.expand("%") .. '"')
+				elseif vim.fn.has("linux") then
+					vim.fn.jobstart("zathura " .. '"' .. vim.fn.expand("%") .. '"')
+				end
 			end,
 		},
 		function_literal = {
@@ -1275,7 +1281,7 @@ require("luasnip").filetype_extend("js", { "js" })
 require("luasnip").filetype_extend("cpp", { "cpp" })
 require("luasnip").filetype_extend("python", { "python" })
 require("luasnip").filetype_extend("latex", { "latex" })
-require("luasnip").filetype_extend("markdown", { "cpp" })
+-- require("luasnip").filetype_extend("markdown", { "cpp" })
 require("luasnip").filetype_extend("org", { "org" })
 require("luasnip").filetype_extend("r", { "r" })
 require("luasnip").filetype_extend("shell", { "shell" })
