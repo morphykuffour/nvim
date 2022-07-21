@@ -86,3 +86,8 @@ else
     silent !echo -ne "\033]Pl3971ED\033\\"
     autocmd VimLeave * silent !echo -ne "\033]Pl3971ED\033\\"
 endif
+
+
+" let g:fzf_preview_git_status_preview_command =  "[[ $(git diff --cached -- {-1}) != \"\" ]] && git diff --cached --color=always -- {-1} | delta || " .
+" \ "[[ $(git diff -- {-1}) != \"\" ]] && git diff --color=always -- {-1} | delta || " .
+" \ g:fzf_preview_command

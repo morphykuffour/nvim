@@ -2,6 +2,19 @@
 -- Author: Morphy Kuffour
 -- Alias:  JediGrandMaster
 
+-- -- Automatically install Packer if it's not already installed
+-- local install_path = ("%s/site/pack/packer/opt/packer.nvim"):format(vim.fn.stdpath("data"))
+
+-- if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+-- 	local packer_repo = "https://github.com/wbthomason/packer.nvim"
+-- 	vim.fn.system({ "git", "clone", packer_repo, install_path })
+-- end
+
+-- -- because of home-manager
+-- require("packer").startup(function()
+-- 	compile_path = vim.fn.stdpath("data")
+-- end)
+
 -- Personal settings
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -117,6 +130,8 @@ require("nrepl").config({})
 vim.cmd("colorscheme github_dark_default")
 -- vim.cmd("colorscheme default")
 -- require("morpheus.theme.lualine_github_dark")
+
+-- fzf delta integration
 
 require("lualine").setup({
 	options = {
@@ -1347,30 +1362,30 @@ require("orgmode").setup({
 	},
 })
 
-require("rest-nvim").setup({
-	-- Open request results in a horizontal split
-	result_split_horizontal = false,
-	-- Keep the http file buffer above|left when split horizontal|vertical
-	result_split_in_place = false,
-	-- Skip SSL verification, useful for unknown certificates
-	skip_ssl_verification = false,
-	-- Highlight request on run
-	highlight = {
-		enabled = true,
-		timeout = 150,
-	},
-	result = {
-		-- toggle showing URL, HTTP info, headers at top the of result window
-		show_url = true,
-		show_http_info = true,
-		show_headers = true,
-	},
-	-- Jump to request line on run
-	jump_to_request = false,
-	env_file = ".env",
-	custom_dynamic_variables = {},
-	yank_dry_run = true,
-})
+-- require("rest-nvim").setup({
+-- 	-- Open request results in a horizontal split
+-- 	result_split_horizontal = false,
+-- 	-- Keep the http file buffer above|left when split horizontal|vertical
+-- 	result_split_in_place = false,
+-- 	-- Skip SSL verification, useful for unknown certificates
+-- 	skip_ssl_verification = false,
+-- 	-- Highlight request on run
+-- 	highlight = {
+-- 		enabled = true,
+-- 		timeout = 150,
+-- 	},
+-- 	result = {
+-- 		-- toggle showing URL, HTTP info, headers at top the of result window
+-- 		show_url = true,
+-- 		show_http_info = true,
+-- 		show_headers = true,
+-- 	},
+-- 	-- Jump to request line on run
+-- 	jump_to_request = false,
+-- 	env_file = ".env",
+-- 	custom_dynamic_variables = {},
+-- 	yank_dry_run = true,
+-- })
 local ls = require("luasnip")
 -- some shorthands...
 local snip = ls.snippet

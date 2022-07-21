@@ -7,8 +7,25 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.snippets = "luasnip"
 
+-- Automatically install Packer if it's not already installed
+local install_path = ("%s/site/pack/packer/opt/packer.nvim"):format(vim.fn.stdpath("data"))
+
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+	local packer_repo = "https://github.com/wbthomason/packer.nvim"
+	vim.fn.system({ "git", "clone", packer_repo, install_path })
+end
+
+-- because of home-manager
+require("packer").startup(function()
+	compile_path = vim.fn.stdpath("data")
+end)
+
+
+
 require("morpheus.utils")
-Jcall(require, "morpheus/plugins")
+require("morpheus.plugins")
+-- Jcall(require, "morpheus/plugins")
+Jcall(require, "morpheus/keymaps")
 require("morpheus.globals")
 require("morpheus.options")
 require("morpheus.lsp")
@@ -37,7 +54,6 @@ require("morpheus.todo")
 require("morpheus.delimters")
 -- require("morpheus.wilder") TODO move wilder.vim to wilder.lua
 -- nix will take care of plugin installation
-Jcall(require, "morpheus/keymaps")
 
 require("nrepl").config({})
 -- require("lsp_signature").setup({})
