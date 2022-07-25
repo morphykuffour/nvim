@@ -561,15 +561,18 @@ require("filetype").setup({
 		extensions = {
 			-- Set the filetype of *.pn files to potion
 			pn = "potion",
+			markdown = "markdown",
 		},
 		literal = {
 			-- Set the filetype of files named "MyBackupFile" to lua
 			MyBackupFile = "lua",
+			Vagrantfile = "ruby",
 		},
 		complex = {
 			-- Set the filetype of any full filename matching the regex to gitconfig
 			[".*git/config"] = "gitconfig", -- Included in the plugin
 			["/tmp/zsh*"] = "bash", -- Included in the plugin
+			[".*zsh*"] = "bash", -- include zsh files
 		},
 
 		-- The same as the ones above except the keys map to functions
@@ -582,10 +585,12 @@ require("filetype").setup({
 			["pdf"] = function()
 				vim.bo.filetype = "pdf"
 				if vim.fn.has("wsl") then
+					-- Open in MS-Edge PDF viewer
 					vim.fn.jobstart("wslview " .. '"' .. vim.fn.expand("%") .. '"')
 				elseif vim.fn.has("mac") then
 					-- Open in PDF viewer (Skim.app)
 					vim.fn.jobstart("open -a skim " .. '"' .. vim.fn.expand("%") .. '"')
+					-- Open in zathura PDF viewer
 				elseif vim.fn.has("linux") then
 					vim.fn.jobstart("zathura " .. '"' .. vim.fn.expand("%") .. '"')
 				end
@@ -1188,7 +1193,7 @@ _G.search_all_files = function()
 	})
 end
 
-keymap("n", "<leader>fk", function()
+keymap("n", "<A-x>", function()
 	require("telescope.builtin").keymaps(require("telescope.themes").get_ivy({
 		winblend = 5,
 		previewer = false,
@@ -1221,6 +1226,54 @@ keymap("n", "<leader>ff", function()
 		previewer = true,
 	}))
 end, { desc = "[/ff] find files search]" })
+
+local previewers = require("telescope.previewers")
+local builtin = require("telescope.builtin")
+
+local delta_bcommits = previewers.new_termopen_previewer({
+	get_command = function(entry)
+		return {
+			"git",
+			"-c",
+			"core.pager=delta",
+			"-c",
+			"delta.side-by-side=false",
+			"diff",
+			entry.value .. "^!",
+			"--",
+			entry.current_file,
+		}
+	end,
+})
+
+local delta = previewers.new_termopen_previewer({
+	get_command = function(entry)
+		return { "git", "-c", "core.pager=delta", "-c", "delta.side-by-side=false", "diff", entry.value .. "^!" }
+	end,
+})
+
+Delta_git_commits = function(opts)
+	opts = opts or {}
+	opts.previewer = {
+		delta,
+		previewers.git_commit_message.new(opts),
+		previewers.git_commit_diff_as_was.new(opts),
+	}
+	builtin.git_commits(opts)
+end
+
+Delta_git_bcommits = function(opts)
+	opts = opts or {}
+	opts.previewer = {
+		delta_bcommits,
+		previewers.git_commit_message.new(opts),
+		previewers.git_commit_diff_as_was.new(opts),
+	}
+	builtin.git_bcommits(opts)
+end
+
+keymap("n", "<F5>", "<cmd>lua Delta_git_commits()<CR>", default_opts)
+keymap("n", "<F6>", "<cmd>lua Delta_git_bcommits()<CR>", default_opts)
 
 nmap("<leader>fh", "<cmd> Telescope help_tags<CR>")
 nmap("<leader>fg", "<cmd> Telescope live_grep<CR>")
