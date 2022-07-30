@@ -169,6 +169,10 @@ return packer.startup(function(use)
 		use("bryall/contextprint.nvim")
 	end
 
+	-- if os.getenv("NIX_PATH") ~= 1 then
+	-- 	use("nvim-treesitter/nvim-treesitter-playground")
+	-- end
+
 	-- TJ & ThePrimeagen
 	use("ThePrimeagen/harpoon")
 
@@ -196,12 +200,9 @@ return packer.startup(function(use)
 	use("onsails/diaglist.nvim")
 	use("folke/lua-dev.nvim")
 	use("ii14/nrepl.nvim")
-
+	use("lewis6991/impatient.nvim")
 	-- Lua
-	use({
-		"folke/todo-comments.nvim",
-		requires = "nvim-lua/plenary.nvim",
-	})
+	use({ "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" })
 	use("nvim-treesitter/nvim-tree-docs")
 	use("nathom/filetype.nvim")
 
@@ -210,13 +211,31 @@ return packer.startup(function(use)
 	use("phaazon/hop.nvim")
 	use("ziontee113/syntax-tree-surfer")
 	-- use("vim-syntastic/syntastic")
+	use({ "NTBBloodbath/rest.nvim", requires = { "nvim-lua/plenary.nvim" } })
 
-	use({
-		"NTBBloodbath/rest.nvim",
-		requires = { "nvim-lua/plenary.nvim" },
-	})
-
-	use "p00f/nvim-ts-rainbow"
+	-- ✗ Failed to install nvim-treesitter/nvim-treesitter-playground
+	use("p00f/nvim-ts-rainbow")
+	use("gelguy/wilder.nvim")
+	use("tpope/vim-commentary")
+	use("TimUntersberger/neogit")
+	use("sindrets/diffview.nvim")
+	use("neovim/nvim-lspconfig")
+	-- use("nvim-telescope/telescope-cheat.nvim")
+	-- use("nvim-telescope/telescope-file-browser.nvim")
+	-- use("dhruvmanila/telescope-bookmarks.nvim")
+	-- use("numToStr/Comment.nvim")
+	-- use("nvim-treesitter/nvim-treesitter")
+	use("junegunn/fzf")
+	use("junegunn/fzf.vim")
+	use("ojroques/nvim-lspfuzzy")
+	use("norcalli/nvim-colorizer.lua")
+	use("norcalli/nvim_utils")
+	use("nvim-treesitter/nvim-treesitter-refactor")
+	use("nvim-treesitter/nvim-treesitter-textobjects")
+	use("anuvyklack/hydra.nvim")
+	use("bfredl/nvim-miniyank")
+	use("anuvyklack/keymap-layer.nvim")
+	use("kmonad/kmonad-vim")
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()

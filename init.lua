@@ -112,6 +112,7 @@ elseif vim.fn.has("mac") then
 elseif vim.fn.has("linux") then
 	vim.g.netrw_browsex_viewer = "/usr/bin/xdg-open"
 end
+
 --
 -- local luadev = require("lua-dev").setup({
 -- 	-- add any options here, or leave empty to use the default settings

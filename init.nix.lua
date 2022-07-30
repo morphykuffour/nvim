@@ -2,6 +2,9 @@
 -- Author: Morphy Kuffour
 -- Alias:  JediGrandMaster
 
+-- TODO mason.nvim installation
+-- TODO fix lspconfig https://www.vikasraj.dev/blog/lsp-neovim-retrospective
+--
 -- -- Automatically install Packer if it's not already installed
 -- local install_path = ("%s/site/pack/packer/opt/packer.nvim"):format(vim.fn.stdpath("data"))
 
@@ -14,6 +17,17 @@
 -- require("packer").startup(function()
 -- 	compile_path = vim.fn.stdpath("data")
 -- end)
+_G.__luacache_config = {
+  chunks = {
+    enable = true,
+    path = vim.fn.stdpath('cache')..'/luacache_chunks',
+  },
+  modpaths = {
+    enable = true,
+    path = vim.fn.stdpath('cache')..'/luacache_modpaths',
+  }
+}
+require('impatient')
 
 -- Personal settings
 vim.g.mapleader = " "
@@ -187,8 +201,6 @@ autocmd("TextYankPost", {
 -- vim.cmd([[au VimEnter * TSBufEnable highlight]])
 -- vim.cmd([[au VimEnter * TSBufEnable incremental_selection]])
 
--- Do not source the default filetype.vim
-vim.g.did_load_filetypes = 1
 
 -- source vimfiles
 -- vim.cmd([[runtime! vimfiles/*.vim]])
@@ -555,13 +567,15 @@ require("diaglist").init({
 	debounce_ms = 150,
 })
 
----- In init.lua or filetype.nvim's config file
+-- In init.lua or filetype.nvim's config file
+-- Do not source the default filetype.vim
+vim.g.did_load_filetypes = 1
 require("filetype").setup({
 	overrides = {
 		extensions = {
 			-- Set the filetype of *.pn files to potion
 			pn = "potion",
-			markdown = "markdown",
+			-- markdown = "markdown",
 		},
 		literal = {
 			-- Set the filetype of files named "MyBackupFile" to lua
@@ -887,17 +901,6 @@ vim.keymap.set("n", "<Leader>vP", function()
 	end)
 end, opts)
 
-----------------------
-----------------------
-----------------------
-----------------------
-----------------------
-----------------------
-----------------------
-----------------------
-----------------------
----- VIDEO 1: NOTE: Hop to create new lines
-
 --vim.keymap.set("n", "vo", function()
 --	vim.cmd([[:HopLineStart]])
 --	vim.schedule(function()
@@ -931,16 +934,12 @@ end, opts)
 --	end)
 --end, opts)
 
-----  NOTE: Hop with Macros
-
 --vim.keymap.set("n", "vY", function()
 --	vim.cmd([[:HopLineStart]])
 --	vim.schedule(function()
 --		vim.cmd([[:normal @f]])
 --	end)
 --end, opts)
-
-----  NOTE: Hop can even trigger LuaSnip Snippets (complicated)
 
 --vim.keymap.set("n", "your_keymap", function()
 --	vim.cmd([[:HopLineStart]]) --> Best thing ever in the history of mankind
@@ -949,8 +948,6 @@ end, opts)
 --		vim.cmd("startinsert")
 --	end)
 --end, opts)
-
-----  NOTE: TSHT (Treesitter hint textobject) --> mfussenegger/nvim-treehopper
 
 --vim.keymap.set("n", "vy", function()
 --	require("tsht").nodes()
@@ -1675,7 +1672,7 @@ require("todo-comments").setup({
 	},
 })
 
-if vim.fn.has("mac") ~= 1 then --support for wsl see :h has
+-- if vim.fn.has("mac") ~= 1 then --support for wsl see :h has
 	require("nvim-treesitter.configs").setup({
 		-- Add languages to be installed here that you want installed for treesitter
 		ensure_installed = { "lua", "typescript", "rust", "go", "python" },
@@ -1775,4 +1772,4 @@ if vim.fn.has("mac") ~= 1 then --support for wsl see :h has
 			},
 		},
 	})
-end
+-- end
